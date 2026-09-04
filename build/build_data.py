@@ -50,7 +50,7 @@ CORE_PKNOWN = 0.97           # everybody knows it -> warm-ups and distractor sto
 CORE_MIN_ZIPF = 3.0
 PRECISION_MIN_PKNOWN = 0.62  # you might not know it, but your reader might
 RARE_MIN_PKNOWN = 0.22       # below this it is a curiosity, not a word to own
-DEF_MIN, DEF_MAX = 12, 170   # definition length that reads well on a phone
+DEF_MIN, DEF_MAX = 9, 170   # definition length that reads well on a phone
 WORD_MIN, WORD_MAX = 3, 17
 
 POS_MAP = {"n": 0, "v": 1, "a": 2, "s": 2, "r": 3}
@@ -222,6 +222,43 @@ def plural_of_known(w: str, prev: dict) -> bool:
     return False
 
 
+# Fields whose senses do not travel: a gloss labelled with one of these is
+# describing a term of art, not a word. Mathematics and physics are deliberately
+# absent -- 'orthogonal' and 'equilibrium' earn their keep in ordinary prose.
+NARROW_DOMAIN = {
+    "physiology", "anatomy", "medicine", "pathology", "biology", "botany",
+    "zoology", "entomology", "genetics", "chemistry", "dentistry", "psychiatry",
+    "biochemistry", "immunology", "embryology", "veterinary medicine",
+}
+
+
+def clean_gloss(d: str) -> str:
+    """Strip the usage examples and citations WordNet packs into its glosses.
+
+    A gloss can run 'having the unity destroyed; "a divided nation"-Samuel
+    Lubell; -E.B.White'. Everything from the first quoted example or attribution
+    onward is illustration, not meaning, and shown as a multiple-choice option it
+    reads as a mistake.
+    """
+    d = d.strip()
+    for marker in ('; "', ' "'):
+        i = d.find(marker)
+        if i > 8:
+            d = d[:i]
+    # Trailing attributions, stripped one at a time because a gloss can carry
+    # several: '...; -Samuel Lubell; -E.B.White'. Anchored to the end and
+    # requiring a capitalised name so an ordinary dashed phrase survives.
+    prev = None
+    while prev != d:
+        prev = d
+        d = re.sub(r"\s*[;,]?\s*-{1,2}\s*[A-Z][A-Za-z.'-]*(?:\s+[A-Z][A-Za-z.'-]*)*\s*$",
+                   "", d).strip()
+    # WordNet quotes with a backtick opening and a straight apostrophe closing,
+    # which renders as a stray accent on screen.
+    d = re.sub(r"`([^'`]{1,24})'", lambda m: "‘" + m.group(1) + "’", d)
+    return re.sub(r"\s*[;,]\s*$", "", d)
+
+
 def pick_sense(w: str):
     """Dominant WordNet sense: definition, POS, lexname, synonyms, example.
 
@@ -234,7 +271,10 @@ def pick_sense(w: str):
     syns = wn.synsets(w)
     if not syns:
         return None
-    stem = w[:5]
+    stems = {w[:5]}
+    for pre in ("un", "in", "im", "ir", "il", "dis", "non", "anti", "counter"):
+        if w.startswith(pre) and len(w) - len(pre) >= 5:
+            stems.add(w[len(pre):len(pre) + 5])
     for s in syns[:6]:
         if s.pos() not in POS_MAP:
             continue
@@ -250,10 +290,21 @@ def pick_sense(w: str):
         # sense stores the word capitalised, this sense is the physicist.
         if any(n.lower() == w and n[0].isupper() for n in names):
             continue
-        d = (s.definition() or "").strip()
+        d = clean_gloss(s.definition() or "")
+        # A leading '(physiology)' marks a sense that only lives inside one
+        # field; other parentheticals ('(often followed by...)') are harmless
+        # and just get tidied away.
+        marker = re.match(r"^\(([a-z, ]+)\)\s*", d)
+        if marker:
+            if any(part.strip() in NARROW_DOMAIN for part in marker.group(1).split(",")):
+                continue
+            d = d[marker.end():]
         if not (DEF_MIN <= len(d) <= DEF_MAX):
             continue
-        if stem in d.lower():
+        # 'insensibility' defined as 'a lack of sensibility' is not a question.
+        # Checking the negated stem as well as the word's own catches the whole
+        # family of these.
+        if any(st in d.lower() for st in stems):
             continue
         if JUNK_DEF.search(d):
             continue

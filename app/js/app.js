@@ -23,6 +23,9 @@ const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 const SCREENS = ['home', 'play', 'result', 'progress', 'about'];
 function show(name) {
   for (const s of SCREENS) $(`screen-${s}`).hidden = s !== name;
+  // The stylesheet re-points its colour tokens off this: the shelf is the deep
+  // world, every other screen is its inverse.
+  document.body.dataset.screen = name;
   window.scrollTo(0, 0);
 }
 
@@ -64,7 +67,7 @@ function renderHome() {
 
   if (fit.trials < 12) {
     card.append(
-      el('div', 'est-label', 'Your vocabulary'),
+      el('div', 'eyebrow', 'Your vocabulary'),
       el('div', 'est-empty',
         'Not measured yet. Take the Measure runs about ninety words and gives you a '
         + 'number with an honest margin around it — every other mode then keeps it up to date.'),
@@ -86,7 +89,7 @@ function renderHome() {
     mark.style.left = `${at(v.lemmas)}%`;
     bandWrap.append(fill, mark);
     card.append(
-      el('div', 'est-label', 'Your vocabulary'),
+      el('div', 'eyebrow', 'Your vocabulary'),
       num,
       bandWrap,
       el('div', 'est-range', `${n0(v.lo)} – ${n0(v.hi)} · from ${n0(fit.trials)} answers`),
@@ -171,7 +174,7 @@ function nextQuestion() {
 function renderQuestion(q) {
   const qBox = $('question');
   qBox.replaceChildren();
-  if (q.prompt.lead) qBox.append(el('div', 'q-lead', q.prompt.lead));
+  if (q.prompt.lead) qBox.append(el('div', 'q-lead eyebrow', q.prompt.lead));
   if (q.prompt.style === 'word') {
     qBox.append(el('div', 'q-word', q.prompt.text));
   } else if (q.prompt.style === 'sentence') {
@@ -459,7 +462,7 @@ function renderResult(sum) {
 function renderEstimateResult(sum, body) {
   const v = sum.vocab;
   const head = el('div', 'result-head');
-  head.append(el('div', 'est-label', 'You know about'));
+  head.append(el('div', 'eyebrow', 'You know about'));
   head.append(el('div', 'big-number', n0(v.lemmas)));
   head.append(el('div', 'result-sub',
     `lemmas — dictionary words, counting walk / walks / walked once.`));
@@ -488,7 +491,7 @@ function renderEstimateResult(sum, body) {
     row.append(el('dt', null, a.label), el('dd', null, n0(vocabularyAt(a.theta, hist))));
     dl.append(row);
   }
-  const you = el('div', 'stat-row');
+  const you = el('div', 'stat-row is-you');
   you.append(el('dt', null, 'you'), el('dd', null, n0(v.lemmas)));
   dl.append(you);
   anchors.append(dl);

@@ -142,18 +142,18 @@ function surface(size) {
 // ── the mark: a hoard of words, stacked ─────────────────────────────────
 // Four bars tapering downward. It reads as lines of text at a glance and as a
 // pile at a distance, and it still resolves at 48px on a home screen.
-const INK_TOP = [31, 29, 25];
-const INK_BOT = [20, 19, 16];
-const AMBER = [216, 140, 74, 255];
-const PAPER = [250, 247, 242, 255];
-const PAPER_DIM = [214, 205, 191, 255];
+const NAVY_TOP = [19, 44, 78];
+const NAVY_BOT = [10, 27, 51];
+const PALE = [242, 229, 184, 255];
+const PALE_DIM = [188, 176, 138, 255];
+const GOLD = [201, 150, 63, 255];
 
 function draw(size, { bleed }) {
   const s = surface(size);
   const u = size / 100;
 
-  if (bleed) s.vgrad(0, 0, size, size, INK_TOP, INK_BOT);
-  else s.vgrad(0, 0, size, size, INK_TOP, INK_BOT, 22 * u);
+  if (bleed) s.vgrad(0, 0, size, size, NAVY_TOP, NAVY_BOT);
+  else s.vgrad(0, 0, size, size, NAVY_TOP, NAVY_BOT, 22 * u);
 
   // Maskable icons must keep the mark inside the middle ~80%.
   const k = bleed ? 0.78 : 1;
@@ -163,10 +163,10 @@ function draw(size, { bleed }) {
   const Y = (v) => cy + M(v - 50);
 
   const bars = [
-    [62, 25, AMBER],
-    [52, 41, PAPER],
-    [40, 57, PAPER],
-    [24, 73, PAPER_DIM],
+    [62, 25, GOLD],
+    [52, 41, PALE],
+    [40, 57, PALE],
+    [24, 73, PALE_DIM],
   ];
   for (const [w, y, col] of bars) {
     s.roundRect(X(50 - w / 2), Y(y), M(w), M(11), M(5.5), col);

@@ -1,5 +1,5 @@
 // Minimal static server for Wordhoard — no dependencies.
-// Serves /app on http://localhost:8791. localhost is a secure context, so the
+// Serves /app on http://localhost:8793. localhost is a secure context, so the
 // service worker registers and the PWA installs on this machine.
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, normalize, extname } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), 'app');
-const PORT = 8791;
+const PORT = 8793;
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',

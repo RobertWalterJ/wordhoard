@@ -63,6 +63,28 @@ estimator recovers the ability it was given — the only way to validate a
 vocabulary test, since no real person knows their own true count. Current result:
 worst relative bias under 3%, 95% interval coverage 92–95% across the range.
 
+## The look
+
+Two worlds from one palette, and which one you are in tells you where you are.
+
+- **The shelf** (home) is deep naval blue with pale-yellow ink and a gold rule —
+  the cover of the book rather than a page of it. Modes are set as a ruled
+  contents list, not a stack of cards, so the page has a spine.
+- **Everywhere else** inverts it: parchment ground, that same blue as the ink and
+  the accent. Light, quiet, made for reading one word off a phone.
+
+Colours are the Danish naval ensign's — a blue deeper than the flag's red is
+bright, a parchment yellow, and the ensign's dark crimson held in reserve for one
+job: being wrong. Nothing else is allowed to be red.
+
+Literata sets every word and definition; Archivo does the interface chrome, so
+the word is the only thing on the page asking to be read. Both are self-hosted,
+so they survive offline.
+
+This commits to a single art direction rather than following the system theme —
+the inversion *is* the identity, and a dark mode would flatten both halves into
+the same dark screen.
+
 ## The word bank
 
 19,353 playable words in four packs, built rather than hand-listed:

@@ -1,90 +1,97 @@
 /* Wordhoard.
-   One light theme and one dark, both on paper rather than screen-grey. The
-   words themselves are always set in Literata; the interface around them is the
-   system sans, so the word is the only thing on the page asking to be read. */
+ *
+ * Two worlds from one palette, and which one you are in tells you where you are.
+ *
+ *   The shelf (home)    deep naval blue, pale yellow ink. Weighty, still, the
+ *                       cover of the book rather than a page of it.
+ *   Everywhere else     the inverse: pale yellow ground, that same blue as the
+ *                       ink and the accent. Light, quiet, made for reading a
+ *                       word off a phone.
+ *
+ * The colours are the Danish naval ensign's: a blue deeper than the flag's red
+ * is bright, a parchment yellow, and the ensign's dark crimson kept in reserve
+ * for one job -- being wrong. Nothing else is allowed to be red.
+ *
+ * This commits to a single art direction rather than following the system
+ * theme: the inversion between the shelf and the pages IS the identity, and a
+ * dark mode would flatten both halves into the same dark screen. Every colour
+ * is therefore painted explicitly, so the page holds on any host ground.
+ */
 
 :root {
-  --paper:      #faf7f2;
-  --card:       #ffffff;
-  --ink:        #1b1a17;
-  --ink-soft:   #57514a;
-  --ink-faint:  #8b8378;
-  --rule:       #e6dfd3;
-  --rule-soft:  #f0eae0;
-  --accent:     #a8551f;
-  --accent-ink: #ffffff;
-  --accent-wash:#f6ece2;
-  --right:      #2f6b52;
-  --right-wash: #e8f1ec;
-  --wrong:      #a3312a;
-  --wrong-wash: #f8eae8;
-  --shadow:     0 1px 2px rgba(27,26,23,.05), 0 6px 22px -12px rgba(27,26,23,.28);
+  /* the deep world */
+  --navy:        #0d2340;
+  --navy-raise:  #16304e;
+  --navy-line:   #27486f;
+  --pale:        #f2e5b8;
+  --pale-soft:   #cdc59e;
+  --pale-faint:  #8f9078;
+  --gold:        #c9963f;
 
-  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* the light world */
+  --parchment:       #f4edd8;
+  --parchment-raise: #fdfaf0;
+  --parchment-line:  #e2d6b4;
+  --ink:             #12294a;
+  --ink-soft:        #4c5a71;
+  --ink-faint:       #8a8875;
+
+  /* held in common */
+  --red:        #8c2333;
+  --red-wash:   #f3e3df;
+  --green:      #2e6a55;
+  --green-wash: #e6eee6;
+
+  /* what the current surface resolves to; the home screen overrides these */
+  --ground:     var(--parchment);
+  --plate:      var(--parchment-raise);
+  --line:       var(--parchment-line);
+  --text:       var(--ink);
+  --text-soft:  var(--ink-soft);
+  --text-faint: var(--ink-faint);
+  --accent:     var(--navy);
+  --accent-ink: var(--parchment);
+  --accent-wash:#e7e1cb;
+  --lift:       0 1px 1px rgba(18,41,74,.04), 0 8px 24px -16px rgba(18,41,74,.38);
+
   --serif: 'Literata', ui-serif, Georgia, 'Times New Roman', serif;
+  --sans:  'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --measure: 34rem;
+  --step: .35s cubic-bezier(.22,.61,.36,1);
 
   color-scheme: light;
 }
 
-/* Three theme states, not two. A host that offers a theme switch stamps
-   data-theme on the root; the default "system" setting stamps nothing, and only
-   prefers-color-scheme separates light from dark there. So the dark tokens are
-   declared twice: once behind the media query (guarded so an explicit light
-   choice still beats a dark OS) and once behind the explicit stamp. Every token
-   is defined in the bare :root above, so nothing depends on either block
-   matching. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper:      #15140f;
-    --card:       #1e1c17;
-    --ink:        #ece6da;
-    --ink-soft:   #b3aa9b;
-    --ink-faint:  #837a6d;
-    --rule:       #33302a;
-    --rule-soft:  #26241e;
-    --accent:     #d98c4a;
-    --accent-ink: #1b1a17;
-    --accent-wash:#2a231b;
-    --right:      #7bbd9a;
-    --right-wash: #1d2a23;
-    --wrong:      #e08a80;
-    --wrong-wash: #2c1e1c;
-    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 26px -14px rgba(0,0,0,.8);
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --paper:      #15140f;
-  --card:       #1e1c17;
-  --ink:        #ece6da;
-  --ink-soft:   #b3aa9b;
-  --ink-faint:  #837a6d;
-  --rule:       #33302a;
-  --rule-soft:  #26241e;
-  --accent:     #d98c4a;
-  --accent-ink: #1b1a17;
-  --accent-wash:#2a231b;
-  --right:      #7bbd9a;
-  --right-wash: #1d2a23;
-  --wrong:      #e08a80;
-  --wrong-wash: #2c1e1c;
-  --shadow:     0 1px 2px rgba(0,0,0,.4), 0 8px 26px -14px rgba(0,0,0,.8);
-  color-scheme: dark;
+/* The shelf. Same tokens, re-pointed at the deep world, so every component
+   below is written once and simply arrives in whichever world it is shown in. */
+body[data-screen="home"],
+.boot {
+  --ground:     var(--navy);
+  --plate:      var(--navy-raise);
+  --line:       var(--navy-line);
+  --text:       var(--pale);
+  --text-soft:  var(--pale-soft);
+  --text-faint: var(--pale-faint);
+  --accent:     var(--gold);
+  --accent-ink: var(--navy);
+  --accent-wash:#1d3a5c;
+  --lift:       0 1px 2px rgba(0,0,0,.28), 0 14px 34px -20px rgba(0,0,0,.7);
 }
 
 * { box-sizing: border-box; }
 
 /* An explicit display in author CSS beats the user agent's [hidden] rule, so
    anything given `display: block` here would stay on screen while hidden. This
-   is what was leaving the Next button visible before a question was answered. */
+   is what once left the Next button visible before a question was answered. */
 [hidden] { display: none !important; }
 
 html, body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ground);
+  color: var(--text);
   font-family: var(--sans);
+  font-size: 16px;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: contain;
@@ -94,226 +101,335 @@ body {
   min-height: 100dvh;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
            env(safe-area-inset-bottom) env(safe-area-inset-left);
+  transition: background-color var(--step), color var(--step);
 }
 
-button { font: inherit; color: inherit; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
-/* ------------------------------------------------------------------ boot */
+/* A single small-caps label style, used for every eyebrow in the app. */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ------------------------------------------------------------------- boot */
 .boot {
   position: fixed; inset: 0;
-  display: grid; place-content: center; justify-items: center; gap: .6rem;
-  background: var(--paper); z-index: 20;
+  display: grid; place-content: center; justify-items: center; gap: .7rem;
+  background: var(--ground); color: var(--text); z-index: 20;
 }
-.boot-mark { font-family: var(--serif); font-size: 1.7rem; letter-spacing: -.01em; }
-.boot-note { color: var(--ink-faint); font-size: .85rem; }
+.boot-mark { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; letter-spacing: -.015em; }
+.boot-note { color: var(--text-faint); font-size: .82rem; }
 
-/* --------------------------------------------------------------- layout */
-main { max-width: 34rem; margin: 0 auto; padding: 1.1rem 1.1rem 2.5rem; }
-.stack { display: grid; gap: .6rem; margin-top: 1.4rem; }
+/* ----------------------------------------------------------------- layout */
+main { max-width: var(--measure); margin: 0 auto; padding: 1.15rem 1.25rem 3rem; }
+.stack { display: grid; gap: .55rem; margin-top: 1.5rem; }
 
-.masthead { padding: 1.6rem 0 1.2rem; }
+.screen { animation: rise var(--step) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* --------------------------------------------------------------- masthead */
+.masthead { padding: 2.6rem 0 1.5rem; }
 .wordmark {
-  font-family: var(--serif); font-weight: 600; font-size: 2.1rem;
-  letter-spacing: -.022em; margin: 0; line-height: 1;
+  font-family: var(--serif); font-weight: 600; font-size: 2.6rem;
+  letter-spacing: -.028em; margin: 0; line-height: .98; color: var(--text);
+  text-wrap: balance;
 }
-.tagline { color: var(--ink-soft); font-size: .92rem; margin: .5rem 0 0; }
+/* A gold rule under the wordmark: the one piece of pure ornament, and it earns
+   its place by being the thing that makes the shelf feel bound rather than
+   rendered. */
+.wordmark::after {
+  content: ''; display: block; width: 2.6rem; height: 2px;
+  background: var(--accent); margin: .85rem 0 0; border-radius: 1px;
+}
+.tagline {
+  color: var(--text-soft); font-size: .9rem; margin: .8rem 0 0; line-height: 1.5;
+  max-width: 22rem;
+}
 
-.screen-head { display: flex; align-items: center; gap: .6rem; padding: .4rem 0 1.1rem; }
-.screen-head h2 { font-family: var(--serif); font-size: 1.3rem; margin: 0; font-weight: 600; }
+.screen-head {
+  display: flex; align-items: center; gap: .75rem;
+  padding: 1.4rem 0 1.4rem; border-bottom: 1px solid var(--line); margin-bottom: 1.4rem;
+}
+.screen-head h2 {
+  font-family: var(--serif); font-size: 1.28rem; margin: 0; font-weight: 600;
+  letter-spacing: -.015em;
+}
 
-/* --------------------------------------------------------- estimate card */
+/* ---------------------------------------------------------- estimate plate */
 .estimate-card {
   display: block; width: 100%; text-align: left; cursor: pointer;
-  background: var(--card); border: 1px solid var(--rule); border-radius: 14px;
-  padding: 1.05rem 1.15rem; box-shadow: var(--shadow); margin-bottom: 1.4rem;
+  background: transparent; color: inherit;
+  border: 1px solid var(--line); border-radius: 3px;
+  padding: 1.15rem 1.25rem 1.25rem; margin: 1.9rem 0 2.2rem;
+  transition: border-color var(--step), background-color var(--step);
 }
-.estimate-card:active { transform: translateY(1px); }
-.est-label { font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-faint); }
+.estimate-card:hover { border-color: var(--accent); }
+.estimate-card:active { background: var(--accent-wash); }
 .est-number {
-  font-family: var(--serif); font-size: 2.5rem; font-weight: 600;
-  letter-spacing: -.03em; line-height: 1.05; margin: .3rem 0 .1rem;
-  font-variant-numeric: tabular-nums;
+  font-family: var(--serif); font-size: 3rem; font-weight: 600;
+  letter-spacing: -.035em; line-height: 1; margin: .55rem 0 0;
+  font-variant-numeric: tabular-nums; color: var(--accent);
 }
-.est-unit { font-family: var(--sans); font-size: .8rem; color: var(--ink-faint); letter-spacing: 0; }
-.est-range { font-size: .82rem; color: var(--ink-soft); }
-.est-cta { font-size: .88rem; color: var(--accent); margin-top: .55rem; font-weight: 600; }
-.est-empty { font-size: .95rem; color: var(--ink-soft); line-height: 1.5; }
+body[data-screen="home"] .est-number { color: var(--pale); }
+.est-unit {
+  font-family: var(--sans); font-size: .74rem; font-weight: 500; color: var(--text-faint);
+  letter-spacing: .09em; text-transform: uppercase; margin-left: .5rem;
+}
+.est-range { font-size: .8rem; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+.est-cta {
+  font-size: .78rem; font-weight: 600; color: var(--accent); margin-top: .9rem;
+  letter-spacing: .04em;
+}
+.est-empty { font-size: .92rem; color: var(--text-soft); line-height: 1.6; margin-top: .5rem; }
 
-/* ------------------------------------------------------------- band bar */
-.band { height: 6px; border-radius: 3px; background: var(--rule-soft); position: relative; margin: .75rem 0 .4rem; overflow: hidden; }
-.band-fill { position: absolute; top: 0; bottom: 0; background: var(--accent); opacity: .25; }
-.band-mark { position: absolute; top: -3px; width: 2px; height: 12px; background: var(--accent); border-radius: 1px; }
+/* The measured range, drawn against the span it could have fallen in. */
+.band {
+  height: 3px; background: var(--line); position: relative;
+  margin: 1rem 0 .7rem; border-radius: 2px;
+}
+.band-fill { position: absolute; inset-block: 0; background: var(--accent); opacity: .45; border-radius: 2px; }
+.band-mark {
+  position: absolute; top: -4px; width: 2px; height: 11px;
+  background: var(--accent); border-radius: 1px;
+}
 
-/* ---------------------------------------------------------------- modes */
-.modes { display: grid; gap: .6rem; }
+/* ------------------------------------------------------------------ modes */
+/* A ruled contents list, not a stack of cards. Cards would give five things
+   equal weight and a lot of edges; rules give the page a spine. */
+.modes { display: block; border-top: 1px solid var(--line); }
 .mode {
-  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .8rem;
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 1rem;
   width: 100%; text-align: left; cursor: pointer;
-  background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
-  padding: .85rem 1rem;
+  background: none; border: 0; border-bottom: 1px solid var(--line);
+  padding: 1.05rem .35rem 1.1rem;
+  transition: background-color .18s ease, padding-left .18s ease;
 }
-.mode:active { transform: translateY(1px); }
-.mode:disabled { opacity: .5; cursor: default; }
-.mode-name { font-family: var(--serif); font-size: 1.06rem; font-weight: 600; }
-.mode-desc { font-size: .82rem; color: var(--ink-soft); margin-top: .12rem; line-height: 1.4; }
+.mode:hover { background: var(--accent-wash); padding-left: .7rem; }
+.mode:active { background: var(--accent-wash); }
+.mode:disabled { opacity: .38; cursor: default; }
+.mode:disabled:hover { background: none; padding-left: .35rem; }
+.mode-name {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 600;
+  letter-spacing: -.012em; color: var(--text);
+}
+.mode-desc {
+  font-size: .82rem; color: var(--text-soft); margin-top: .28rem; line-height: 1.5;
+  max-width: 24rem;
+}
 .mode-tag {
-  font-size: .7rem; letter-spacing: .05em; text-transform: uppercase;
-  color: var(--ink-faint); white-space: nowrap;
+  font-size: .65rem; font-weight: 600; letter-spacing: .11em; text-transform: uppercase;
+  color: var(--text-faint); white-space: nowrap;
 }
 
 .home-foot {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 1.6rem; font-size: .82rem; color: var(--ink-faint);
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-top: 2rem; font-size: .74rem; color: var(--text-faint);
+  letter-spacing: .04em;
 }
-.foot-links { display: flex; gap: .9rem; }
-.link { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; font-size: .82rem; }
-.link:hover { text-decoration: underline; }
+.foot-links { display: flex; gap: 1.3rem; }
+.link {
+  background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer;
+  font-size: .74rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+}
+.link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-/* ----------------------------------------------------------------- play */
-.play-bar { display: flex; align-items: center; gap: .7rem; padding: .2rem 0 .9rem; }
+/* ------------------------------------------------------------------- play */
+.play-bar { display: flex; align-items: center; gap: .85rem; padding: .9rem 0 1rem; }
 .icon-btn {
-  background: none; border: 1px solid var(--rule); border-radius: 8px;
-  width: 2rem; height: 2rem; display: grid; place-content: center; cursor: pointer;
-  color: var(--ink-soft); flex: none;
+  background: none; border: 1px solid var(--line); border-radius: 3px;
+  width: 2.1rem; height: 2.1rem; display: grid; place-content: center; cursor: pointer;
+  color: var(--text-soft); flex: none; transition: border-color .18s ease, color .18s ease;
 }
-.progress { flex: 1; height: 4px; background: var(--rule-soft); border-radius: 2px; overflow: hidden; }
-.progress-fill { height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
-.play-count { font-size: .78rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; flex: none; }
+.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+.progress { flex: 1; height: 2px; background: var(--line); overflow: hidden; }
+.progress-fill { height: 100%; width: 0; background: var(--accent); transition: width var(--step); }
+.play-count {
+  font-size: .72rem; font-weight: 500; color: var(--text-faint);
+  font-variant-numeric: tabular-nums; flex: none; letter-spacing: .08em;
+}
 
-.timer { height: 3px; background: var(--rule-soft); border-radius: 2px; overflow: hidden; margin-bottom: 1.1rem; }
+.timer { height: 2px; background: var(--line); overflow: hidden; margin-bottom: 1.6rem; }
 .timer-fill { height: 100%; width: 100%; background: var(--accent); }
-.timer.urgent .timer-fill { background: var(--wrong); }
+.timer.urgent .timer-fill { background: var(--red); }
 
-.question { margin: .6rem 0 1.3rem; }
-.q-lead {
-  font-size: .74rem; letter-spacing: .07em; text-transform: uppercase;
-  color: var(--ink-faint); margin-bottom: .55rem;
-}
+.question { margin: .5rem 0 1.7rem; }
+.q-lead { margin-bottom: .7rem; }
 .q-word {
-  font-family: var(--serif); font-size: 2.3rem; font-weight: 600;
-  letter-spacing: -.02em; line-height: 1.1; overflow-wrap: break-word;
+  font-family: var(--serif); font-size: 2.5rem; font-weight: 600;
+  letter-spacing: -.028em; line-height: 1.08; overflow-wrap: break-word;
+  text-wrap: balance;
 }
 .q-def, .q-sentence {
-  font-family: var(--serif); font-size: 1.28rem; line-height: 1.45; letter-spacing: -.005em;
+  font-family: var(--serif); font-size: 1.3rem; line-height: 1.5;
+  letter-spacing: -.008em; text-wrap: pretty;
 }
 .q-sentence .blank {
-  display: inline-block; width: 4.2em; height: .85em; vertical-align: baseline;
-  border-bottom: 2px solid var(--accent); margin: 0 .12em;
+  display: inline-block; width: 4.2em; height: .8em; vertical-align: baseline;
+  border-bottom: 2px solid var(--accent); margin: 0 .15em;
 }
-.q-ask { font-size: .84rem; color: var(--ink-faint); margin-top: .7rem; }
+.q-ask { font-size: .78rem; color: var(--text-faint); margin-top: .95rem; letter-spacing: .05em; }
 
-.options { display: grid; gap: .5rem; }
+.options { display: grid; gap: .45rem; }
 .opt {
   display: block; width: 100%; text-align: left; cursor: pointer;
-  background: var(--card); border: 1px solid var(--rule); border-radius: 11px;
-  padding: .8rem .95rem; line-height: 1.4; font-size: .96rem;
-  transition: border-color .12s ease, background .12s ease;
+  background: var(--plate); border: 1px solid var(--line); border-radius: 3px;
+  padding: .85rem 1rem; line-height: 1.45; font-size: .92rem; color: var(--text);
+  transition: border-color .16s ease, background-color .16s ease, transform .1s ease;
 }
-.opt.serif { font-family: var(--serif); font-size: 1.02rem; }
-.opt:active { transform: translateY(1px); }
-.opt.right { border-color: var(--right); background: var(--right-wash); }
-.opt.wrong { border-color: var(--wrong); background: var(--wrong-wash); }
-.opt.dim { opacity: .45; }
+.opt.serif { font-family: var(--serif); font-size: 1.05rem; }
+.opt:hover:not([disabled]) { border-color: var(--accent); }
+.opt:active:not([disabled]) { transform: translateY(1px); }
+.opt.right { border-color: var(--green); background: var(--green-wash); color: var(--green); }
+.opt.wrong { border-color: var(--red); background: var(--red-wash); color: var(--red); }
+.opt.dim { opacity: .4; }
 .opt[disabled] { cursor: default; }
 
-.yesno { grid-template-columns: 1fr 1fr; }
-.yesno .opt { text-align: center; font-family: var(--serif); font-size: 1.05rem; padding: 1rem .8rem; }
+.yesno { grid-template-columns: 1fr 1fr; gap: .55rem; }
+.yesno .opt {
+  text-align: center; font-family: var(--serif); font-size: 1.05rem; padding: 1.1rem .8rem;
+}
 
 .recall-input {
-  width: 100%; font-family: var(--serif); font-size: 1.35rem; padding: .75rem .9rem;
-  border: 1px solid var(--rule); border-radius: 11px; background: var(--card); color: var(--ink);
+  width: 100%; font-family: var(--serif); font-size: 1.3rem; padding: .8rem .95rem;
+  border: 1px solid var(--line); border-radius: 3px; background: var(--plate); color: var(--text);
 }
-.recall-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .recall-hint {
-  font-family: var(--serif); font-size: 1.1rem; letter-spacing: .22em;
-  color: var(--ink-faint); margin-top: .6rem;
+  font-family: var(--serif); font-size: 1.05rem; letter-spacing: .3em;
+  color: var(--text-faint); margin-top: .7rem;
 }
 
 .feedback {
-  margin-top: 1rem; padding: .85rem 1rem; border-radius: 11px;
-  background: var(--card); border: 1px solid var(--rule); font-size: .9rem; line-height: 1.5;
+  margin-top: 1.15rem; padding: .95rem 1.05rem;
+  background: var(--plate); border: 1px solid var(--line); border-left: 2px solid var(--accent);
+  border-radius: 3px; font-size: .88rem; line-height: 1.6;
+  animation: rise .28s cubic-bezier(.22,.61,.36,1) both;
 }
-.fb-head { font-weight: 600; margin-bottom: .3rem; }
-.fb-head.right { color: var(--right); }
-.fb-head.wrong { color: var(--wrong); }
+.feedback.is-right { border-left-color: var(--green); }
+.feedback.is-wrong { border-left-color: var(--red); }
+.fb-head {
+  font-size: .68rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.fb-head.right { color: var(--green); }
+.fb-head.wrong { color: var(--red); }
 .fb-word { font-family: var(--serif); font-weight: 600; }
-.fb-note { color: var(--ink-soft); margin-top: .45rem; font-size: .86rem; }
+.fb-note { color: var(--text-soft); margin-top: .55rem; font-size: .84rem; }
 
-.play-foot { display: flex; align-items: center; gap: .8rem; margin-top: 1.2rem; }
-.score-chip {
-  font-size: .82rem; color: var(--ink-faint); font-variant-numeric: tabular-nums;
+/* The action bar stays put at the foot of the screen: the answer is at the top
+   of a long option list, and hunting for Next below the fold is friction the
+   mode can least afford. */
+.play-foot {
+  position: sticky; bottom: 0; z-index: 5;
+  display: flex; align-items: center; gap: .9rem;
+  margin-top: 1.5rem; padding: .85rem 0 max(.85rem, env(safe-area-inset-bottom));
+  background: var(--ground);
 }
-.play-foot .btn { margin-left: auto; }
+/* The fade lives above the bar rather than inside it: a gradient used as the
+   bar's own background leaves a visible seam where it stops being transparent. */
+.play-foot::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 1.75rem;
+  background: linear-gradient(to top, var(--ground), transparent);
+  pointer-events: none;
+}
+.score-chip {
+  font-size: .72rem; font-weight: 500; color: var(--text-faint);
+  font-variant-numeric: tabular-nums; letter-spacing: .07em;
+}
+.play-foot .btn { margin-left: auto; width: auto; min-width: 9rem; }
 
 /* ---------------------------------------------------------------- buttons */
 .btn {
   display: block; width: 100%; cursor: pointer; text-align: center;
-  background: var(--card); border: 1px solid var(--rule); border-radius: 11px;
-  padding: .8rem 1rem; font-size: .95rem;
+  background: var(--plate); border: 1px solid var(--line); border-radius: 3px;
+  padding: .82rem 1rem; font-size: .82rem; font-weight: 600; color: var(--text);
+  letter-spacing: .07em; text-transform: uppercase;
+  transition: border-color .16s ease, background-color .16s ease, transform .1s ease;
 }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.btn:hover { border-color: var(--accent); }
 .btn:active { transform: translateY(1px); }
-.play-foot .btn { width: auto; min-width: 8rem; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.danger { color: var(--red); border-color: var(--red); background: transparent; }
 
 /* --------------------------------------------------------------- results */
-.result-head { text-align: center; padding: 1.6rem 0 1.2rem; }
+.result-head { padding: 1.2rem 0 1.8rem; }
 .result-score {
-  font-family: var(--serif); font-size: 3rem; font-weight: 600; letter-spacing: -.03em;
-  font-variant-numeric: tabular-nums; line-height: 1;
+  font-family: var(--serif); font-size: 3.4rem; font-weight: 600; letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums; line-height: 1; color: var(--accent);
 }
-.result-sub { color: var(--ink-soft); margin-top: .5rem; font-size: .92rem; }
+.result-sub { color: var(--text-soft); margin-top: .7rem; font-size: .87rem; line-height: 1.55; }
 
 .big-number {
   font-family: var(--serif); font-size: 3.4rem; font-weight: 600;
-  letter-spacing: -.035em; line-height: 1; font-variant-numeric: tabular-nums;
+  letter-spacing: -.038em; line-height: 1; font-variant-numeric: tabular-nums;
+  color: var(--accent); margin: .3rem 0 .1rem;
 }
 
 .panel {
-  background: var(--card); border: 1px solid var(--rule); border-radius: 13px;
-  padding: 1rem 1.1rem; margin-bottom: .8rem;
+  background: var(--plate); border: 1px solid var(--line); border-radius: 3px;
+  padding: 1.15rem 1.2rem; margin-bottom: .7rem; box-shadow: var(--lift);
 }
 .panel h3 {
-  font-family: var(--serif); font-size: 1.02rem; margin: 0 0 .55rem; font-weight: 600;
+  font-family: var(--sans); font-size: .68rem; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--text-faint);
+  margin: 0 0 .8rem;
 }
-.panel p { margin: .45rem 0; font-size: .89rem; line-height: 1.55; color: var(--ink-soft); }
-.panel p.tight { margin: .2rem 0; }
+.panel p { margin: .55rem 0; font-size: .87rem; line-height: 1.65; color: var(--text-soft); }
+.panel p.tight { margin: .25rem 0; }
+.panel dl { margin: 0; }
 
-.stat-row { display: flex; justify-content: space-between; gap: 1rem; padding: .38rem 0; font-size: .88rem; border-bottom: 1px solid var(--rule-soft); }
-.stat-row:last-child { border-bottom: 0; }
-.stat-row dt { color: var(--ink-soft); }
-.stat-row dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.stat-row {
+  display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+  padding: .5rem 0; font-size: .85rem; border-bottom: 1px solid var(--line);
+}
+.stat-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.stat-row dt { color: var(--text-soft); }
+.stat-row dd {
+  margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text);
+  font-family: var(--serif);
+}
+.stat-row.is-you dt, .stat-row.is-you dd { color: var(--accent); }
 
-.wordlist { display: grid; gap: .55rem; margin-top: .3rem; }
-.wl-item { display: grid; grid-template-columns: 1fr auto; gap: .6rem; align-items: start; padding-bottom: .55rem; border-bottom: 1px solid var(--rule-soft); }
+.wordlist { display: grid; }
+.wl-item {
+  display: grid; grid-template-columns: 1fr auto; gap: .8rem; align-items: start;
+  padding: .75rem 0; border-bottom: 1px solid var(--line);
+}
 .wl-item:last-child { border-bottom: 0; padding-bottom: 0; }
-.wl-word { font-family: var(--serif); font-weight: 600; font-size: 1.02rem; }
-.wl-pos { font-size: .72rem; color: var(--ink-faint); margin-left: .4rem; font-style: italic; }
-.wl-def { font-size: .85rem; color: var(--ink-soft); line-height: 1.45; margin-top: .12rem; }
-.wl-note { font-size: .82rem; color: var(--ink-faint); line-height: 1.45; margin-top: .28rem; font-style: italic; }
+.wl-word { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; }
+.wl-pos {
+  font-family: var(--sans); font-size: .64rem; font-weight: 500; color: var(--text-faint);
+  margin-left: .5rem; letter-spacing: .1em; text-transform: uppercase;
+}
+.wl-def { font-size: .84rem; color: var(--text-soft); line-height: 1.55; margin-top: .2rem; }
+.wl-note {
+  font-size: .81rem; color: var(--text-faint); line-height: 1.55; margin-top: .35rem;
+  font-family: var(--serif); font-style: italic;
+}
 .star {
-  background: none; border: 1px solid var(--rule); border-radius: 8px;
-  width: 2rem; height: 2rem; cursor: pointer; color: var(--ink-faint); flex: none; line-height: 1;
+  background: none; border: 1px solid var(--line); border-radius: 3px;
+  width: 1.9rem; height: 1.9rem; cursor: pointer; color: var(--text-faint);
+  flex: none; line-height: 1; font-size: .8rem;
+  transition: color .16s ease, border-color .16s ease, background-color .16s ease;
 }
 .star.on { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
 
 /* ----------------------------------------------------------------- chart */
-.chart { width: 100%; height: 130px; display: block; }
-.chart .grid-line { stroke: var(--rule); stroke-width: 1; }
-.chart .band-area { fill: var(--accent); opacity: .13; }
-.chart .line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart { width: 100%; height: 132px; display: block; overflow: visible; }
+.chart .band-area { fill: var(--accent); opacity: .17; }
+.chart .line { fill: none; stroke: var(--accent); stroke-width: 1.75; stroke-linejoin: round; stroke-linecap: round; }
 .chart .dot { fill: var(--accent); }
-.chart .axis-label { fill: var(--ink-faint); font-size: 10px; font-family: var(--sans); }
-
-.chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
-.chip {
-  font-size: .78rem; padding: .28rem .6rem; border-radius: 999px;
-  border: 1px solid var(--rule); color: var(--ink-soft); background: var(--paper);
+.chart .axis-label {
+  fill: var(--text-faint); font-size: 9.5px; font-family: var(--sans);
+  font-weight: 500; letter-spacing: .04em;
 }
-.chip.on { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
 
-.note { font-size: .82rem; color: var(--ink-faint); line-height: 1.55; }
-.danger { color: var(--wrong); border-color: var(--wrong); }
+.note { font-size: .81rem; color: var(--text-faint); line-height: 1.65; }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
