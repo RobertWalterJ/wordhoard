@@ -1,0 +1,29 @@
+{
+  "built": "2026-09-04",
+  "words": 19353,
+  "packs": {
+    "core": 7153,
+    "builtform": 123,
+    "precision": 8699,
+    "rare": 3378
+  },
+  "confusables": {
+    "sets": 62,
+    "items": 124
+  },
+  "inventory": 61853,
+  "sources": [
+    {
+      "name": "Word prevalence norms for 62,000 English lemmas",
+      "who": "Brysbaert, Mandera, McCormick & Keuleers (2019)",
+      "where": "Behavior Research Methods 51(2), 467-479",
+      "use": "how many people know each word - the calibration behind the size estimate"
+    },
+    {
+      "name": "WordNet 3.0",
+      "who": "Princeton University",
+      "where": "wordnet.princeton.edu",
+      "use": "definitions, parts of speech, synonyms"
+    }
+  ]
+}

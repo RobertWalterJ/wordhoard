@@ -1,0 +1,708 @@
+{
+  "note": "Hand-picked, not derived. The rule: a term earns a place only if knowing it changes how you can describe something in ordinary English. Excluded on purpose - taxonomic Latin, unit names, anything whose technical sense contradicts its everyday one, and jargon that cannot travel outside its field. 'pknown'/'zipf' are only used for words absent from the prevalence norms; where the norms have the word, the measured values win.",
+  "words": [
+    {
+      "w": "entablature",
+      "group": "architecture",
+      "note": "The whole horizontal band a classical colonnade carries - architrave, frieze and cornice together."
+    },
+    {
+      "w": "architrave",
+      "group": "architecture",
+      "note": "The lowest band of the entablature; also the moulded frame around a door or window."
+    },
+    {
+      "w": "cornice",
+      "group": "architecture",
+      "note": "The projecting crown at the top of a wall. The word survives in ordinary speech for the moulding at a ceiling."
+    },
+    {
+      "w": "pediment",
+      "group": "architecture",
+      "note": "The triangular gable over a portico. A broken pediment is one interrupted at the apex."
+    },
+    {
+      "w": "pilaster",
+      "group": "architecture",
+      "note": "A flattened column engaged in a wall - structure implied rather than performed."
+    },
+    {
+      "w": "corbel",
+      "group": "architecture",
+      "note": "A bracket of stone or brick stepped out from a wall to carry a load."
+    },
+    {
+      "w": "spandrel",
+      "group": "architecture",
+      "note": "The near-triangular surface between an arch and its frame; in a curtain wall, the opaque panel between floors.",
+      "pknown": 0.3,
+      "zipf": 2.0
+    },
+    {
+      "w": "soffit",
+      "group": "architecture",
+      "def": "The underside of an architectural element such as an eave, arch or balcony",
+      "note": "The word planners reach for when they mean 'the bit you see looking up'.",
+      "pknown": 0.34,
+      "zipf": 2.1
+    },
+    {
+      "w": "fenestration",
+      "group": "architecture",
+      "def": "The arrangement of windows and openings in a facade",
+      "note": "Not just 'windows' - the pattern of them, which is what makes a facade read as ordered or restless.",
+      "pknown": 0.36,
+      "zipf": 2.2
+    },
+    {
+      "w": "clerestory",
+      "group": "architecture",
+      "note": "A run of high windows above roof level, bringing light deep into a room without giving a view in."
+    },
+    {
+      "w": "mullion",
+      "group": "architecture",
+      "def": "A vertical bar dividing the lights of a window",
+      "note": "The vertical one. Horizontal is a transom - a distinction people mix up constantly.",
+      "pknown": 0.4,
+      "zipf": 2.3
+    },
+    {
+      "w": "transom",
+      "group": "architecture",
+      "note": "The horizontal bar across a window or above a door; also the small window it frames."
+    },
+    {
+      "w": "lintel",
+      "group": "architecture",
+      "note": "The beam over an opening. The oldest structural idea there is, and still the commonest."
+    },
+    {
+      "w": "jamb",
+      "group": "architecture",
+      "note": "The vertical side of a door or window opening."
+    },
+    {
+      "w": "reveal",
+      "group": "architecture",
+      "note": "The depth of wall between the face and the window in it. A deep reveal reads as mass; a flush one as skin."
+    },
+    {
+      "w": "voussoir",
+      "group": "architecture",
+      "def": "One of the wedge-shaped stones forming an arch",
+      "note": "The keystone is only the most famous voussoir.",
+      "pknown": 0.14,
+      "zipf": 1.5
+    },
+    {
+      "w": "keystone",
+      "group": "architecture",
+      "note": "The wedge at the crown of an arch that locks the rest in place - hence the metaphor."
+    },
+    {
+      "w": "tympanum",
+      "group": "architecture",
+      "note": "The recessed face within a pediment or over a door, usually where the carving goes."
+    },
+    {
+      "w": "frieze",
+      "group": "architecture",
+      "note": "The middle band of an entablature; more loosely, any decorated horizontal strip."
+    },
+    {
+      "w": "plinth",
+      "group": "architecture",
+      "note": "The base a column, statue or building sits on. Useful for buildings: a plinth is how a tower meets the street."
+    },
+    {
+      "w": "balustrade",
+      "group": "architecture",
+      "note": "A railing carried on short posts - balusters. A parapet is solid; a balustrade is open."
+    },
+    {
+      "w": "parapet",
+      "group": "architecture",
+      "note": "The low wall carried up past the roof. It hides the roof and fixes the building's silhouette."
+    },
+    {
+      "w": "cupola",
+      "group": "architecture",
+      "note": "A small dome crowning a roof, usually more about the skyline than the room below."
+    },
+    {
+      "w": "colonnade",
+      "group": "architecture",
+      "note": "A row of columns carrying an entablature. An arcade does the same job with arches."
+    },
+    {
+      "w": "arcade",
+      "group": "architecture",
+      "note": "A run of arches on piers or columns; by extension, the covered walk it forms."
+    },
+    {
+      "w": "loggia",
+      "group": "architecture",
+      "note": "A room open along one side to the air - a gallery that is neither inside nor out."
+    },
+    {
+      "w": "portico",
+      "group": "architecture",
+      "note": "A roofed entrance porch carried on columns."
+    },
+    {
+      "w": "narthex",
+      "group": "architecture",
+      "note": "The entrance vestibule across the front of a church - the compression before the nave opens up."
+    },
+    {
+      "w": "nave",
+      "group": "architecture",
+      "note": "The central body of a church, between the aisles."
+    },
+    {
+      "w": "apse",
+      "group": "architecture",
+      "note": "A semicircular recess, usually vaulted, closing the end of a nave."
+    },
+    {
+      "w": "buttress",
+      "group": "architecture",
+      "note": "A mass built against a wall to take the outward thrust. Flying when it does so across a gap."
+    },
+    {
+      "w": "oculus",
+      "group": "architecture",
+      "note": "A round opening, especially at the crown of a dome. The Pantheon's is the definitive one."
+    },
+    {
+      "w": "coffer",
+      "group": "architecture",
+      "note": "A sunken panel in a ceiling or vault - lighter structure and better acoustics, incidentally beautiful."
+    },
+    {
+      "w": "quoin",
+      "group": "architecture",
+      "def": "A dressed stone at the external corner of a building",
+      "note": "Quoins announce a corner. Their absence is what makes a modern box read as taut.",
+      "pknown": 0.15,
+      "zipf": 1.6
+    },
+    {
+      "w": "ashlar",
+      "group": "architecture",
+      "def": "Squared, finely dressed stone laid in regular courses",
+      "note": "The opposite of rubble. Ashlar is the expensive way to say a wall is deliberate.",
+      "pknown": 0.16,
+      "zipf": 1.7
+    },
+    {
+      "w": "rustication",
+      "group": "architecture",
+      "def": "Masonry cut with deep joints and a rough face, usually at the base of a building",
+      "note": "Weight at the bottom, refinement above - a rhetorical device, not a structural one.",
+      "pknown": 0.2,
+      "zipf": 1.8
+    },
+    {
+      "w": "mansard",
+      "group": "architecture",
+      "note": "A roof with two pitches on each side, the lower one steep - a way of getting a storey past a height limit."
+    },
+    {
+      "w": "gambrel",
+      "group": "architecture",
+      "note": "The barn version of a mansard, with the double pitch on two sides only."
+    },
+    {
+      "w": "dormer",
+      "group": "architecture",
+      "note": "A window standing up out of a sloping roof, with its own small roof."
+    },
+    {
+      "w": "eaves",
+      "group": "architecture",
+      "note": "The overhanging edge of a roof. The eaves line, more than the peak, is what sets a street's scale."
+    },
+    {
+      "w": "gable",
+      "group": "architecture",
+      "def": "The triangular upper part of a wall closing the end of a pitched roof",
+      "note": "The triangle of wall closing the end of a pitched roof."
+    },
+    {
+      "w": "oriel",
+      "group": "architecture",
+      "def": "A bay window projecting from an upper storey and carried on brackets",
+      "note": "A bay window that never reaches the ground.",
+      "pknown": 0.16,
+      "zipf": 1.6
+    },
+    {
+      "w": "cantilever",
+      "group": "architecture",
+      "note": "A beam fixed at one end only. Structurally demanding, rhetorically irresistible."
+    },
+    {
+      "w": "truss",
+      "group": "architecture",
+      "note": "A framework of triangles spanning further than a beam of the same weight could."
+    },
+    {
+      "w": "joist",
+      "group": "architecture",
+      "note": "One of the parallel beams carrying a floor or ceiling."
+    },
+    {
+      "w": "purlin",
+      "group": "architecture",
+      "def": "A horizontal beam running along the length of a roof, supporting the rafters",
+      "pknown": 0.18,
+      "zipf": 1.7
+    },
+    {
+      "w": "chamfer",
+      "group": "architecture",
+      "def": "A bevelled edge, made by cutting away a square corner at 45 degrees",
+      "note": "A chamfered corner at a street intersection is a planning instrument, not just a detail.",
+      "pknown": 0.3,
+      "zipf": 2.0
+    },
+    {
+      "w": "escutcheon",
+      "group": "architecture",
+      "note": "The plate around a keyhole or handle; in heraldry, the shield itself."
+    },
+    {
+      "w": "terrazzo",
+      "group": "architecture",
+      "def": "A floor finish of stone chips set in cement and ground smooth",
+      "note": "Chips of stone set in cement and ground smooth - the floor of every mid-century civic building."
+    },
+    {
+      "w": "stucco",
+      "group": "architecture",
+      "note": "Render used as a finish, often modelled. It lets a cheap wall imitate an expensive one."
+    },
+    {
+      "w": "spall",
+      "group": "architecture",
+      "def": "To break away in flakes or chips, as concrete or stone does when it weathers or corrodes",
+      "note": "Spalling concrete is the visible half of a reinforcement problem.",
+      "pknown": 0.22,
+      "zipf": 1.9
+    },
+    {
+      "w": "efflorescence",
+      "group": "architecture",
+      "note": "The white salt bloom on masonry left as water moves through and evaporates. Also the general sense: a flowering."
+    },
+    {
+      "w": "patina",
+      "group": "architecture",
+      "note": "The surface a material earns through age. Distinguishable from dirt mainly by intention."
+    },
+    {
+      "w": "massing",
+      "group": "architecture",
+      "def": "The overall three-dimensional bulk and shape of a building, before any detail",
+      "note": "The single most useful word in a design review: it separates form from finish.",
+      "pknown": 0.4,
+      "zipf": 2.6
+    },
+    {
+      "w": "articulation",
+      "group": "architecture",
+      "note": "The way a large surface is broken into readable parts. Unarticulated mass is the usual complaint."
+    },
+    {
+      "w": "setback",
+      "group": "architecture",
+      "note": "The distance a building is held back from a lot line, or the step in a facade as it rises."
+    },
+    {
+      "w": "enfilade",
+      "group": "architecture",
+      "def": "A suite of rooms aligned so their doorways form a single vista",
+      "note": "A device for making a house feel like a procession.",
+      "pknown": 0.12,
+      "zipf": 1.6
+    },
+    {
+      "w": "mezzanine",
+      "group": "architecture",
+      "note": "An intermediate floor, partial by definition - it overlooks rather than encloses."
+    },
+    {
+      "w": "atrium",
+      "group": "architecture",
+      "note": "A top-lit space rising through several storeys. Roman houses had one open to the sky."
+    },
+    {
+      "w": "vernacular",
+      "group": "architecture",
+      "note": "Building in the local idiom, by custom rather than by design. The word carries no condescension unless you add it."
+    },
+    {
+      "w": "palimpsest",
+      "group": "architecture",
+      "note": "A surface reused so that earlier marks still show through. The standard metaphor for a city that has been rebuilt on itself."
+    },
+    {
+      "w": "desire line",
+      "group": "architecture",
+      "def": "The route people actually take, worn into the ground regardless of the path provided",
+      "note": "The most honest post-occupancy evaluation there is.",
+      "pknown": 0.2,
+      "zipf": 1.8
+    },
+    {
+      "w": "permeability",
+      "group": "architecture",
+      "note": "How easily people can move through a block or area. Long blocks are impermeable however wide the pavements."
+    },
+    {
+      "w": "legibility",
+      "group": "architecture",
+      "note": "How readily a place can be read and navigated. Lynch's term, and still the right one."
+    },
+    {
+      "w": "grain",
+      "group": "architecture",
+      "note": "The texture of a built area - fine grain means many small parcels and frequent doors."
+    },
+    {
+      "w": "datum",
+      "group": "architecture",
+      "note": "A reference line a composition is measured against; in survey, the level everything else is relative to."
+    },
+    {
+      "w": "poche",
+      "group": "architecture",
+      "def": "The solid, inhabited thickness of a wall as shown blacked in on a plan",
+      "note": "The Beaux-Arts insight: walls are not lines, they are places.",
+      "pknown": 0.08,
+      "zipf": 1.3
+    },
+    {
+      "w": "brise-soleil",
+      "group": "architecture",
+      "def": "A fixed screen of fins or louvres shading a facade from the sun",
+      "pknown": 0.1,
+      "zipf": 1.4
+    },
+    {
+      "w": "curtain wall",
+      "group": "architecture",
+      "def": "A non-structural outer skin hung from the building's frame",
+      "note": "It carries nothing but itself - which is why it can be all glass.",
+      "pknown": 0.35,
+      "zipf": 2.4
+    },
+    {
+      "w": "vault",
+      "group": "architecture",
+      "note": "An arched ceiling. Barrel, groin and fan describe how the arches meet."
+    },
+    {
+      "w": "cladding",
+      "group": "architecture",
+      "note": "The outer layer applied to a structure. After Grenfell the word does a great deal of work it did not used to."
+    },
+    {
+      "w": "aspect",
+      "group": "architecture",
+      "note": "Which way a room or dwelling faces. Dual aspect means light and air from two sides, and it is the difference between a good flat and a bad one."
+    },
+    {
+      "w": "entropy",
+      "group": "science",
+      "note": "The measure of disorder, and of energy unavailable to do work. Used loosely for decay, which is close enough to be forgivable."
+    },
+    {
+      "w": "catalyst",
+      "group": "science",
+      "note": "Something that speeds a reaction without being consumed. The metaphor holds precisely: a catalyst is unchanged by what it causes."
+    },
+    {
+      "w": "isotope",
+      "group": "science",
+      "note": "Same element, different neutron count. What makes carbon dating possible."
+    },
+    {
+      "w": "gradient",
+      "group": "science",
+      "note": "The rate at which a quantity changes across space. Temperature, pressure, rent - all have gradients."
+    },
+    {
+      "w": "threshold",
+      "group": "science",
+      "note": "The level at which something begins to happen. Below it, nothing; above it, everything."
+    },
+    {
+      "w": "feedback",
+      "group": "science",
+      "note": "Output looping back to become input. Negative feedback stabilises; positive feedback runs away."
+    },
+    {
+      "w": "emergent",
+      "group": "science",
+      "note": "A property the whole has that no part has. Traffic jams are emergent; so are cities."
+    },
+    {
+      "w": "stochastic",
+      "group": "science",
+      "def": "Governed by chance; describable only in terms of probabilities",
+      "note": "Not the same as random: a stochastic process has structure, just not determinacy.",
+      "pknown": 0.3,
+      "zipf": 2.2
+    },
+    {
+      "w": "homeostasis",
+      "group": "science",
+      "note": "The maintenance of a stable internal state against a changing outside."
+    },
+    {
+      "w": "latency",
+      "group": "science",
+      "note": "The delay between cause and observable effect."
+    },
+    {
+      "w": "hysteresis",
+      "group": "science",
+      "def": "The lag in a system's response, so that its state depends on its history as well as its inputs",
+      "note": "Why a market that fell does not simply reverse when conditions return.",
+      "pknown": 0.12,
+      "zipf": 1.7
+    },
+    {
+      "w": "attenuate",
+      "group": "science",
+      "note": "To reduce in force or intensity. Signals, sound and stormwater flows are all attenuated."
+    },
+    {
+      "w": "diffusion",
+      "group": "science",
+      "note": "Spreading from high concentration to low, without anything pushing."
+    },
+    {
+      "w": "permeable",
+      "group": "science",
+      "note": "Allowing passage through. In surfaces, the property that decides whether rain soaks in or runs off."
+    },
+    {
+      "w": "albedo",
+      "group": "science",
+      "def": "The fraction of sunlight a surface reflects rather than absorbs",
+      "note": "The whole urban heat island argument in one measurement.",
+      "pknown": 0.18,
+      "zipf": 1.8
+    },
+    {
+      "w": "biomass",
+      "group": "science",
+      "note": "The total mass of living material in a given area."
+    },
+    {
+      "w": "sequester",
+      "group": "science",
+      "note": "To set apart and hold. Carbon is sequestered; so, differently, is a jury."
+    },
+    {
+      "w": "anthropogenic",
+      "group": "science",
+      "def": "Caused by human activity",
+      "note": "The word that does the arguing in most climate sentences.",
+      "pknown": 0.25,
+      "zipf": 2.1
+    },
+    {
+      "w": "riparian",
+      "group": "science",
+      "def": "Of or on the bank of a river or watercourse",
+      "note": "Riparian rights and riparian habitat are two different bodies of thought sharing an adjective.",
+      "pknown": 0.2,
+      "zipf": 2.0
+    },
+    {
+      "w": "alluvial",
+      "group": "science",
+      "def": "Deposited by flowing water, as on a floodplain or delta",
+      "note": "Deposited by running water. Alluvial soil is why floodplains are farmed and then built on."
+    },
+    {
+      "w": "aquifer",
+      "group": "science",
+      "note": "A body of rock or sediment holding groundwater that can be drawn from."
+    },
+    {
+      "w": "watershed",
+      "group": "science",
+      "note": "The area draining to a single point. The metaphorical sense - a turning point - comes from the ridge, not the basin."
+    },
+    {
+      "w": "subsidence",
+      "group": "science",
+      "note": "The sinking of ground, whether from extraction below or consolidation of soft ground."
+    },
+    {
+      "w": "sediment",
+      "group": "science",
+      "note": "Material carried by water and set down when it slows."
+    },
+    {
+      "w": "microclimate",
+      "group": "science",
+      "def": "The climate of a very small area where it differs from the region around it",
+      "note": "Local conditions that depart from the regional pattern - the reason one plaza is unusable in March."
+    },
+    {
+      "w": "insolation",
+      "group": "science",
+      "def": "The amount of solar radiation reaching a surface",
+      "note": "One letter from insulation and nearly its opposite concern.",
+      "pknown": 0.14,
+      "zipf": 1.6
+    },
+    {
+      "w": "particulate",
+      "group": "science",
+      "note": "Existing as tiny separate particles. PM2.5 is a particulate measure and a public health one."
+    },
+    {
+      "w": "vector",
+      "group": "science",
+      "note": "A quantity with both size and direction; separately, the organism that carries a disease."
+    },
+    {
+      "w": "exponential",
+      "group": "science",
+      "def": "Growing by a constant proportion each period, and so ever faster in absolute terms",
+      "note": "Growing by a constant proportion, not a constant amount. Almost always used loosely to mean 'fast'."
+    },
+    {
+      "w": "asymptotic",
+      "group": "science",
+      "def": "Approaching a value ever more closely without ever reaching it",
+      "pknown": 0.2,
+      "zipf": 1.9
+    },
+    {
+      "w": "correlate",
+      "group": "science",
+      "note": "To vary together. Carries no claim about cause, which is the whole difficulty."
+    },
+    {
+      "w": "confounding",
+      "group": "science",
+      "def": "Of a third variable that distorts an apparent relationship between two others",
+      "note": "The reason most observed relationships are not what they look like.",
+      "pknown": 0.3,
+      "zipf": 2.3
+    },
+    {
+      "w": "stochastic resonance",
+      "group": "science",
+      "def": "The effect where a small amount of noise makes a weak signal easier to detect",
+      "pknown": 0.05,
+      "zipf": 1.1
+    },
+    {
+      "w": "resilience",
+      "group": "science",
+      "note": "The capacity to absorb disturbance and keep functioning. Not the same as resistance, which refuses the disturbance instead."
+    },
+    {
+      "w": "redundancy",
+      "group": "science",
+      "note": "Spare capacity that does nothing until something fails. The most undervalued property of any system."
+    },
+    {
+      "w": "equilibrium",
+      "group": "science",
+      "note": "A state in which opposing influences balance. Nothing about it implies stability or desirability."
+    },
+    {
+      "w": "metabolic",
+      "group": "science",
+      "note": "Of the chemical processes sustaining life. 'Urban metabolism' borrows the term to track a city's flows of energy and matter."
+    },
+    {
+      "w": "symbiosis",
+      "group": "science",
+      "note": "Two organisms living together to mutual benefit. Often used where 'coexistence' is meant."
+    },
+    {
+      "w": "ecotone",
+      "group": "science",
+      "def": "The transition zone between two ecological communities",
+      "note": "Edges are where the diversity is - true of habitats and, arguably, neighbourhoods.",
+      "pknown": 0.1,
+      "zipf": 1.4
+    },
+    {
+      "w": "endemic",
+      "group": "science",
+      "note": "Native to and confined to a place. In disease, constantly present - which is not the same as an epidemic."
+    },
+    {
+      "w": "vestigial",
+      "group": "science",
+      "note": "A remnant of something that once had a function."
+    },
+    {
+      "w": "isostatic",
+      "group": "science",
+      "def": "Relating to the balance of the earth's crust floating on the mantle",
+      "note": "Isostatic rebound is why parts of Canada are still rising after the ice left.",
+      "pknown": 0.07,
+      "zipf": 1.2
+    },
+    {
+      "w": "viscosity",
+      "group": "science",
+      "note": "A fluid's resistance to flow."
+    },
+    {
+      "w": "tensile",
+      "group": "science",
+      "note": "Of or relating to being pulled. Concrete is strong in compression and weak in tension, which is why it is reinforced."
+    },
+    {
+      "w": "shear",
+      "group": "science",
+      "note": "Force acting to slide one layer past another. Shear walls exist to resist it."
+    },
+    {
+      "w": "torsion",
+      "group": "science",
+      "note": "Twisting under load."
+    },
+    {
+      "w": "moment",
+      "group": "science",
+      "note": "The turning effect of a force about a point - force times distance. Nothing to do with time."
+    },
+    {
+      "w": "flux",
+      "group": "science",
+      "note": "The rate of flow through a surface; also, more loosely, continuous change."
+    },
+    {
+      "w": "titrate",
+      "group": "science",
+      "def": "To add a measured reagent little by little until a reaction is complete",
+      "note": "To add a reagent by small measured amounts until a reaction completes - hence, to adjust a dose carefully."
+    },
+    {
+      "w": "sublimate",
+      "group": "science",
+      "note": "To pass from solid straight to vapour; in psychology, to redirect an impulse into acceptable work."
+    },
+    {
+      "w": "precipitate",
+      "group": "science",
+      "note": "To bring on suddenly; in chemistry, to come out of solution as a solid. Both senses share the sense of falling out."
+    }
+  ]
+}

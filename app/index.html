@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wordhoard</title>
+<meta name="description" content="A vocabulary game that tests, expands and calibrates how many English words you know.">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15140f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Wordhoard">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="boot" class="boot">
+  <div class="boot-mark">Wordhoard</div>
+  <div class="boot-note">gathering the words…</div>
+</div>
+
+<main id="app" hidden>
+
+  <!-- ------------------------------------------------------------- home -->
+  <section class="screen" id="screen-home">
+    <header class="masthead">
+      <h1 class="wordmark">Wordhoard</h1>
+      <p class="tagline">Your store of words — measured, tested and enlarged.</p>
+    </header>
+
+    <button class="estimate-card" id="estimate-card" type="button">
+      <div class="estimate-card-inner" id="estimate-card-inner"></div>
+    </button>
+
+    <nav class="modes" id="modes"></nav>
+
+    <footer class="home-foot">
+      <span id="streak-line"></span>
+      <span class="foot-links">
+        <button class="link" data-go="progress" type="button">Progress</button>
+        <button class="link" data-go="about" type="button">About</button>
+      </span>
+    </footer>
+  </section>
+
+  <!-- ------------------------------------------------------------- play -->
+  <section class="screen" id="screen-play" hidden>
+    <div class="play-bar">
+      <button class="icon-btn" id="quit" type="button" aria-label="Leave this round">&larr;</button>
+      <div class="progress" role="progressbar" aria-label="Round progress">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="play-count" id="play-count"></div>
+    </div>
+    <div class="timer" id="timer" hidden><div class="timer-fill" id="timer-fill"></div></div>
+
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback" hidden></div>
+
+    <div class="play-foot">
+      <div class="score-chip" id="score-chip" hidden></div>
+      <button class="btn primary" id="advance" type="button" hidden>Next</button>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------------- result -->
+  <section class="screen" id="screen-result" hidden>
+    <div id="result-body"></div>
+    <div class="stack">
+      <button class="btn primary" id="again" type="button">Play again</button>
+      <button class="btn" data-go="home" type="button">Back to the shelf</button>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- progress -->
+  <section class="screen" id="screen-progress" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">&larr;</button>
+      <h2>Progress</h2>
+    </header>
+    <div id="progress-body"></div>
+  </section>
+
+  <!-- ------------------------------------------------------------ about -->
+  <section class="screen" id="screen-about" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">&larr;</button>
+      <h2>About the number</h2>
+    </header>
+    <div id="about-body"></div>
+  </section>
+
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
