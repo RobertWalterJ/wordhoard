@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wordhoard</title>
+<meta name="description" content="A vocabulary game that tests, expands and calibrates how many English words you know.">
+<meta name="theme-color" content="#0d2340">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Wordhoard">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="boot" class="boot">
+  <div class="boot-mark">Wordhoard</div>
+  <div class="boot-note">gathering the words&#8230;</div>
+</div>
+
+<main id="app" hidden>
+
+  <!-- ------------------------------------------------------------- home -->
+  <section class="screen" id="screen-home">
+    <div class="hoard" id="hoard" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <h1 class="wordmark">Word<em>hoard</em></h1>
+      <p class="tagline">Your store of words &#8212; measured, tested and enlarged.</p>
+    </header>
+
+    <button class="estimate-card" id="estimate-card" type="button">
+      <span class="estimate-card-inner" id="estimate-card-inner"></span>
+    </button>
+
+    <div id="due-slot"></div>
+
+    <nav class="modes" id="modes"></nav>
+    <div class="eyebrow section-label" id="more-label" hidden>More ways to play</div>
+    <nav class="modes" id="modes-more"></nav>
+
+    <footer class="home-foot">
+      <span id="streak-line"></span>
+      <span class="foot-links">
+        <button class="link" data-go="progress" type="button">Progress</button>
+        <button class="link" data-go="settings" type="button">Settings</button>
+        <button class="link" data-go="about" type="button">About</button>
+      </span>
+    </footer>
+  </section>
+
+  <!-- ------------------------------------------------------------- play -->
+  <section class="screen" id="screen-play" hidden>
+    <div class="play-bar">
+      <button class="icon-btn" id="quit" type="button" aria-label="Leave this round">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+      </button>
+      <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="play-count" id="play-count"></div>
+    </div>
+
+    <div class="play-meta" id="play-meta"></div>
+    <div class="timer" id="timer" hidden><div class="timer-fill" id="timer-fill"></div></div>
+
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+
+    <div class="verdict" id="feedback" hidden aria-live="polite"></div>
+
+    <div class="continue" id="continue-row" hidden>
+      <div class="continue-line"><div class="continue-fill" id="continue-fill"></div></div>
+      <button class="continue-btn" id="advance" type="button">Continue</button>
+    </div>
+
+    <div class="score-chip" id="score-chip" hidden></div>
+  </section>
+
+  <!-- ------------------------------------------------------------ setup -->
+  <section class="screen" id="screen-setup" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+      </button>
+      <h2 id="setup-title">Rapid Fire</h2>
+    </header>
+    <div id="setup-body"></div>
+    <div class="stack">
+      <button class="btn primary" id="setup-start" type="button">Start the round</button>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------------- result -->
+  <section class="screen" id="screen-result" hidden>
+    <div id="result-body"></div>
+    <div class="stack">
+      <button class="btn primary" id="again" type="button">Play again</button>
+      <button class="btn quiet" data-go="home" type="button">Back to the shelf</button>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- progress -->
+  <section class="screen" id="screen-progress" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+      </button>
+      <h2>Progress</h2>
+    </header>
+    <div id="progress-body"></div>
+  </section>
+
+  <!-- --------------------------------------------------------- settings -->
+  <section class="screen" id="screen-settings" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+      </button>
+      <h2>Settings</h2>
+    </header>
+    <div id="settings-body"></div>
+  </section>
+
+  <!-- ------------------------------------------------------------ about -->
+  <section class="screen" id="screen-about" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+      </button>
+      <h2>About the number</h2>
+    </header>
+    <div id="about-body"></div>
+  </section>
+
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

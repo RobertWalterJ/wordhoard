@@ -460,6 +460,7 @@
     {
       "w": "homeostasis",
       "group": "science",
+      "def": "The maintenance of a stable internal state against a changing outside",
       "note": "The maintenance of a stable internal state against a changing outside."
     },
     {

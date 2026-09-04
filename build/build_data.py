@@ -662,7 +662,17 @@ def main() -> int:
     #   pair  -> fill the blank, choosing between the set's words
     #   drift -> "which sentence uses this word correctly?", so the set needs
     #            exactly one right use and at least one trap
-    conf = json.loads((CURATED / "confusables.json").read_text(encoding="utf-8"))
+    # Every confusables*.json in the curated folder, so the sets can be authored
+    # in themed files instead of one enormous one.
+    conf = {"sets": []}
+    seen_ids = set()
+    for f in sorted(CURATED.glob("confusables*.json")):
+        part = json.loads(f.read_text(encoding="utf-8"))
+        for st in part["sets"]:
+            if st["id"] in seen_ids:
+                raise SystemExit(f"duplicate confusable id {st['id']!r} in {f.name}")
+            seen_ids.add(st["id"])
+            conf["sets"].append(st)
     problems, n_items = [], 0
     for s in conf["sets"]:
         for it in s["items"]:

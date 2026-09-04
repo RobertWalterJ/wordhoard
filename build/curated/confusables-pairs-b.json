@@ -1,0 +1,343 @@
+{
+  "note": "Hand-authored pair sets, second batch. Weighted toward the confusions that do real damage in professional writing, where picking the wrong one changes what the sentence claims.",
+  "sets": [
+    {
+      "id": "loath",
+      "kind": "pair",
+      "words": ["loath", "loathe"],
+      "gloss": {
+        "loath": "reluctant (adjective)",
+        "loathe": "to detest (verb)"
+      },
+      "why": "The e makes it a verb, and makes it much stronger. Being loath to do something is mild reluctance, not hatred.",
+      "items": [
+        { "sentence": "He was ___ to reopen a matter that had taken two years to settle.", "answer": "loath" },
+        { "sentence": "She had come to ___ the whole approvals process.", "answer": "loathe" }
+      ]
+    },
+    {
+      "id": "palate",
+      "kind": "pair",
+      "words": ["palate", "palette", "pallet"],
+      "gloss": {
+        "palate": "the roof of the mouth; taste",
+        "palette": "the range of colours",
+        "pallet": "the wooden platform, or a straw bed"
+      },
+      "why": "A material palette is the range of finishes. A pallet is what the bricks arrive on.",
+      "items": [
+        { "sentence": "The ___ is limited to three materials across the whole facade.", "answer": "palette" },
+        { "sentence": "The stone came in on a single ___.", "answer": "pallet" }
+      ]
+    },
+    {
+      "id": "pique",
+      "kind": "pair",
+      "words": ["peak", "peek", "pique"],
+      "gloss": {
+        "peak": "the top",
+        "peek": "a quick look",
+        "pique": "to provoke or stimulate; also a fit of resentment"
+      },
+      "why": "Interest is piqued, not peaked. A peak in interest is a different claim entirely.",
+      "items": [
+        { "sentence": "The proposal ___ the committee's interest for the first time.", "answer": "piqued", "options": ["peaked", "peeked", "piqued"] },
+        { "sentence": "Demand ___ in 2022 and has fallen since.", "answer": "peaked", "options": ["peaked", "peeked", "piqued"] }
+      ]
+    },
+    {
+      "id": "prospective",
+      "kind": "pair",
+      "words": ["perspective", "prospective"],
+      "gloss": {
+        "perspective": "a point of view; the drawing convention",
+        "prospective": "expected, potential"
+      },
+      "why": "A prospective purchaser is one who might buy. A perspective is how it looks from where you stand.",
+      "items": [
+        { "sentence": "The ___ tenants were shown the unfinished floor.", "answer": "prospective" },
+        { "sentence": "From the resident's ___ the loading dock is the whole issue.", "answer": "perspective" }
+      ]
+    },
+    {
+      "id": "populous",
+      "kind": "pair",
+      "words": ["populous", "populace"],
+      "gloss": {
+        "populous": "having many people (adjective)",
+        "populace": "the people themselves (noun)"
+      },
+      "why": "One describes a place, the other names the people in it.",
+      "items": [
+        { "sentence": "It is the most ___ ward in the city.", "answer": "populous" },
+        { "sentence": "The ___ was never consulted on the alignment.", "answer": "populace" }
+      ]
+    },
+    {
+      "id": "pore",
+      "kind": "pair",
+      "words": ["pore", "pour"],
+      "gloss": {
+        "pore": "to study intently (pore over)",
+        "pour": "to tip a liquid out"
+      },
+      "why": "You pore over a document. Pouring over it would ruin it.",
+      "items": [
+        { "sentence": "They ___ over the survey for most of the afternoon.", "answer": "pored", "options": ["pored", "poured"] },
+        { "sentence": "The slab was ___ on the Tuesday.", "answer": "poured", "options": ["pored", "poured"] }
+      ]
+    },
+    {
+      "id": "precede",
+      "kind": "pair",
+      "words": ["precede", "proceed"],
+      "gloss": {
+        "precede": "to come before",
+        "proceed": "to carry on"
+      },
+      "why": "Pre- is before. Pro- is forward.",
+      "items": [
+        { "sentence": "A public meeting must ___ the statutory notice.", "answer": "precede" },
+        { "sentence": "The applicant chose to ___ without the variance.", "answer": "proceed" }
+      ]
+    },
+    {
+      "id": "regrettable",
+      "kind": "pair",
+      "words": ["regretful", "regrettable"],
+      "gloss": {
+        "regretful": "feeling regret",
+        "regrettable": "causing regret"
+      },
+      "why": "People are regretful. Events are regrettable. 'A regretful incident' says the incident had feelings.",
+      "items": [
+        { "sentence": "The delay was ___ but not anyone's fault.", "answer": "regrettable" },
+        { "sentence": "He sounded genuinely ___ about the way it had been handled.", "answer": "regretful" }
+      ]
+    },
+    {
+      "id": "sensuous",
+      "kind": "pair",
+      "words": ["sensual", "sensuous"],
+      "gloss": {
+        "sensual": "of physical, usually sexual, appetite",
+        "sensuous": "appealing to the senses"
+      },
+      "why": "Milton coined the second precisely to escape the first. A sensuous material is one you want to touch; a sensual one is a different review entirely.",
+      "items": [
+        { "sentence": "The oiled timber gives the room a ___ warmth.", "answer": "sensuous" },
+        { "sentence": "The poem is frankly ___ and was banned for it.", "answer": "sensual" }
+      ]
+    },
+    {
+      "id": "specious",
+      "kind": "pair",
+      "words": ["specious", "spurious"],
+      "gloss": {
+        "specious": "plausible-looking but wrong",
+        "spurious": "fake; not genuine"
+      },
+      "why": "A specious argument looks sound and is not. A spurious one is a forgery. The first is the more useful word and the more often missed.",
+      "items": [
+        { "sentence": "The shadow argument is ___ — it sounds right until you check the angles.", "answer": "specious" },
+        { "sentence": "The signature turned out to be ___.", "answer": "spurious" }
+      ]
+    },
+    {
+      "id": "staunch",
+      "kind": "pair",
+      "words": ["stanch", "staunch"],
+      "gloss": {
+        "stanch": "to stop a flow",
+        "staunch": "loyal, steadfast"
+      },
+      "why": "You stanch bleeding and have a staunch ally. The spellings have blurred, but the two senses have not.",
+      "items": [
+        { "sentence": "Nothing they did would ___ the losses.", "answer": "stanch" },
+        { "sentence": "She was a ___ defender of the heritage designation.", "answer": "staunch" }
+      ]
+    },
+    {
+      "id": "turgid",
+      "kind": "pair",
+      "words": ["turbid", "turgid"],
+      "gloss": {
+        "turbid": "cloudy with suspended matter",
+        "turgid": "swollen; pompously inflated"
+      },
+      "why": "Water is turbid. Prose is turgid.",
+      "items": [
+        { "sentence": "Runoff left the creek ___ for a week afterwards.", "answer": "turbid" },
+        { "sentence": "Forty pages of ___ prose to say the site is suitable.", "answer": "turgid" }
+      ]
+    },
+    {
+      "id": "waive",
+      "kind": "pair",
+      "words": ["waive", "wave"],
+      "gloss": {
+        "waive": "to give up a right",
+        "wave": "the motion"
+      },
+      "why": "Waiving a fee gives it up. Waving it through is a different, and vaguer, thing.",
+      "items": [
+        { "sentence": "Council agreed to ___ the application fee.", "answer": "waive" },
+        { "sentence": "He would ___ at the crew from the site office each morning.", "answer": "wave" }
+      ]
+    },
+    {
+      "id": "whet",
+      "kind": "pair",
+      "words": ["whet", "wet"],
+      "gloss": {
+        "whet": "to sharpen or stimulate",
+        "wet": "to make wet"
+      },
+      "why": "It whets the appetite — sharpens it. A whetstone is where the word lives.",
+      "items": [
+        { "sentence": "The preview only ___ their appetite for the full scheme.", "answer": "whetted", "options": ["whetted", "wetted"] },
+        { "sentence": "He ___ the cloth before wiping the joint.", "answer": "wetted", "options": ["whetted", "wetted"] }
+      ]
+    },
+    {
+      "id": "emend",
+      "kind": "pair",
+      "words": ["amend", "emend"],
+      "gloss": {
+        "amend": "to change or improve",
+        "emend": "to correct a text"
+      },
+      "why": "You amend a by-law and emend a manuscript. Emend is only ever about text.",
+      "items": [
+        { "sentence": "The by-law was ___ to permit the use as of right.", "answer": "amended", "options": ["amended", "emended"] },
+        { "sentence": "The editor ___ two passages that had been miscopied.", "answer": "emended", "options": ["amended", "emended"] }
+      ]
+    },
+    {
+      "id": "climactic",
+      "kind": "pair",
+      "words": ["climatic", "climactic"],
+      "gloss": {
+        "climatic": "to do with climate",
+        "climactic": "to do with a climax"
+      },
+      "why": "One extra c, and it moves from weather to drama.",
+      "items": [
+        { "sentence": "The design responds to ___ conditions rather than to a style.", "answer": "climatic" },
+        { "sentence": "The vote was the ___ moment of a two-year process.", "answer": "climactic" }
+      ]
+    },
+    {
+      "id": "confidant",
+      "kind": "pair",
+      "words": ["confidant", "confident"],
+      "gloss": {
+        "confidant": "a person you confide in",
+        "confident": "self-assured"
+      },
+      "why": "One is a noun for a person, the other an adjective for a mood.",
+      "items": [
+        { "sentence": "He had been her ___ since the first year of the partnership.", "answer": "confidant" },
+        { "sentence": "She was ___ the appeal would not be pursued.", "answer": "confident" }
+      ]
+    },
+    {
+      "id": "contemptuous",
+      "kind": "pair",
+      "words": ["contemptible", "contemptuous"],
+      "gloss": {
+        "contemptible": "deserving contempt",
+        "contemptuous": "showing contempt"
+      },
+      "why": "The behaviour is contemptible; the look you give it is contemptuous.",
+      "items": [
+        { "sentence": "Misleading the panel about the survey was ___.", "answer": "contemptible" },
+        { "sentence": "He gave the drawings a ___ glance and pushed them back.", "answer": "contemptuous" }
+      ]
+    },
+    {
+      "id": "definitive",
+      "kind": "pair",
+      "words": ["definite", "definitive"],
+      "gloss": {
+        "definite": "clear, certain",
+        "definitive": "conclusive; the final authority on the matter"
+      },
+      "why": "A definite answer is unambiguous. A definitive one settles the question for good, which is a much larger claim.",
+      "items": [
+        { "sentence": "We need a ___ date before we can book the hall.", "answer": "definite" },
+        { "sentence": "The tribunal's ruling is the ___ statement on that provision.", "answer": "definitive" }
+      ]
+    },
+    {
+      "id": "economical",
+      "kind": "pair",
+      "words": ["economic", "economical"],
+      "gloss": {
+        "economic": "to do with the economy",
+        "economical": "thrifty; not wasteful"
+      },
+      "why": "Economic development is about the economy. An economical layout wastes less.",
+      "items": [
+        { "sentence": "The study looks at the ___ impact on the main street.", "answer": "economic" },
+        { "sentence": "A single corridor is the more ___ arrangement.", "answer": "economical" }
+      ]
+    },
+    {
+      "id": "exhaustive",
+      "kind": "pair",
+      "words": ["exhaustive", "exhausting"],
+      "gloss": {
+        "exhaustive": "complete; leaving nothing out",
+        "exhausting": "tiring"
+      },
+      "why": "An exhaustive review covers everything. An exhausting one merely wore you out.",
+      "items": [
+        { "sentence": "The list is indicative rather than ___.", "answer": "exhaustive" },
+        { "sentence": "Four hours of deputations was ___.", "answer": "exhausting" }
+      ]
+    },
+    {
+      "id": "humane",
+      "kind": "pair",
+      "words": ["human", "humane"],
+      "gloss": {
+        "human": "of people",
+        "humane": "compassionate"
+      },
+      "why": "A human error is a mistake a person made. A humane decision is a kind one.",
+      "items": [
+        { "sentence": "The failure was ___ rather than structural.", "answer": "human" },
+        { "sentence": "Rehousing the tenants first was the ___ order to do it in.", "answer": "humane" }
+      ]
+    },
+    {
+      "id": "industrious",
+      "kind": "pair",
+      "words": ["industrial", "industrious"],
+      "gloss": {
+        "industrial": "of industry",
+        "industrious": "hard-working"
+      },
+      "why": "Lands are industrial. People are industrious.",
+      "items": [
+        { "sentence": "The block is designated ___ and has been since 1954.", "answer": "industrial" },
+        { "sentence": "An ___ articling student had indexed every submission.", "answer": "industrious" }
+      ]
+    },
+    {
+      "id": "judicious",
+      "kind": "pair",
+      "words": ["judicial", "judicious"],
+      "gloss": {
+        "judicial": "of courts and judges",
+        "judicious": "showing good judgement"
+      },
+      "why": "A judicial review happens in a court. A judicious edit shows sense.",
+      "items": [
+        { "sentence": "The decision is subject to ___ review.", "answer": "judicial" },
+        { "sentence": "A ___ cut of thirty pages made the report readable.", "answer": "judicious" }
+      ]
+    }
+  ]
+}

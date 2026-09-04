@@ -1,0 +1,315 @@
+{
+  "note": "Hand-authored pair sets: words that get swapped for each other. Same format as confusables.json; the build merges every confusables*.json in this folder. Where the sentence needs an inflected form, the item carries an explicit options list, because 'censure' plus 'ed' is 'censured' and no rule would produce 'lain'.",
+  "sets": [
+    {
+      "id": "complement",
+      "kind": "pair",
+      "words": ["complement", "compliment"],
+      "gloss": {
+        "complement": "to complete, or go well with",
+        "compliment": "to praise"
+      },
+      "why": "The one that completes something has the same middle as 'complete'. Everything else is praise.",
+      "items": [
+        { "sentence": "The new wing ___ the original building rather than competing with it.", "answer": "complements", "options": ["complements", "compliments"] },
+        { "sentence": "She paid him a rare ___ on the drafting.", "answer": "compliment", "options": ["complement", "compliment"] }
+      ]
+    },
+    {
+      "id": "farther",
+      "kind": "pair",
+      "words": ["farther", "further"],
+      "gloss": {
+        "farther": "at a greater physical distance",
+        "further": "to a greater extent; additional"
+      },
+      "why": "Farther is for distance you could measure. Further is for everything else, including anything you can only measure in degree.",
+      "items": [
+        { "sentence": "The site is ___ from the station than the plan suggests.", "answer": "farther" },
+        { "sentence": "The proposal needs ___ study before it goes to council.", "answer": "further" }
+      ]
+    },
+    {
+      "id": "ingenuous",
+      "kind": "pair",
+      "words": ["ingenious", "ingenuous"],
+      "gloss": {
+        "ingenious": "clever, inventive",
+        "ingenuous": "innocent, unguarded, artless"
+      },
+      "why": "Two letters apart and unrelated. Disingenuous — the commoner word — is the negative of the second, not the first.",
+      "items": [
+        { "sentence": "An ___ solution: the stair doubles as the ventilation shaft.", "answer": "ingenious" },
+        { "sentence": "He gave an ___ answer that gave away rather more than he meant to.", "answer": "ingenuous" }
+      ]
+    },
+    {
+      "id": "exacerbate",
+      "kind": "pair",
+      "words": ["exacerbate", "exasperate"],
+      "gloss": {
+        "exacerbate": "to make a bad situation worse",
+        "exasperate": "to irritate someone badly"
+      },
+      "why": "Situations are exacerbated; people are exasperated.",
+      "items": [
+        { "sentence": "Widening the road would only ___ the congestion downstream.", "answer": "exacerbate" },
+        { "sentence": "Three cancelled meetings in a row ___ the whole committee.", "answer": "exasperated", "options": ["exacerbated", "exasperated"] }
+      ]
+    },
+    {
+      "id": "allude",
+      "kind": "pair",
+      "words": ["allude", "elude"],
+      "gloss": {
+        "allude": "to refer to indirectly",
+        "elude": "to escape or evade"
+      },
+      "why": "You allude to a thing; a thing eludes you. Note also that alluding is indirect — if you named it, you referred to it.",
+      "items": [
+        { "sentence": "He ___ to the earlier dispute without ever naming it.", "answer": "alluded", "options": ["alluded", "eluded"] },
+        { "sentence": "The reason for the delay ___ everyone in the room.", "answer": "eluded", "options": ["alluded", "eluded"] }
+      ]
+    },
+    {
+      "id": "eminent",
+      "kind": "pair",
+      "words": ["eminent", "imminent", "immanent"],
+      "gloss": {
+        "eminent": "distinguished, standing out",
+        "imminent": "about to happen",
+        "immanent": "inherent, indwelling"
+      },
+      "why": "Three words, one sound. The third is rare enough that using it is a decision; the first two are confused constantly.",
+      "items": [
+        { "sentence": "An ___ historian was brought in to advise on the restoration.", "answer": "eminent" },
+        { "sentence": "With a decision ___, both sides stopped negotiating.", "answer": "imminent" }
+      ]
+    },
+    {
+      "id": "council",
+      "kind": "pair",
+      "words": ["council", "counsel"],
+      "gloss": {
+        "council": "a body of people that meets",
+        "counsel": "advice, or a lawyer, or to advise"
+      },
+      "why": "A council is a thing you sit on. Counsel is what you give, or who gives it.",
+      "items": [
+        { "sentence": "The item goes to ___ in November.", "answer": "council" },
+        { "sentence": "She sought ___ before replying to the notice.", "answer": "counsel" }
+      ]
+    },
+    {
+      "id": "stationary",
+      "kind": "pair",
+      "words": ["stationary", "stationery"],
+      "gloss": {
+        "stationary": "not moving",
+        "stationery": "paper and envelopes"
+      },
+      "why": "Envelopes has an e, and so does the stationery you put in them.",
+      "items": [
+        { "sentence": "Traffic was ___ from the bridge to the underpass.", "answer": "stationary" },
+        { "sentence": "The letter went out on the firm's ___.", "answer": "stationery" }
+      ]
+    },
+    {
+      "id": "prerequisite",
+      "kind": "pair",
+      "words": ["prerequisite", "perquisite"],
+      "gloss": {
+        "prerequisite": "something required beforehand",
+        "perquisite": "a benefit that comes with a position — a perk"
+      },
+      "why": "A perquisite is a perk, which is the short form of it. A prerequisite is a condition.",
+      "items": [
+        { "sentence": "A servicing study is a ___ of the application.", "answer": "prerequisite" },
+        { "sentence": "The parking space was one of the few ___ of the job.", "answer": "perquisites", "options": ["prerequisites", "perquisites"] }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "pair",
+      "words": ["practice", "practise"],
+      "gloss": {
+        "practice": "the noun — a habit, a profession, a firm",
+        "practise": "the verb — to do a thing repeatedly"
+      },
+      "why": "Canadian usage keeps the British split: the noun ends -ice, the verb -ise. Advice and advise settle it — you can hear the difference there.",
+      "items": [
+        { "sentence": "It is standard ___ to circulate the plans a week ahead.", "answer": "practice" },
+        { "sentence": "She has ___ planning in three provinces.", "answer": "practised", "options": ["practiced", "practised"] }
+      ]
+    },
+    {
+      "id": "licence",
+      "kind": "pair",
+      "words": ["licence", "license"],
+      "gloss": {
+        "licence": "the noun — the permission or the document",
+        "license": "the verb — to grant permission"
+      },
+      "why": "Same Canadian rule as practice and practise: -ce for the noun, -se for the verb.",
+      "items": [
+        { "sentence": "The operator holds a ___ for the patio.", "answer": "licence" },
+        { "sentence": "The province ___ the facility for sixty beds.", "answer": "licensed", "options": ["licenced", "licensed"] }
+      ]
+    },
+    {
+      "id": "envelop",
+      "kind": "pair",
+      "words": ["envelop", "envelope"],
+      "gloss": {
+        "envelop": "to wrap around (verb, stress on the second syllable)",
+        "envelope": "the paper sleeve, or the outer limit of a form"
+      },
+      "why": "One letter, and the stress moves. The building envelope is the noun; fog envelops a site.",
+      "items": [
+        { "sentence": "Mist would ___ the valley by six most evenings.", "answer": "envelop" },
+        { "sentence": "The zoning sets the building ___, not the design.", "answer": "envelope" }
+      ]
+    },
+    {
+      "id": "breach",
+      "kind": "pair",
+      "words": ["breach", "breech"],
+      "gloss": {
+        "breach": "a break, or to break through",
+        "breech": "the rear part of something"
+      },
+      "why": "A breach of contract is a break in it. Breeches are trousers, and a breech birth comes out backwards.",
+      "items": [
+        { "sentence": "Building before approval is a clear ___ of the agreement.", "answer": "breach" },
+        { "sentence": "The gun was loaded at the ___ rather than the muzzle.", "answer": "breech" }
+      ]
+    },
+    {
+      "id": "canvass",
+      "kind": "pair",
+      "words": ["canvas", "canvass"],
+      "gloss": {
+        "canvas": "the heavy cloth",
+        "canvass": "to solicit opinions or votes"
+      },
+      "why": "The double s is the one you do to people.",
+      "items": [
+        { "sentence": "The awnings were ___ stretched on a steel frame.", "answer": "canvas" },
+        { "sentence": "Staff will ___ the neighbourhood before the meeting.", "answer": "canvass" }
+      ]
+    },
+    {
+      "id": "cite",
+      "kind": "pair",
+      "words": ["cite", "site", "sight"],
+      "gloss": {
+        "cite": "to quote as authority",
+        "site": "a place",
+        "sight": "vision, or something seen"
+      },
+      "why": "Three homophones a planner meets in a single sentence more often than most people.",
+      "items": [
+        { "sentence": "The report ___ four policies in support of the height.", "answer": "cites", "options": ["cites", "sites", "sights"] },
+        { "sentence": "The ___ slopes away from the street by two metres.", "answer": "site", "options": ["cite", "site", "sight"] }
+      ]
+    },
+    {
+      "id": "discomfit",
+      "kind": "pair",
+      "words": ["discomfit", "discomfort"],
+      "gloss": {
+        "discomfit": "to disconcert or thwart",
+        "discomfort": "physical or mental unease"
+      },
+      "why": "Discomfit is about being thrown off, not about being uncomfortable — though the two have run together so far that the distinction is nearly gone.",
+      "items": [
+        { "sentence": "The question ___ him badly and he lost his thread.", "answer": "discomfited", "options": ["discomfited", "discomforted"] },
+        { "sentence": "She sat through the hearing in obvious ___.", "answer": "discomfort" }
+      ]
+    },
+    {
+      "id": "emigrate",
+      "kind": "pair",
+      "words": ["emigrate", "immigrate"],
+      "gloss": {
+        "emigrate": "to leave a country",
+        "immigrate": "to arrive in one"
+      },
+      "why": "E for exit, i for in. Which one you use depends on where you are standing.",
+      "items": [
+        { "sentence": "Her grandparents ___ from Portugal in 1963.", "answer": "emigrated", "options": ["emigrated", "immigrated"] },
+        { "sentence": "They ___ to Canada that same year.", "answer": "immigrated", "options": ["emigrated", "immigrated"] }
+      ]
+    },
+    {
+      "id": "flounder",
+      "kind": "pair",
+      "words": ["flounder", "founder"],
+      "gloss": {
+        "flounder": "to struggle clumsily",
+        "founder": "to fail completely; to sink"
+      },
+      "why": "Floundering is still going. Foundering is over.",
+      "items": [
+        { "sentence": "He ___ through the first ten minutes before finding his argument.", "answer": "floundered", "options": ["floundered", "foundered"] },
+        { "sentence": "The scheme ___ when the financing fell through.", "answer": "foundered", "options": ["floundered", "foundered"] }
+      ]
+    },
+    {
+      "id": "gamut",
+      "kind": "pair",
+      "words": ["gambit", "gamut"],
+      "gloss": {
+        "gambit": "an opening move, often a sacrifice",
+        "gamut": "the full range"
+      },
+      "why": "You run the gamut and open with a gambit. 'Runs the gambit' is the common error.",
+      "items": [
+        { "sentence": "The responses ran the ___ from delight to litigation.", "answer": "gamut" },
+        { "sentence": "Offering the parkland was a ___ to get the height approved.", "answer": "gambit" }
+      ]
+    },
+    {
+      "id": "hoard",
+      "kind": "pair",
+      "words": ["hoard", "horde"],
+      "gloss": {
+        "hoard": "a store laid up",
+        "horde": "a crowd"
+      },
+      "why": "A hoard is treasure. A horde is people. This app is named after the first.",
+      "items": [
+        { "sentence": "A ___ of Roman coins turned up during the excavation.", "answer": "hoard" },
+        { "sentence": "A ___ of objectors filled the gallery.", "answer": "horde" }
+      ]
+    },
+    {
+      "id": "incredulous",
+      "kind": "pair",
+      "words": ["incredible", "incredulous"],
+      "gloss": {
+        "incredible": "not believable",
+        "incredulous": "unwilling to believe"
+      },
+      "why": "The claim is incredible; the listener is incredulous. Only a person can be the second.",
+      "items": [
+        { "sentence": "The cost estimate was frankly ___.", "answer": "incredible" },
+        { "sentence": "She listened with an ___ expression and then asked for the figures.", "answer": "incredulous" }
+      ]
+    },
+    {
+      "id": "invidious",
+      "kind": "pair",
+      "words": ["insidious", "invidious"],
+      "gloss": {
+        "insidious": "harmful in a way that spreads unnoticed",
+        "invidious": "likely to cause resentment; unfairly discriminating"
+      },
+      "why": "Insidious damage creeps. An invidious comparison offends.",
+      "items": [
+        { "sentence": "The rot was ___ — nothing showed until the joists gave.", "answer": "insidious" },
+        { "sentence": "Ranking the submissions publicly put her in an ___ position.", "answer": "invidious" }
+      ]
+    }
+  ]
+}

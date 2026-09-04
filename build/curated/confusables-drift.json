@@ -1,0 +1,329 @@
+{
+  "note": "Hand-authored drift sets: single words widely used to mean something they do not. Played as 'which sentence uses it correctly?', so each set needs exactly one correct use and at least one trap, and a 'wrong' gloss naming the mistaken sense.",
+  "sets": [
+    {
+      "id": "literally",
+      "kind": "drift",
+      "words": ["literally"],
+      "gloss": { "literally": "in the actual, non-figurative sense" },
+      "wrong": "as an intensifier for something figurative",
+      "why": "Used as an intensifier it means its own opposite, and there is no other word that does its real job — which is to tell a reader that the surprising thing you just said is not a metaphor.",
+      "items": [
+        { "sentence": "The retaining wall was ___ holding the hillside up.", "answer": "literally" },
+        { "sentence": "He was ___ climbing the walls waiting for the decision.", "answer": "practically", "distractors": ["literally"], "trap": true }
+      ]
+    },
+    {
+      "id": "unique",
+      "kind": "drift",
+      "words": ["unique"],
+      "gloss": { "unique": "the only one of its kind" },
+      "wrong": "unusual, distinctive — and so open to 'very', 'quite', 'rather'",
+      "why": "Either a thing is the only one or it is not; there are no degrees. 'Fairly unique' asks the word to be a synonym for unusual, which it already has several of.",
+      "items": [
+        { "sentence": "The site is ___ in the city: no other lot fronts on all four streets.", "answer": "unique" },
+        { "sentence": "It is a rather ___ approach to the corner.", "answer": "unusual", "distractors": ["unique"], "trap": true }
+      ]
+    },
+    {
+      "id": "nauseous",
+      "kind": "drift",
+      "words": ["nauseous"],
+      "gloss": { "nauseous": "causing nausea" },
+      "wrong": "feeling sick — which is nauseated",
+      "why": "If you say you are nauseous you are describing your effect on other people. The sense has shifted far enough to be standard, but the older one is still the more precise.",
+      "items": [
+        { "sentence": "A ___ smell came off the standing water.", "answer": "nauseous" },
+        { "sentence": "She felt ___ after the third hour in the van.", "answer": "nauseated", "distractors": ["nauseous"], "trap": true }
+      ]
+    },
+    {
+      "id": "dilemma",
+      "kind": "drift",
+      "words": ["dilemma"],
+      "gloss": { "dilemma": "a choice between two options, both unwelcome" },
+      "wrong": "any difficulty or problem",
+      "why": "The di- is two. If there is no fork, and no cost either way, it is a problem — which is a perfectly good word.",
+      "items": [
+        { "sentence": "The ___ was stark: lose the trees or lose the affordable units.", "answer": "dilemma" },
+        { "sentence": "The drainage ___ took months to sort out.", "answer": "problem", "distractors": ["dilemma"], "trap": true }
+      ]
+    },
+    {
+      "id": "plethora",
+      "kind": "drift",
+      "words": ["plethora"],
+      "gloss": { "plethora": "an unhealthy excess; more than is good" },
+      "wrong": "a lot, an abundance",
+      "why": "It came from medicine, where it meant too much blood. A plethora is never a good thing; if you mean plenty, say plenty.",
+      "items": [
+        { "sentence": "A ___ of overlapping guidelines has made the process unnavigable.", "answer": "plethora" },
+        { "sentence": "The park offers a ___ of things to do on a Saturday.", "answer": "wealth", "distractors": ["plethora"], "trap": true }
+      ]
+    },
+    {
+      "id": "travesty",
+      "kind": "drift",
+      "words": ["travesty"],
+      "gloss": { "travesty": "a grotesque imitation of something" },
+      "wrong": "a tragedy, an outrage",
+      "why": "A travesty of justice is a process that impersonated justice badly. It is about a bad copy, not about a bad outcome.",
+      "items": [
+        { "sentence": "The consultation was a ___ of engagement: one meeting, unadvertised.", "answer": "travesty" },
+        { "sentence": "Losing the whole terrace to fire was a ___.", "answer": "tragedy", "distractors": ["travesty"], "trap": true }
+      ]
+    },
+    {
+      "id": "pristine",
+      "kind": "drift",
+      "words": ["pristine"],
+      "gloss": { "pristine": "in its original, unspoiled state" },
+      "wrong": "spotlessly clean",
+      "why": "The point is that nothing has happened to it yet. A scrubbed floor is clean; only an untouched one is pristine.",
+      "items": [
+        { "sentence": "The wetland is one of the last ___ stretches on the escarpment.", "answer": "pristine" },
+        { "sentence": "The site office was ___ by the time the tour arrived.", "answer": "spotless", "distractors": ["pristine"], "trap": true }
+      ]
+    },
+    {
+      "id": "effete",
+      "kind": "drift",
+      "words": ["effete"],
+      "gloss": { "effete": "exhausted; no longer able to produce" },
+      "wrong": "effeminate, affected",
+      "why": "It described soil and animals that had stopped being fertile. The 'affected dandy' sense arrived by sound association and buried a useful word.",
+      "items": [
+        { "sentence": "An ___ institution going through motions it no longer believes in.", "answer": "effete" },
+        { "sentence": "He affected an ___ drawl that annoyed everyone.", "answer": "affected", "distractors": ["effete"], "trap": true }
+      ]
+    },
+    {
+      "id": "inchoate",
+      "kind": "drift",
+      "words": ["inchoate"],
+      "gloss": { "inchoate": "just begun; not yet fully formed" },
+      "wrong": "chaotic, incoherent",
+      "why": "It sounds like 'incoherent' and is not related. Inchoate says early, not disordered.",
+      "items": [
+        { "sentence": "The plan was still ___ — a sketch and a list of intentions.", "answer": "inchoate" },
+        { "sentence": "The meeting was ___, with four people talking at once.", "answer": "chaotic", "distractors": ["inchoate"], "trap": true }
+      ]
+    },
+    {
+      "id": "cohort",
+      "kind": "drift",
+      "words": ["cohort"],
+      "gloss": { "cohort": "a group sharing a characteristic, usually age or year" },
+      "wrong": "a companion or accomplice",
+      "why": "It was a Roman unit and is now a statistical one. A cohort is a band of people, not one of them — 'he and his cohorts' makes each person a group.",
+      "items": [
+        { "sentence": "That ___ entered the market just as prices peaked.", "answer": "cohort" },
+        { "sentence": "He arrived with two ___ from the development company.", "answer": "associates", "distractors": ["cohorts"], "trap": true }
+      ]
+    },
+    {
+      "id": "parameter",
+      "kind": "drift",
+      "words": ["parameter"],
+      "gloss": { "parameter": "a quantity that defines how a system behaves" },
+      "wrong": "a boundary or limit — that is a perimeter",
+      "why": "Parameters are the dials, not the fence. 'Within the parameters of the study' usually means within its scope, which is a perimeter idea wearing the wrong word.",
+      "items": [
+        { "sentence": "Changing one ___ shifts the whole forecast.", "answer": "parameter" },
+        { "sentence": "The fence marks the ___ of the works area.", "answer": "perimeter", "distractors": ["parameter"], "trap": true }
+      ]
+    },
+    {
+      "id": "epicentre",
+      "kind": "drift",
+      "words": ["epicentre"],
+      "gloss": { "epicentre": "the point on the surface directly above where something originated" },
+      "wrong": "the centre of the most intense activity",
+      "why": "The epi- means above. It is not the middle of the action; it is the spot on top of the source, and it is often not where the worst damage is.",
+      "items": [
+        { "sentence": "The ___ was twelve kilometres north of the town, but the damage ran south.", "answer": "epicentre" },
+        { "sentence": "The market was the ___ of the neighbourhood's life.", "answer": "centre", "distractors": ["epicentre"], "trap": true }
+      ]
+    },
+    {
+      "id": "crescendo",
+      "kind": "drift",
+      "words": ["crescendo"],
+      "gloss": { "crescendo": "a gradual increase in volume or intensity" },
+      "wrong": "the loudest point, the climax",
+      "why": "It is the getting louder, not the loud part. 'Rose to a crescendo' says it rose to a rise.",
+      "items": [
+        { "sentence": "The objections built in a slow ___ over three meetings.", "answer": "crescendo" },
+        { "sentence": "The argument reached its ___ just before the vote.", "answer": "climax", "distractors": ["crescendo"], "trap": true }
+      ]
+    },
+    {
+      "id": "alibi",
+      "kind": "drift",
+      "words": ["alibi"],
+      "gloss": { "alibi": "evidence that you were somewhere else" },
+      "wrong": "any excuse",
+      "why": "It is Latin for 'elsewhere'. If it does not place you somewhere else, it is an excuse.",
+      "items": [
+        { "sentence": "His ___ was solid: he was in Ottawa all week.", "answer": "alibi" },
+        { "sentence": "She offered the usual ___ about workload.", "answer": "excuse", "distractors": ["alibi"], "trap": true }
+      ]
+    },
+    {
+      "id": "verbiage",
+      "kind": "drift",
+      "words": ["verbiage"],
+      "gloss": { "verbiage": "an excess of words; padding" },
+      "wrong": "wording, phrasing",
+      "why": "It is always a complaint. Asking a colleague to check the verbiage in a clause tells them the clause is bloated.",
+      "items": [
+        { "sentence": "Strip the ___ and the policy is two sentences long.", "answer": "verbiage" },
+        { "sentence": "Please check the ___ of the second condition.", "answer": "wording", "distractors": ["verbiage"], "trap": true }
+      ]
+    },
+    {
+      "id": "moot",
+      "kind": "drift",
+      "words": ["moot"],
+      "gloss": { "moot": "debatable; open to argument" },
+      "wrong": "irrelevant, already settled",
+      "why": "A moot was an assembly for debate, and law students still moot cases. North American usage has flipped it to mean the argument is over — so the phrase now says opposite things on opposite sides of the Atlantic, and is worth avoiding when it matters.",
+      "items": [
+        { "sentence": "Whether the easement survived the severance is a ___ point, and the lawyers disagree.", "answer": "moot" },
+        { "sentence": "Once the appeal was withdrawn the question became ___.", "answer": "academic", "distractors": ["moot"], "trap": true }
+      ]
+    },
+    {
+      "id": "ilk",
+      "kind": "drift",
+      "words": ["ilk"],
+      "gloss": { "ilk": "the same kind, the same sort" },
+      "wrong": "a disreputable sort — a slur by implication",
+      "why": "It is neutral: 'of that ilk' simply means of that kind. It has picked up a sneer it does not carry on its own.",
+      "items": [
+        { "sentence": "Mid-rise infill and others of that ___ dominate the pipeline.", "answer": "ilk" },
+        { "sentence": "Developers of that ___ have ruined three neighbourhoods.", "answer": "sort", "distractors": ["ilk"], "trap": true }
+      ]
+    },
+    {
+      "id": "anachronism",
+      "kind": "drift",
+      "words": ["anachronism"],
+      "gloss": { "anachronism": "something out of its proper time" },
+      "wrong": "something merely old-fashioned",
+      "why": "The error is chronological placement, not age. A working gas lamp is old; a gas lamp in a 1990s film set in 2020 is an anachronism.",
+      "items": [
+        { "sentence": "The zoning is an ___ — it was written for an industry that left in 1978.", "answer": "anachronism" },
+        { "sentence": "The fax machine in reception is charmingly ___.", "answer": "outdated", "distractors": ["anachronistic"], "trap": true }
+      ]
+    },
+    {
+      "id": "ironic",
+      "kind": "drift",
+      "words": ["ironic"],
+      "gloss": { "ironic": "meaning the opposite of what is said, or an outcome that mocks the intention" },
+      "wrong": "coincidental, or merely unfortunate",
+      "why": "Irony needs a gap between what was intended and what happened. Bad luck on its own is not ironic, however striking.",
+      "items": [
+        { "sentence": "It is ___ that the traffic study made the intersection more dangerous.", "answer": "ironic" },
+        { "sentence": "It was ___ that we both submitted on the same day.", "answer": "coincidental", "distractors": ["ironic"], "trap": true }
+      ]
+    },
+    {
+      "id": "disabuse",
+      "kind": "drift",
+      "words": ["disabuse"],
+      "gloss": { "disabuse": "to free someone of a mistaken belief" },
+      "wrong": "to insult, or to stop mistreating",
+      "why": "Nothing to do with abuse. You disabuse someone of a notion — the notion is what is being removed.",
+      "items": [
+        { "sentence": "Someone should ___ him of the idea that this is a formality.", "answer": "disabuse" },
+        { "sentence": "The new manager set out to ___ the crew fairly.", "answer": "treat", "distractors": ["disabuse"], "trap": true }
+      ]
+    },
+    {
+      "id": "prodigal",
+      "kind": "drift",
+      "words": ["prodigal"],
+      "gloss": { "prodigal": "recklessly extravagant; wasteful" },
+      "wrong": "returning after a long absence",
+      "why": "The son in the parable was prodigal before he left, not because he came back. The word is about spending, not homecoming.",
+      "items": [
+        { "sentence": "A ___ use of land: three storeys on a site zoned for twelve.", "answer": "prodigal" },
+        { "sentence": "The ___ partner reappeared after four years in Vancouver.", "answer": "returning", "distractors": ["prodigal"], "trap": true }
+      ]
+    },
+    {
+      "id": "redundant",
+      "kind": "drift",
+      "words": ["redundant"],
+      "gloss": { "redundant": "surplus to requirements; more than is needed" },
+      "wrong": "repetitive",
+      "why": "Repetition is one way of being redundant, not the meaning of it. In engineering a redundant member is a deliberate spare, and that is a virtue rather than a fault.",
+      "items": [
+        { "sentence": "A second stair is ___ in the strict sense and required in every other.", "answer": "redundant" },
+        { "sentence": "The report is ___, saying the same thing in four places.", "answer": "repetitive", "distractors": ["redundant"], "trap": true }
+      ]
+    },
+    {
+      "id": "sanction",
+      "kind": "drift",
+      "words": ["sanction"],
+      "gloss": { "sanction": "to authorise and permit — and also to penalise" },
+      "wrong": "only one of the two, whichever you had in mind",
+      "why": "It is its own opposite. A sanctioned use is a permitted one; sanctions against a country are penalties. Context has to do all the work, so in writing that matters, choose another word.",
+      "items": [
+        { "sentence": "The use was ___ by the committee in 2019 and has run since.", "answer": "sanctioned" },
+        { "sentence": "The regulator will ___ the firm for the late filing.", "answer": "penalise", "distractors": ["sanction"], "trap": true }
+      ]
+    },
+    {
+      "id": "momentarily",
+      "kind": "drift",
+      "words": ["momentarily"],
+      "gloss": { "momentarily": "for a moment; briefly" },
+      "wrong": "in a moment; shortly",
+      "why": "'We will be landing momentarily' promises a very short landing. Both senses are current, which is exactly why the word is a poor choice when the difference matters.",
+      "items": [
+        { "sentence": "The power failed ___ and the meeting carried on.", "answer": "momentarily" },
+        { "sentence": "The chair will be with you ___.", "answer": "shortly", "distractors": ["momentarily"], "trap": true }
+      ]
+    },
+    {
+      "id": "transpire",
+      "kind": "drift",
+      "words": ["transpire"],
+      "gloss": { "transpire": "to become known; to leak out" },
+      "wrong": "to happen, to occur",
+      "why": "Things transpire the way news does — they emerge. Using it for 'happen' costs you a word that means something else and gains nothing.",
+      "items": [
+        { "sentence": "It later ___ that the survey had been commissioned by the applicant.", "answer": "transpired", "options": ["transpired"] },
+        { "sentence": "Nothing much ___ at the first meeting.", "answer": "happened", "distractors": ["transpired"], "trap": true }
+      ]
+    },
+    {
+      "id": "careen",
+      "kind": "drift",
+      "words": ["careen"],
+      "gloss": { "careen": "to lean over, as a ship does" },
+      "wrong": "to rush headlong — that is career",
+      "why": "A vehicle that careers down a hill is going fast; one that careens is tipping. They are often doing both, which is how the confusion survives.",
+      "items": [
+        { "sentence": "The hull ___ as the tide went out under it.", "answer": "careened", "options": ["careened"] },
+        { "sentence": "The truck ___ down the ramp and through the hoarding.", "answer": "careered", "distractors": ["careened"], "trap": true }
+      ]
+    },
+    {
+      "id": "factoid",
+      "kind": "drift",
+      "words": ["factoid"],
+      "gloss": { "factoid": "something that looks like a fact because it has been repeated" },
+      "wrong": "a small or trivial fact",
+      "why": "Norman Mailer coined it for the opposite of a fact. The -oid is the giveaway: humanoid is not a human.",
+      "items": [
+        { "sentence": "The claim about the 1953 fire is a ___ that has outlived every correction.", "answer": "factoid" },
+        { "sentence": "The appendix collects a few useful ___ about the watershed.", "answer": "details", "distractors": ["factoids"], "trap": true }
+      ]
+    }
+  ]
+}

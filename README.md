@@ -139,7 +139,10 @@ the inversion between the shelf and the pages *is* the identity.
   taxonomic Latin, unit names and jargon that cannot travel outside its field.
 - **Everyday** (7,150) — warm-ups and distractor stock, not a study pack.
 
-Plus 62 confusable sets (124 items), hand-written.
+Plus 135 confusable sets (270 items), hand-written across
+`build/curated/confusables*.json` — the build merges every file matching
+that pattern and refuses duplicate ids, so they can be authored in themed
+batches rather than one enormous file.
 
 **What is kept out.** WordNet is a 1990s lexicon and records slurs and dated
 clinical terms without comment. `build/curated/excluded.json` holds a
@@ -172,6 +175,7 @@ the two hand-written files — the confusables and the architecture/science pack
 
 ```
 app/            the PWA — installable, works offline, no account, no server
+docs/           the built site GitHub Pages serves (make-deploy.mjs writes it)
   js/           ability.js (the model) · data.js · store.js · modes.js · app.js
   data/en/      the language pack
 build/          the pipeline, the curated content, the estimator check
