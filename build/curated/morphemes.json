@@ -1,0 +1,2745 @@
+{
+  "note": "A working dictionary of English word-parts, hand-written. The build uses it to decompose bank words into their pieces so the app can show WHY a word means what it means. This is deliberately a morpheme table rather than scraped etymologies: an etymology tells you about one word, while a root tells you about every word that carries it. Learning that 'ob-' is 'against' and 'via' is 'way' unlocks obviate, obstruct, obstacle, deviate, trivial and devious at once.\n\nOrigin codes: L Latin, G Greek, OE Old English, F French, N Norse, AR Arabic.",
+  "prefixes": {
+    "ab": {
+      "means": "away from",
+      "origin": "L"
+    },
+    "ad": {
+      "means": "toward",
+      "origin": "L"
+    },
+    "amb": {
+      "means": "both, around",
+      "origin": "L"
+    },
+    "ambi": {
+      "means": "both",
+      "origin": "L"
+    },
+    "amphi": {
+      "means": "both, on both sides",
+      "origin": "G"
+    },
+    "an": {
+      "means": "not, without",
+      "origin": "G"
+    },
+    "ana": {
+      "means": "up, back, again",
+      "origin": "G"
+    },
+    "ante": {
+      "means": "before",
+      "origin": "L"
+    },
+    "anti": {
+      "means": "against",
+      "origin": "G"
+    },
+    "apo": {
+      "means": "away from",
+      "origin": "G"
+    },
+    "auto": {
+      "means": "self",
+      "origin": "G"
+    },
+    "be": {
+      "means": "thoroughly, about",
+      "origin": "OE"
+    },
+    "bene": {
+      "means": "well, good",
+      "origin": "L"
+    },
+    "bi": {
+      "means": "two",
+      "origin": "L"
+    },
+    "cata": {
+      "means": "down",
+      "origin": "G"
+    },
+    "circum": {
+      "means": "around",
+      "origin": "L"
+    },
+    "co": {
+      "means": "together with",
+      "origin": "L"
+    },
+    "com": {
+      "means": "together with",
+      "origin": "L"
+    },
+    "con": {
+      "means": "together with",
+      "origin": "L"
+    },
+    "contra": {
+      "means": "against",
+      "origin": "L"
+    },
+    "counter": {
+      "means": "against",
+      "origin": "F"
+    },
+    "de": {
+      "means": "down, away, undoing",
+      "origin": "L"
+    },
+    "demi": {
+      "means": "half",
+      "origin": "F"
+    },
+    "dia": {
+      "means": "through, across",
+      "origin": "G"
+    },
+    "dis": {
+      "means": "apart, not",
+      "origin": "L"
+    },
+    "dys": {
+      "means": "bad, difficult",
+      "origin": "G"
+    },
+    "e": {
+      "means": "out of",
+      "origin": "L"
+    },
+    "ec": {
+      "means": "out of",
+      "origin": "G"
+    },
+    "en": {
+      "means": "in, into, cause to be",
+      "origin": "F"
+    },
+    "em": {
+      "means": "in, into, cause to be",
+      "origin": "F"
+    },
+    "endo": {
+      "means": "within",
+      "origin": "G"
+    },
+    "epi": {
+      "means": "upon, over",
+      "origin": "G"
+    },
+    "eu": {
+      "means": "good, well",
+      "origin": "G"
+    },
+    "ex": {
+      "means": "out of, former",
+      "origin": "L"
+    },
+    "extra": {
+      "means": "beyond, outside",
+      "origin": "L"
+    },
+    "fore": {
+      "means": "before, in front",
+      "origin": "OE"
+    },
+    "hemi": {
+      "means": "half",
+      "origin": "G"
+    },
+    "hyper": {
+      "means": "over, excessive",
+      "origin": "G"
+    },
+    "hypo": {
+      "means": "under, beneath",
+      "origin": "G"
+    },
+    "in": {
+      "means": "not (or, in some words, into)",
+      "origin": "L"
+    },
+    "im": {
+      "means": "not (or, in some words, into)",
+      "origin": "L"
+    },
+    "il": {
+      "means": "not",
+      "origin": "L"
+    },
+    "ir": {
+      "means": "not",
+      "origin": "L"
+    },
+    "infra": {
+      "means": "below",
+      "origin": "L"
+    },
+    "inter": {
+      "means": "between",
+      "origin": "L"
+    },
+    "intra": {
+      "means": "within",
+      "origin": "L"
+    },
+    "intro": {
+      "means": "inward",
+      "origin": "L"
+    },
+    "iso": {
+      "means": "equal",
+      "origin": "G"
+    },
+    "juxta": {
+      "means": "beside",
+      "origin": "L"
+    },
+    "macro": {
+      "means": "large",
+      "origin": "G"
+    },
+    "mal": {
+      "means": "bad",
+      "origin": "L"
+    },
+    "meta": {
+      "means": "beyond, change",
+      "origin": "G"
+    },
+    "micro": {
+      "means": "small",
+      "origin": "G"
+    },
+    "mis": {
+      "means": "wrongly",
+      "origin": "OE"
+    },
+    "mono": {
+      "means": "one",
+      "origin": "G"
+    },
+    "multi": {
+      "means": "many",
+      "origin": "L"
+    },
+    "neo": {
+      "means": "new",
+      "origin": "G"
+    },
+    "non": {
+      "means": "not",
+      "origin": "L"
+    },
+    "ob": {
+      "means": "against, in the way of",
+      "origin": "L"
+    },
+    "omni": {
+      "means": "all",
+      "origin": "L"
+    },
+    "para": {
+      "means": "beside, beyond",
+      "origin": "G"
+    },
+    "per": {
+      "means": "through, thoroughly",
+      "origin": "L"
+    },
+    "peri": {
+      "means": "around",
+      "origin": "G"
+    },
+    "poly": {
+      "means": "many",
+      "origin": "G"
+    },
+    "post": {
+      "means": "after",
+      "origin": "L"
+    },
+    "pre": {
+      "means": "before",
+      "origin": "L"
+    },
+    "pro": {
+      "means": "forward, in favour of",
+      "origin": "L"
+    },
+    "proto": {
+      "means": "first",
+      "origin": "G"
+    },
+    "pseudo": {
+      "means": "false",
+      "origin": "G"
+    },
+    "re": {
+      "means": "again, back",
+      "origin": "L"
+    },
+    "retro": {
+      "means": "backward",
+      "origin": "L"
+    },
+    "se": {
+      "means": "apart",
+      "origin": "L"
+    },
+    "semi": {
+      "means": "half",
+      "origin": "L"
+    },
+    "sub": {
+      "means": "under",
+      "origin": "L"
+    },
+    "super": {
+      "means": "above, beyond",
+      "origin": "L"
+    },
+    "supra": {
+      "means": "above",
+      "origin": "L"
+    },
+    "syn": {
+      "means": "together",
+      "origin": "G"
+    },
+    "sym": {
+      "means": "together",
+      "origin": "G"
+    },
+    "tele": {
+      "means": "far off",
+      "origin": "G"
+    },
+    "trans": {
+      "means": "across",
+      "origin": "L"
+    },
+    "tri": {
+      "means": "three",
+      "origin": "L"
+    },
+    "ultra": {
+      "means": "beyond",
+      "origin": "L"
+    },
+    "un": {
+      "means": "not, reversal",
+      "origin": "OE"
+    },
+    "under": {
+      "means": "beneath, insufficiently",
+      "origin": "OE"
+    },
+    "uni": {
+      "means": "one",
+      "origin": "L"
+    },
+    "with": {
+      "means": "against, back",
+      "origin": "OE"
+    }
+  },
+  "roots": {
+    "aud": {
+      "means": "hear",
+      "origin": "L"
+    },
+    "anim": {
+      "means": "life, mind, spirit",
+      "origin": "L"
+    },
+    "annu": {
+      "means": "year",
+      "origin": "L"
+    },
+    "anthrop": {
+      "means": "human being",
+      "origin": "G"
+    },
+    "aqu": {
+      "means": "water",
+      "origin": "L"
+    },
+    "arch": {
+      "means": "chief, first, rule",
+      "origin": "G"
+    },
+    "aster": {
+      "means": "star",
+      "origin": "G"
+    },
+    "astr": {
+      "means": "star",
+      "origin": "G"
+    },
+    "bell": {
+      "means": "war",
+      "origin": "L"
+    },
+    "bio": {
+      "means": "life",
+      "origin": "G"
+    },
+    "brev": {
+      "means": "short",
+      "origin": "L"
+    },
+    "cad": {
+      "means": "fall",
+      "origin": "L"
+    },
+    "cap": {
+      "means": "take, seize",
+      "origin": "L"
+    },
+    "capit": {
+      "means": "head",
+      "origin": "L"
+    },
+    "carn": {
+      "means": "flesh",
+      "origin": "L"
+    },
+    "ced": {
+      "means": "go, yield",
+      "origin": "L"
+    },
+    "cess": {
+      "means": "go, yield",
+      "origin": "L"
+    },
+    "chron": {
+      "means": "time",
+      "origin": "G"
+    },
+    "cid": {
+      "means": "kill, cut",
+      "origin": "L"
+    },
+    "cis": {
+      "means": "cut",
+      "origin": "L"
+    },
+    "claim": {
+      "means": "shout, call out",
+      "origin": "L"
+    },
+    "clam": {
+      "means": "shout, call out",
+      "origin": "L"
+    },
+    "clin": {
+      "means": "lean",
+      "origin": "L"
+    },
+    "clud": {
+      "means": "shut",
+      "origin": "L"
+    },
+    "clus": {
+      "means": "shut",
+      "origin": "L"
+    },
+    "cogn": {
+      "means": "know",
+      "origin": "L"
+    },
+    "corp": {
+      "means": "body",
+      "origin": "L"
+    },
+    "cred": {
+      "means": "believe, trust",
+      "origin": "L"
+    },
+    "cur": {
+      "means": "care",
+      "origin": "L"
+    },
+    "curr": {
+      "means": "run",
+      "origin": "L"
+    },
+    "curs": {
+      "means": "run",
+      "origin": "L"
+    },
+    "dem": {
+      "means": "people",
+      "origin": "G"
+    },
+    "dic": {
+      "means": "say, speak",
+      "origin": "L"
+    },
+    "dict": {
+      "means": "say, speak",
+      "origin": "L"
+    },
+    "doc": {
+      "means": "teach",
+      "origin": "L"
+    },
+    "domin": {
+      "means": "master, lord",
+      "origin": "L"
+    },
+    "duc": {
+      "means": "lead",
+      "origin": "L"
+    },
+    "duct": {
+      "means": "lead",
+      "origin": "L"
+    },
+    "dur": {
+      "means": "hard, lasting",
+      "origin": "L"
+    },
+    "equ": {
+      "means": "equal",
+      "origin": "L"
+    },
+    "fac": {
+      "means": "make, do",
+      "origin": "L"
+    },
+    "fact": {
+      "means": "make, do",
+      "origin": "L"
+    },
+    "fec": {
+      "means": "make, do",
+      "origin": "L"
+    },
+    "fer": {
+      "means": "carry, bear",
+      "origin": "L"
+    },
+    "fid": {
+      "means": "faith, trust",
+      "origin": "L"
+    },
+    "fin": {
+      "means": "end, limit",
+      "origin": "L"
+    },
+    "flect": {
+      "means": "bend",
+      "origin": "L"
+    },
+    "flex": {
+      "means": "bend",
+      "origin": "L"
+    },
+    "flu": {
+      "means": "flow",
+      "origin": "L"
+    },
+    "form": {
+      "means": "shape",
+      "origin": "L"
+    },
+    "fract": {
+      "means": "break",
+      "origin": "L"
+    },
+    "frag": {
+      "means": "break",
+      "origin": "L"
+    },
+    "fus": {
+      "means": "pour",
+      "origin": "L"
+    },
+    "gen": {
+      "means": "birth, kind, origin",
+      "origin": "L"
+    },
+    "geo": {
+      "means": "earth",
+      "origin": "G"
+    },
+    "grad": {
+      "means": "step, go",
+      "origin": "L"
+    },
+    "gress": {
+      "means": "step, go",
+      "origin": "L"
+    },
+    "graph": {
+      "means": "write",
+      "origin": "G"
+    },
+    "grat": {
+      "means": "pleasing, thankful",
+      "origin": "L"
+    },
+    "greg": {
+      "means": "flock, herd",
+      "origin": "L"
+    },
+    "hom": {
+      "means": "same",
+      "origin": "G"
+    },
+    "jac": {
+      "means": "throw, lie",
+      "origin": "L"
+    },
+    "ject": {
+      "means": "throw",
+      "origin": "L"
+    },
+    "jud": {
+      "means": "judge",
+      "origin": "L"
+    },
+    "junct": {
+      "means": "join",
+      "origin": "L"
+    },
+    "lat": {
+      "means": "carry, bear",
+      "origin": "L"
+    },
+    "leg": {
+      "means": "law, read, choose",
+      "origin": "L"
+    },
+    "lect": {
+      "means": "read, gather, choose",
+      "origin": "L"
+    },
+    "liber": {
+      "means": "free",
+      "origin": "L"
+    },
+    "loc": {
+      "means": "place",
+      "origin": "L"
+    },
+    "log": {
+      "means": "word, reason, study",
+      "origin": "G"
+    },
+    "loqu": {
+      "means": "speak",
+      "origin": "L"
+    },
+    "locut": {
+      "means": "speak",
+      "origin": "L"
+    },
+    "luc": {
+      "means": "light",
+      "origin": "L"
+    },
+    "lud": {
+      "means": "play",
+      "origin": "L"
+    },
+    "lus": {
+      "means": "play",
+      "origin": "L"
+    },
+    "magn": {
+      "means": "great",
+      "origin": "L"
+    },
+    "mand": {
+      "means": "order, entrust",
+      "origin": "L"
+    },
+    "mater": {
+      "means": "mother",
+      "origin": "L"
+    },
+    "mem": {
+      "means": "mindful, remember",
+      "origin": "L"
+    },
+    "ment": {
+      "means": "mind",
+      "origin": "L"
+    },
+    "meter": {
+      "means": "measure",
+      "origin": "G"
+    },
+    "metr": {
+      "means": "measure",
+      "origin": "G"
+    },
+    "migr": {
+      "means": "move, wander",
+      "origin": "L"
+    },
+    "mit": {
+      "means": "send",
+      "origin": "L"
+    },
+    "miss": {
+      "means": "send",
+      "origin": "L"
+    },
+    "mon": {
+      "means": "warn, advise",
+      "origin": "L"
+    },
+    "morph": {
+      "means": "shape, form",
+      "origin": "G"
+    },
+    "mort": {
+      "means": "death",
+      "origin": "L"
+    },
+    "mov": {
+      "means": "move",
+      "origin": "L"
+    },
+    "mot": {
+      "means": "move",
+      "origin": "L"
+    },
+    "mut": {
+      "means": "change",
+      "origin": "L"
+    },
+    "nasc": {
+      "means": "be born",
+      "origin": "L"
+    },
+    "nat": {
+      "means": "born",
+      "origin": "L"
+    },
+    "nav": {
+      "means": "ship",
+      "origin": "L"
+    },
+    "nom": {
+      "means": "name, law",
+      "origin": "L"
+    },
+    "nov": {
+      "means": "new",
+      "origin": "L"
+    },
+    "nunci": {
+      "means": "announce",
+      "origin": "L"
+    },
+    "opt": {
+      "means": "choose",
+      "origin": "G"
+    },
+    "pac": {
+      "means": "peace",
+      "origin": "L"
+    },
+    "pat": {
+      "means": "suffer, feel",
+      "origin": "L"
+    },
+    "path": {
+      "means": "feeling, suffering",
+      "origin": "G"
+    },
+    "pater": {
+      "means": "father",
+      "origin": "L"
+    },
+    "ped": {
+      "means": "foot",
+      "origin": "L"
+    },
+    "pel": {
+      "means": "drive, push",
+      "origin": "L"
+    },
+    "puls": {
+      "means": "beat, drive",
+      "origin": "L"
+    },
+    "pend": {
+      "means": "hang, weigh, pay",
+      "origin": "L"
+    },
+    "pens": {
+      "means": "hang, weigh, pay",
+      "origin": "L"
+    },
+    "phil": {
+      "means": "love",
+      "origin": "G"
+    },
+    "phon": {
+      "means": "sound",
+      "origin": "G"
+    },
+    "phot": {
+      "means": "light",
+      "origin": "G"
+    },
+    "plic": {
+      "means": "fold",
+      "origin": "L"
+    },
+    "plex": {
+      "means": "fold, weave",
+      "origin": "L"
+    },
+    "pon": {
+      "means": "put, place",
+      "origin": "L"
+    },
+    "pos": {
+      "means": "put, place",
+      "origin": "L"
+    },
+    "port": {
+      "means": "carry",
+      "origin": "L"
+    },
+    "prehend": {
+      "means": "seize, grasp",
+      "origin": "L"
+    },
+    "prehens": {
+      "means": "seize, grasp",
+      "origin": "L"
+    },
+    "prob": {
+      "means": "test, prove",
+      "origin": "L"
+    },
+    "quir": {
+      "means": "seek, ask",
+      "origin": "L"
+    },
+    "quis": {
+      "means": "seek, ask",
+      "origin": "L"
+    },
+    "rect": {
+      "means": "straight, right, rule",
+      "origin": "L"
+    },
+    "rog": {
+      "means": "ask",
+      "origin": "L"
+    },
+    "rupt": {
+      "means": "break",
+      "origin": "L"
+    },
+    "sanct": {
+      "means": "holy",
+      "origin": "L"
+    },
+    "sci": {
+      "means": "know",
+      "origin": "L"
+    },
+    "scrib": {
+      "means": "write",
+      "origin": "L"
+    },
+    "script": {
+      "means": "write",
+      "origin": "L"
+    },
+    "sect": {
+      "means": "cut",
+      "origin": "L"
+    },
+    "sed": {
+      "means": "sit, settle",
+      "origin": "L"
+    },
+    "sess": {
+      "means": "sit",
+      "origin": "L"
+    },
+    "sid": {
+      "means": "sit",
+      "origin": "L"
+    },
+    "sens": {
+      "means": "feel",
+      "origin": "L"
+    },
+    "sent": {
+      "means": "feel",
+      "origin": "L"
+    },
+    "sequ": {
+      "means": "follow",
+      "origin": "L"
+    },
+    "secut": {
+      "means": "follow",
+      "origin": "L"
+    },
+    "serv": {
+      "means": "keep, serve",
+      "origin": "L"
+    },
+    "sign": {
+      "means": "mark, sign",
+      "origin": "L"
+    },
+    "sol": {
+      "means": "alone",
+      "origin": "L"
+    },
+    "solv": {
+      "means": "loosen, release",
+      "origin": "L"
+    },
+    "solut": {
+      "means": "loosen, release",
+      "origin": "L"
+    },
+    "somn": {
+      "means": "sleep",
+      "origin": "L"
+    },
+    "spec": {
+      "means": "look, see",
+      "origin": "L"
+    },
+    "spect": {
+      "means": "look, see",
+      "origin": "L"
+    },
+    "spic": {
+      "means": "look, see",
+      "origin": "L"
+    },
+    "spir": {
+      "means": "breathe",
+      "origin": "L"
+    },
+    "sta": {
+      "means": "stand",
+      "origin": "L"
+    },
+    "stat": {
+      "means": "stand",
+      "origin": "L"
+    },
+    "stit": {
+      "means": "stand, set up",
+      "origin": "L"
+    },
+    "string": {
+      "means": "bind, draw tight",
+      "origin": "L"
+    },
+    "strict": {
+      "means": "bind, draw tight",
+      "origin": "L"
+    },
+    "stru": {
+      "means": "build",
+      "origin": "L"
+    },
+    "struct": {
+      "means": "build",
+      "origin": "L"
+    },
+    "tang": {
+      "means": "touch",
+      "origin": "L"
+    },
+    "tact": {
+      "means": "touch",
+      "origin": "L"
+    },
+    "ting": {
+      "means": "touch",
+      "origin": "L"
+    },
+    "temp": {
+      "means": "time",
+      "origin": "L"
+    },
+    "ten": {
+      "means": "hold, keep",
+      "origin": "L"
+    },
+    "tain": {
+      "means": "hold, keep",
+      "origin": "F"
+    },
+    "tent": {
+      "means": "hold, stretch",
+      "origin": "L"
+    },
+    "tend": {
+      "means": "stretch",
+      "origin": "L"
+    },
+    "tens": {
+      "means": "stretch",
+      "origin": "L"
+    },
+    "term": {
+      "means": "end, boundary",
+      "origin": "L"
+    },
+    "terr": {
+      "means": "earth, land",
+      "origin": "L"
+    },
+    "test": {
+      "means": "witness",
+      "origin": "L"
+    },
+    "therm": {
+      "means": "heat",
+      "origin": "G"
+    },
+    "tort": {
+      "means": "twist",
+      "origin": "L"
+    },
+    "tract": {
+      "means": "pull, draw",
+      "origin": "L"
+    },
+    "trud": {
+      "means": "thrust, push",
+      "origin": "L"
+    },
+    "trus": {
+      "means": "thrust, push",
+      "origin": "L"
+    },
+    "urb": {
+      "means": "city",
+      "origin": "L"
+    },
+    "vac": {
+      "means": "empty",
+      "origin": "L"
+    },
+    "vad": {
+      "means": "go",
+      "origin": "L"
+    },
+    "vas": {
+      "means": "go",
+      "origin": "L"
+    },
+    "ven": {
+      "means": "come",
+      "origin": "L"
+    },
+    "vent": {
+      "means": "come",
+      "origin": "L"
+    },
+    "ver": {
+      "means": "true",
+      "origin": "L"
+    },
+    "verb": {
+      "means": "word",
+      "origin": "L"
+    },
+    "vert": {
+      "means": "turn",
+      "origin": "L"
+    },
+    "vers": {
+      "means": "turn",
+      "origin": "L"
+    },
+    "via": {
+      "means": "way, road",
+      "origin": "L"
+    },
+    "vi": {
+      "means": "way, road",
+      "origin": "L"
+    },
+    "vid": {
+      "means": "see",
+      "origin": "L"
+    },
+    "vis": {
+      "means": "see",
+      "origin": "L"
+    },
+    "vinc": {
+      "means": "conquer",
+      "origin": "L"
+    },
+    "vict": {
+      "means": "conquer",
+      "origin": "L"
+    },
+    "viv": {
+      "means": "live",
+      "origin": "L"
+    },
+    "vit": {
+      "means": "life",
+      "origin": "L"
+    },
+    "voc": {
+      "means": "call, voice",
+      "origin": "L"
+    },
+    "vok": {
+      "means": "call",
+      "origin": "L"
+    },
+    "volv": {
+      "means": "roll, turn",
+      "origin": "L"
+    },
+    "volut": {
+      "means": "roll, turn",
+      "origin": "L"
+    },
+    "vor": {
+      "means": "eat, devour",
+      "origin": "L"
+    }
+  },
+  "suffixes": {
+    "able": {
+      "means": "capable of being",
+      "origin": "L"
+    },
+    "ible": {
+      "means": "capable of being",
+      "origin": "L"
+    },
+    "acy": {
+      "means": "state or quality",
+      "origin": "L"
+    },
+    "age": {
+      "means": "action, result, or collection",
+      "origin": "F"
+    },
+    "al": {
+      "means": "relating to",
+      "origin": "L"
+    },
+    "ance": {
+      "means": "state or action",
+      "origin": "L"
+    },
+    "ence": {
+      "means": "state or action",
+      "origin": "L"
+    },
+    "ant": {
+      "means": "one who, or performing",
+      "origin": "L"
+    },
+    "ent": {
+      "means": "one who, or performing",
+      "origin": "L"
+    },
+    "ary": {
+      "means": "relating to, place for",
+      "origin": "L"
+    },
+    "ory": {
+      "means": "relating to, place for",
+      "origin": "L"
+    },
+    "ate": {
+      "means": "to make, or having",
+      "origin": "L"
+    },
+    "cracy": {
+      "means": "rule by",
+      "origin": "G"
+    },
+    "cide": {
+      "means": "killing",
+      "origin": "L"
+    },
+    "escent": {
+      "means": "becoming",
+      "origin": "L"
+    },
+    "ful": {
+      "means": "full of",
+      "origin": "OE"
+    },
+    "fy": {
+      "means": "to make",
+      "origin": "L"
+    },
+    "ify": {
+      "means": "to make",
+      "origin": "L"
+    },
+    "hood": {
+      "means": "state or condition",
+      "origin": "OE"
+    },
+    "ic": {
+      "means": "relating to",
+      "origin": "G"
+    },
+    "ical": {
+      "means": "relating to",
+      "origin": "G"
+    },
+    "ile": {
+      "means": "tending toward",
+      "origin": "L"
+    },
+    "ine": {
+      "means": "relating to, of the nature of",
+      "origin": "L"
+    },
+    "ion": {
+      "means": "act, state, or result",
+      "origin": "L"
+    },
+    "tion": {
+      "means": "act, state, or result",
+      "origin": "L"
+    },
+    "sion": {
+      "means": "act, state, or result",
+      "origin": "L"
+    },
+    "ise": {
+      "means": "to make, to become",
+      "origin": "G"
+    },
+    "ize": {
+      "means": "to make, to become",
+      "origin": "G"
+    },
+    "ish": {
+      "means": "somewhat, in the manner of",
+      "origin": "OE"
+    },
+    "ism": {
+      "means": "doctrine or practice",
+      "origin": "G"
+    },
+    "ist": {
+      "means": "one who",
+      "origin": "G"
+    },
+    "ity": {
+      "means": "the quality of",
+      "origin": "L"
+    },
+    "ive": {
+      "means": "tending to",
+      "origin": "L"
+    },
+    "less": {
+      "means": "without",
+      "origin": "OE"
+    },
+    "logy": {
+      "means": "the study of",
+      "origin": "G"
+    },
+    "ly": {
+      "means": "in the manner of",
+      "origin": "OE"
+    },
+    "ment": {
+      "means": "the result or means of",
+      "origin": "L"
+    },
+    "ness": {
+      "means": "the state of being",
+      "origin": "OE"
+    },
+    "oid": {
+      "means": "resembling — but not the thing itself",
+      "origin": "G"
+    },
+    "ous": {
+      "means": "full of, having",
+      "origin": "L"
+    },
+    "ious": {
+      "means": "full of, having",
+      "origin": "L"
+    },
+    "eous": {
+      "means": "full of, having",
+      "origin": "L"
+    },
+    "phobia": {
+      "means": "fear of",
+      "origin": "G"
+    },
+    "ship": {
+      "means": "state, skill, or office",
+      "origin": "OE"
+    },
+    "some": {
+      "means": "tending to, characterised by",
+      "origin": "OE"
+    },
+    "tude": {
+      "means": "the state of",
+      "origin": "L"
+    },
+    "ure": {
+      "means": "act, process, or result",
+      "origin": "L"
+    },
+    "ward": {
+      "means": "in the direction of",
+      "origin": "OE"
+    },
+    "y": {
+      "means": "characterised by",
+      "origin": "OE"
+    }
+  },
+  "words": {
+    "obviate": [
+      {
+        "p": "ob-"
+      },
+      {
+        "p": "via",
+        "m": "way, road"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "deviate": [
+      {
+        "p": "de-"
+      },
+      {
+        "p": "via",
+        "m": "way, road"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "devious": [
+      {
+        "p": "de-"
+      },
+      {
+        "p": "via",
+        "m": "way, road"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "trivial": [
+      {
+        "p": "tri-"
+      },
+      {
+        "p": "via",
+        "m": "way, road"
+      },
+      {
+        "p": "-al"
+      }
+    ],
+    "circumlocution": [
+      {
+        "p": "circum-"
+      },
+      {
+        "p": "locut",
+        "m": "speak"
+      },
+      {
+        "p": "-ion"
+      }
+    ],
+    "locution": [
+      {
+        "p": "locut",
+        "m": "speak"
+      },
+      {
+        "p": "-ion"
+      }
+    ],
+    "perspicacious": [
+      {
+        "p": "per-"
+      },
+      {
+        "p": "spic",
+        "m": "look, see"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "conspicuous": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "spic",
+        "m": "look, see"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "specious": [
+      {
+        "p": "spec",
+        "m": "look, see"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "prescient": [
+      {
+        "p": "pre-"
+      },
+      {
+        "p": "sci",
+        "m": "know"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "nescient": [
+      {
+        "p": "ne-",
+        "m": "not",
+        "o": "L"
+      },
+      {
+        "p": "sci",
+        "m": "know"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "obdurate": [
+      {
+        "p": "ob-"
+      },
+      {
+        "p": "dur",
+        "m": "hard, lasting"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "intransigent": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "transig",
+        "m": "come to an agreement",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "recalcitrant": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "calcitr",
+        "m": "kick with the heel",
+        "o": "L"
+      },
+      {
+        "p": "-ant"
+      }
+    ],
+    "truculent": [
+      {
+        "p": "truc",
+        "m": "fierce, savage",
+        "o": "L"
+      },
+      {
+        "p": "-ulent",
+        "m": "full of",
+        "o": "L"
+      }
+    ],
+    "magnanimous": [
+      {
+        "p": "magn",
+        "m": "great"
+      },
+      {
+        "p": "anim",
+        "m": "life, mind, spirit"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "pusillanimous": [
+      {
+        "p": "pusill",
+        "m": "very small",
+        "o": "L"
+      },
+      {
+        "p": "anim",
+        "m": "life, mind, spirit"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "equanimity": [
+      {
+        "p": "equ",
+        "m": "equal"
+      },
+      {
+        "p": "anim",
+        "m": "life, mind, spirit"
+      },
+      {
+        "p": "-ity"
+      }
+    ],
+    "perfunctory": [
+      {
+        "p": "per-"
+      },
+      {
+        "p": "funct",
+        "m": "perform, do",
+        "o": "L"
+      },
+      {
+        "p": "-ory"
+      }
+    ],
+    "desultory": [
+      {
+        "p": "de-"
+      },
+      {
+        "p": "sult",
+        "m": "leap",
+        "o": "L"
+      },
+      {
+        "p": "-ory"
+      }
+    ],
+    "peremptory": [
+      {
+        "p": "per-"
+      },
+      {
+        "p": "empt",
+        "m": "take, buy",
+        "o": "L"
+      },
+      {
+        "p": "-ory"
+      }
+    ],
+    "obstreperous": [
+      {
+        "p": "ob-"
+      },
+      {
+        "p": "streper",
+        "m": "make a noise",
+        "o": "L"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "innocuous": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "noc",
+        "m": "harm",
+        "o": "L"
+      },
+      {
+        "p": "-uous",
+        "m": "having",
+        "o": "L"
+      }
+    ],
+    "noxious": [
+      {
+        "p": "nox",
+        "m": "harm",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "ineluctable": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "luct",
+        "m": "struggle",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "reluctant": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "luct",
+        "m": "struggle",
+        "o": "L"
+      },
+      {
+        "p": "-ant"
+      }
+    ],
+    "expiate": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "pi",
+        "m": "dutiful, devout",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "propitiate": [
+      {
+        "p": "pro-"
+      },
+      {
+        "p": "piti",
+        "m": "favourable",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "abrogate": [
+      {
+        "p": "ab-"
+      },
+      {
+        "p": "rog",
+        "m": "ask, propose a law"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "arrogate": [
+      {
+        "p": "ar-",
+        "m": "toward",
+        "o": "L"
+      },
+      {
+        "p": "rog",
+        "m": "ask, claim"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "derogatory": [
+      {
+        "p": "de-"
+      },
+      {
+        "p": "rog",
+        "m": "ask, propose a law"
+      },
+      {
+        "p": "-ory"
+      }
+    ],
+    "interlocutor": [
+      {
+        "p": "inter-"
+      },
+      {
+        "p": "locut",
+        "m": "speak"
+      },
+      {
+        "p": "-or",
+        "m": "one who",
+        "o": "L"
+      }
+    ],
+    "ineffable": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "eff",
+        "m": "speak out",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "affable": [
+      {
+        "p": "af-",
+        "m": "toward",
+        "o": "L"
+      },
+      {
+        "p": "fa",
+        "m": "speak",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "infant": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "fant",
+        "m": "speaking",
+        "o": "L"
+      }
+    ],
+    "penury": [
+      {
+        "p": "penur",
+        "m": "want, need",
+        "o": "L"
+      },
+      {
+        "p": "-y"
+      }
+    ],
+    "plenary": [
+      {
+        "p": "plen",
+        "m": "full",
+        "o": "L"
+      },
+      {
+        "p": "-ary"
+      }
+    ],
+    "replete": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "plet",
+        "m": "fill",
+        "o": "L"
+      }
+    ],
+    "supercilious": [
+      {
+        "p": "super-"
+      },
+      {
+        "p": "cili",
+        "m": "eyelid",
+        "o": "L"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "sinecure": [
+      {
+        "p": "sine-",
+        "m": "without",
+        "o": "L"
+      },
+      {
+        "p": "cur",
+        "m": "care"
+      }
+    ],
+    "laconic": [
+      {
+        "p": "lacon",
+        "m": "of Laconia, whose Spartans were famously terse",
+        "o": "G"
+      },
+      {
+        "p": "-ic"
+      }
+    ],
+    "palimpsest": [
+      {
+        "p": "palin-",
+        "m": "again",
+        "o": "G"
+      },
+      {
+        "p": "psest",
+        "m": "scraped",
+        "o": "G"
+      }
+    ],
+    "entablature": [
+      {
+        "p": "en-"
+      },
+      {
+        "p": "tabl",
+        "m": "board, table",
+        "o": "L"
+      },
+      {
+        "p": "-ature",
+        "m": "the result of",
+        "o": "L"
+      }
+    ],
+    "fenestration": [
+      {
+        "p": "fenestr",
+        "m": "window",
+        "o": "L"
+      },
+      {
+        "p": "-ation",
+        "m": "act or result of",
+        "o": "L"
+      }
+    ],
+    "clerestory": [
+      {
+        "p": "clere",
+        "m": "clear, lit",
+        "o": "F"
+      },
+      {
+        "p": "story",
+        "m": "floor of a building",
+        "o": "F"
+      }
+    ],
+    "hysteresis": [
+      {
+        "p": "hyster",
+        "m": "later, coming behind",
+        "o": "G"
+      },
+      {
+        "p": "-esis",
+        "m": "process of",
+        "o": "G"
+      }
+    ],
+    "anthropogenic": [
+      {
+        "p": "anthrop",
+        "m": "human being"
+      },
+      {
+        "p": "gen",
+        "m": "birth, origin"
+      },
+      {
+        "p": "-ic"
+      }
+    ],
+    "riparian": [
+      {
+        "p": "ripa",
+        "m": "river bank",
+        "o": "L"
+      },
+      {
+        "p": "-arian",
+        "m": "relating to",
+        "o": "L"
+      }
+    ],
+    "stochastic": [
+      {
+        "p": "stochast",
+        "m": "able to guess, aiming at a mark",
+        "o": "G"
+      },
+      {
+        "p": "-ic"
+      }
+    ],
+    "asymptotic": [
+      {
+        "p": "a-",
+        "m": "not",
+        "o": "G"
+      },
+      {
+        "p": "sympt",
+        "m": "falling together",
+        "o": "G"
+      },
+      {
+        "p": "-otic",
+        "m": "relating to",
+        "o": "G"
+      }
+    ],
+    "abstruse": [
+      {
+        "p": "abs-",
+        "m": "away",
+        "o": "L"
+      },
+      {
+        "p": "trus",
+        "m": "thrust, push"
+      }
+    ],
+    "acrimonious": [
+      {
+        "p": "acri",
+        "m": "sharp, bitter",
+        "o": "L"
+      },
+      {
+        "p": "-monious",
+        "m": "having the quality of",
+        "o": "L"
+      }
+    ],
+    "alacrity": [
+      {
+        "p": "alacr",
+        "m": "brisk, eager",
+        "o": "L"
+      },
+      {
+        "p": "-ity"
+      }
+    ],
+    "ameliorate": [
+      {
+        "p": "a-",
+        "m": "toward",
+        "o": "L"
+      },
+      {
+        "p": "melior",
+        "m": "better",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "anomalous": [
+      {
+        "p": "an-",
+        "m": "not"
+      },
+      {
+        "p": "homal",
+        "m": "even, level",
+        "o": "G"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "assiduous": [
+      {
+        "p": "as-",
+        "m": "toward",
+        "o": "L"
+      },
+      {
+        "p": "sid",
+        "m": "sit"
+      },
+      {
+        "p": "-uous",
+        "m": "having",
+        "o": "L"
+      }
+    ],
+    "belligerent": [
+      {
+        "p": "belli",
+        "m": "war"
+      },
+      {
+        "p": "ger",
+        "m": "wage, carry on",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "cogent": [
+      {
+        "p": "co-"
+      },
+      {
+        "p": "ag",
+        "m": "drive, do",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "collateral": [
+      {
+        "p": "col-",
+        "m": "together with",
+        "o": "L"
+      },
+      {
+        "p": "later",
+        "m": "side",
+        "o": "L"
+      },
+      {
+        "p": "-al"
+      }
+    ],
+    "concomitant": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "comit",
+        "m": "companion",
+        "o": "L"
+      },
+      {
+        "p": "-ant"
+      }
+    ],
+    "congenital": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "genit",
+        "m": "born"
+      },
+      {
+        "p": "-al"
+      }
+    ],
+    "consternation": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "stern",
+        "m": "strike down, lay flat",
+        "o": "L"
+      },
+      {
+        "p": "-ation",
+        "m": "act or result of",
+        "o": "L"
+      }
+    ],
+    "contumacious": [
+      {
+        "p": "contumac",
+        "m": "stubborn, insolent",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "corroborate": [
+      {
+        "p": "cor-",
+        "m": "together with",
+        "o": "L"
+      },
+      {
+        "p": "robor",
+        "m": "strength, oak",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "culpable": [
+      {
+        "p": "culp",
+        "m": "fault, blame",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "dilatory": [
+      {
+        "p": "di-",
+        "m": "apart",
+        "o": "L"
+      },
+      {
+        "p": "lat",
+        "m": "carry, bear"
+      },
+      {
+        "p": "-ory"
+      }
+    ],
+    "disparate": [
+      {
+        "p": "dis-"
+      },
+      {
+        "p": "par",
+        "m": "equal",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "dissemble": [
+      {
+        "p": "dis-"
+      },
+      {
+        "p": "simul",
+        "m": "alike, pretend",
+        "o": "L"
+      }
+    ],
+    "egregious": [
+      {
+        "p": "e-"
+      },
+      {
+        "p": "greg",
+        "m": "flock, herd"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "enervate": [
+      {
+        "p": "e-"
+      },
+      {
+        "p": "nerv",
+        "m": "sinew, nerve",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "ephemeral": [
+      {
+        "p": "epi-"
+      },
+      {
+        "p": "hemer",
+        "m": "day",
+        "o": "G"
+      },
+      {
+        "p": "-al"
+      }
+    ],
+    "equivocate": [
+      {
+        "p": "equi-",
+        "m": "equal",
+        "o": "L"
+      },
+      {
+        "p": "voc",
+        "m": "call, voice"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "exacerbate": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "acerb",
+        "m": "bitter, harsh",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "exculpate": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "culp",
+        "m": "fault, blame"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "exigent": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "ig",
+        "m": "drive, demand",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "extenuate": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "tenu",
+        "m": "thin",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "fastidious": [
+      {
+        "p": "fastidi",
+        "m": "loathing, squeamishness",
+        "o": "L"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "fulsome": [
+      {
+        "p": "ful",
+        "m": "full",
+        "o": "OE"
+      },
+      {
+        "p": "-some"
+      }
+    ],
+    "garrulous": [
+      {
+        "p": "garrul",
+        "m": "chattering",
+        "o": "L"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "gregarious": [
+      {
+        "p": "greg",
+        "m": "flock, herd"
+      },
+      {
+        "p": "-arious",
+        "m": "belonging to",
+        "o": "L"
+      }
+    ],
+    "ignominious": [
+      {
+        "p": "ig-",
+        "m": "not",
+        "o": "L"
+      },
+      {
+        "p": "nomin",
+        "m": "name"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "impecunious": [
+      {
+        "p": "im-",
+        "m": "not"
+      },
+      {
+        "p": "pecuni",
+        "m": "money, cattle",
+        "o": "L"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "implacable": [
+      {
+        "p": "im-",
+        "m": "not"
+      },
+      {
+        "p": "plac",
+        "m": "please, soothe",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "inchoate": [
+      {
+        "p": "inchoat",
+        "m": "just begun",
+        "o": "L"
+      }
+    ],
+    "incontrovertible": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "contro-",
+        "m": "against",
+        "o": "L"
+      },
+      {
+        "p": "vert",
+        "m": "turn"
+      },
+      {
+        "p": "-ible"
+      }
+    ],
+    "indefatigable": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "de-"
+      },
+      {
+        "p": "fatig",
+        "m": "tire",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "ingenuous": [
+      {
+        "p": "in-",
+        "m": "in, into"
+      },
+      {
+        "p": "genu",
+        "m": "born, native"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "inimical": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "amic",
+        "m": "friend",
+        "o": "L"
+      },
+      {
+        "p": "-al"
+      }
+    ],
+    "insidious": [
+      {
+        "p": "in-",
+        "m": "in, into"
+      },
+      {
+        "p": "sid",
+        "m": "sit"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "intractable": [
+      {
+        "p": "in-",
+        "m": "not"
+      },
+      {
+        "p": "tract",
+        "m": "pull, draw"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "lugubrious": [
+      {
+        "p": "lugubr",
+        "m": "mournful",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "meretricious": [
+      {
+        "p": "meretric",
+        "m": "of a prostitute",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "mitigate": [
+      {
+        "p": "miti",
+        "m": "mild, soft",
+        "o": "L"
+      },
+      {
+        "p": "-gate",
+        "m": "to make",
+        "o": "L"
+      }
+    ],
+    "moribund": [
+      {
+        "p": "mori",
+        "m": "die"
+      },
+      {
+        "p": "-bund",
+        "m": "tending to",
+        "o": "L"
+      }
+    ],
+    "obfuscate": [
+      {
+        "p": "ob-"
+      },
+      {
+        "p": "fusc",
+        "m": "dark",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "obsequious": [
+      {
+        "p": "ob-"
+      },
+      {
+        "p": "sequ",
+        "m": "follow"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "ostensible": [
+      {
+        "p": "os-",
+        "m": "toward, against",
+        "o": "L"
+      },
+      {
+        "p": "tens",
+        "m": "stretch"
+      },
+      {
+        "p": "-ible"
+      }
+    ],
+    "pellucid": [
+      {
+        "p": "pel-",
+        "m": "through",
+        "o": "L"
+      },
+      {
+        "p": "luc",
+        "m": "light"
+      },
+      {
+        "p": "-id",
+        "m": "having the quality of",
+        "o": "L"
+      }
+    ],
+    "perfidious": [
+      {
+        "p": "per-"
+      },
+      {
+        "p": "fid",
+        "m": "faith, trust"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "pernicious": [
+      {
+        "p": "per-"
+      },
+      {
+        "p": "nic",
+        "m": "harm, death",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "prevaricate": [
+      {
+        "p": "pre-"
+      },
+      {
+        "p": "varic",
+        "m": "straddle, walk crookedly",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "recondite": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "condit",
+        "m": "hidden, stored away",
+        "o": "L"
+      }
+    ],
+    "redoubtable": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "doubt",
+        "m": "fear",
+        "o": "F"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "refractory": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "fract",
+        "m": "break"
+      },
+      {
+        "p": "-ory"
+      }
+    ],
+    "sagacious": [
+      {
+        "p": "sagac",
+        "m": "keen-scented, shrewd",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "salubrious": [
+      {
+        "p": "salubr",
+        "m": "healthful",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "sanguine": [
+      {
+        "p": "sangu",
+        "m": "blood",
+        "o": "L"
+      },
+      {
+        "p": "-ine"
+      }
+    ],
+    "taciturn": [
+      {
+        "p": "tacit",
+        "m": "silent",
+        "o": "L"
+      },
+      {
+        "p": "-urn",
+        "m": "inclined to",
+        "o": "L"
+      }
+    ],
+    "tenuous": [
+      {
+        "p": "tenu",
+        "m": "thin"
+      },
+      {
+        "p": "-uous",
+        "m": "having",
+        "o": "L"
+      }
+    ],
+    "trenchant": [
+      {
+        "p": "trench",
+        "m": "cut",
+        "o": "F"
+      },
+      {
+        "p": "-ant"
+      }
+    ],
+    "turpitude": [
+      {
+        "p": "turpi",
+        "m": "base, vile",
+        "o": "L"
+      },
+      {
+        "p": "-tude"
+      }
+    ],
+    "ubiquitous": [
+      {
+        "p": "ubiqu",
+        "m": "everywhere",
+        "o": "L"
+      },
+      {
+        "p": "-itous",
+        "m": "characterised by",
+        "o": "L"
+      }
+    ],
+    "venal": [
+      {
+        "p": "ven",
+        "m": "sale, price",
+        "o": "L"
+      },
+      {
+        "p": "-al"
+      }
+    ],
+    "vicarious": [
+      {
+        "p": "vicar",
+        "m": "substitute, in place of",
+        "o": "L"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "vituperative": [
+      {
+        "p": "vituper",
+        "m": "blame, censure",
+        "o": "L"
+      },
+      {
+        "p": "-ative",
+        "m": "tending to",
+        "o": "L"
+      }
+    ]
+  }
+}

@@ -168,33 +168,51 @@ export function rapidSession({ length = 20, packs = ['precision', 'rare', 'built
 /**
  * The vocabulary-size test.
  *
- * Yes/no over words drawn adaptively across the prevalence range, salted with
- * pseudowords to measure over-claiming, and with spot checks: say you know a
- * word and there is a chance you are immediately asked what it means. Where a
- * spot check happens it *replaces* the self-report rather than adding to it,
- * so nothing is counted twice.
+ * Every item is two stages. You are shown a word and say whether you know it;
+ * if you say yes you are immediately asked what it means, from four options.
+ * The item counts as passed only if you claimed it AND defined it.
+ *
+ * That is the difference between measuring vocabulary and measuring confidence.
+ * A bare yes/no test can be corrected for the AVERAGE rate of over-claiming
+ * using pseudowords, but it can never tell you which particular claims were
+ * hollow, and it hands the person being measured full control of their own
+ * score. Here the claim only opens the question.
+ *
+ * The yes/no stage earns its place as a router: it costs one tap to skip the
+ * definition question on a word you have never seen, and saying no is evidence.
+ *
+ * Pseudowords stay, at a lower rate, because the false-alarm rate they measure
+ * is a term in the item likelihood -- passing by over-claiming and then guessing
+ * one option in four -- and because it is worth showing you.
  */
-export function estimateSession({ length = 90, pseudoShare = 0.25, probeChance = 0.3 } = {}) {
+export function estimateSession({ length = 60, pseudoShare = 0.18 } = {}) {
   const pack = getPack();
   const items = pack.estimator.items;
   const pseudo = shuffle(pack.estimator.pseudo);
   let fit = currentAbility();
   const used = new Set();
   const results = [];
-  let i = 0, pseudoUsed = 0, probes = 0, probesFailed = 0, pending = null;
+  let i = 0, pseudoUsed = 0, claimed = 0, claimsFailed = 0, pending = null;
 
   const nPseudo = Math.round(length * pseudoShare);
 
   const pickReal = () => {
-    const target = A.targetPrevalence(fit.theta, 'yesno') + (Math.random() - 0.5) * 1.6;
-    let bestI = null, bestD = Infinity;
+    const target = A.targetPrevalence(fit.theta, 'verify') + (Math.random() - 0.5) * 1.4;
+    let best = null, bestD = Infinity;
     for (let n = 0; n < 400; n++) {
       const c = items[Math.floor(Math.random() * items.length)];
       if (used.has(c.w)) continue;
       const d = Math.abs(c.prev - target);
-      if (d < bestD) { bestD = d; bestI = c; }
+      if (d < bestD) { bestD = d; best = c; }
     }
-    return bestI;
+    return best;
+  };
+
+  /** One 'verify' observation per real item: claimed it and could define it. */
+  const bank = (word, b, passed) => {
+    S.record({ word, b, kind: 'verify', options: 4, ok: passed, mode: 'estimate' });
+    results.push({ w: word, passed });
+    if (i % 6 === 0) fit = currentAbility();
   };
 
   return {
@@ -203,9 +221,7 @@ export function estimateSession({ length = 90, pseudoShare = 0.25, probeChance =
     seconds: 0,
     get index() { return i; },
     next() {
-      if (pending) {                       // a spot check queued by the last yes
-        const q = pending; pending = null; return q;
-      }
+      if (pending) { const q = pending; pending = null; return q; }
       if (i >= length) return null;
       i++;
       const wantPseudo = pseudoUsed < nPseudo
@@ -222,34 +238,41 @@ export function estimateSession({ length = 90, pseudoShare = 0.25, probeChance =
       used.add(it.w);
       return {
         kind: 'yesno', pseudo: false, word: pack.byWord.get(it.w) || { w: it.w },
-        b: it.prev, calibrated: true, hasDef: !!it.hasDef,
+        b: it.prev, calibrated: true,
         prompt: { text: it.w, style: 'word' }, ask: 'Do you know this word?',
       };
     },
     answer(q, choice) {
-      if (q.kind === 'mcq') {              // this is a spot check
+      if (q.kind === 'mcq') {                    // the second stage
         const ok = !!(choice && choice.correct);
-        probes++; if (!ok) probesFailed++;
-        S.record({ word: q.word.w, b: q.b, kind: 'mcq', options: 4, ok, mode: 'estimate' });
-        if (!ok) S.schedule(q.word.w, false);
-        results.push({ q, ok, probe: true });
-        return { ok, correctOption: q.options.find((o) => o.correct), probe: true };
+        if (!ok) { claimsFailed++; S.schedule(q.word.w, false); }
+        bank(q.word.w, q.b, ok);
+        return { ok, correctOption: q.options.find((o) => o.correct), verified: true };
       }
+
       const claims = choice === 'yes';
-      const full = pack.byWord.get(q.word.w);
-      // Only follow up on a claim, and only where there is a definition to ask
-      // about. Checking a "no" would tell us nothing we did not just hear.
-      if (claims && !q.pseudo && askable(full) && Math.random() < probeChance) {
-        const probe = definitionQuestion(full);
-        if (probe) { pending = probe; return { ok: null, deferred: true }; }
+      if (q.pseudo) {
+        S.record({
+          word: q.word.w, b: null, kind: 'yesno', options: 0, ok: claims,
+          mode: 'estimate', pseudo: true, calibrated: false,
+        });
+        results.push({ w: q.word.w, pseudo: true, claimed: claims });
+        return { ok: null, recorded: true, claimed: claims, pseudo: true };
       }
-      S.record({
-        word: q.word.w, b: q.b, kind: 'yesno', options: 0, ok: claims,
-        mode: 'estimate', pseudo: q.pseudo, calibrated: !q.pseudo,
-      });
-      results.push({ q, ok: claims });
-      if (i % 8 === 0) fit = currentAbility();
-      return { ok: null, recorded: true, claimed: claims, pseudo: q.pseudo };
+
+      if (!claims) {                             // no claim, no need to test it
+        bank(q.word.w, q.b, false);
+        return { ok: null, recorded: true, claimed: false };
+      }
+
+      claimed++;
+      const full = pack.byWord.get(q.word.w);
+      const probe = askable(full) ? definitionQuestion(full) : null;
+      if (probe) { pending = probe; return { ok: null, deferred: true }; }
+      // Every estimator item is meant to carry a definition; if one somehow does
+      // not, take the claim at face value rather than failing it unfairly.
+      bank(q.word.w, q.b, true);
+      return { ok: null, recorded: true, claimed: true };
     },
     summary() {
       S.noteSession();
@@ -261,13 +284,15 @@ export function estimateSession({ length = 90, pseudoShare = 0.25, probeChance =
         trials: Math.round(f.trials),
       });
       S.save();
-      const fakes = results.filter((r) => r.q.pseudo);
+      const fakes = results.filter((r) => r.pseudo);
       return {
         mode: 'estimate', fit: f, vocab: v,
         answered: results.length,
         pseudoShown: fakes.length,
-        pseudoClaimed: fakes.filter((r) => r.ok).length,
-        probes, probesFailed,
+        pseudoClaimed: fakes.filter((r) => r.claimed).length,
+        claimed, claimsFailed,
+        tested: results.filter((r) => !r.pseudo).length,
+        passed: results.filter((r) => !r.pseudo && r.passed).length,
         falseAlarm: f.falseAlarm,
       };
     },

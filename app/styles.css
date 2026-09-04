@@ -1,8 +1,10 @@
 /* Wordhoard.
  *
- * PALETTE - the Danish naval ensign. A blue deeper than the flag's red is
- * bright, a parchment yellow, gold between them, and the ensign's crimson kept
- * in reserve for one job: being wrong.
+ * PALETTE - the Danish naval ensign, brightened. A clean deep blue, warm white
+ * paper rather than yellowed parchment, a marigold that carries every action,
+ * and a fresh teal for anything going right. The ensign's red is kept in
+ * reserve for one job: being wrong. The blue and the two accents are what stop
+ * the deep screens reading as heavy and the light ones as dim.
  *
  * TWO WORLDS. The shelf (home) is the deep world: navy ground, pale ink, gold.
  * Every other screen inverts it into parchment. The same components arrive in
@@ -26,34 +28,34 @@
      ground behind it -- including at the top, where the ground gradient is
      at its lightest. Get that wrong and every surface vanishes up there. */
   /* the deep world */
-  --navy:       #0d2340;
-  --navy-lift:  #12294a;
-  --navy-deep:  #07162a;
-  --navy-card:  #1d3a5b;
-  --navy-card2: #26496f;
-  --navy-line:  #315580;
-  --pale:       #f6ecc9;
-  --pale-soft:  #b9b8a0;
-  --pale-faint: #7f8878;
+  --navy:       #0e2742;
+  --navy-lift:  #16375c;
+  --navy-deep:  #081b31;
+  --navy-card:  #1c4067;
+  --navy-card2: #26527e;
+  --navy-line:  #345f8d;
+  --pale:       #f4f1e6;
+  --pale-soft:  #a9bdd0;
+  --pale-faint: #7794ad;
 
   /* the light world */
-  --parch:      #f1e9d2;
-  --parch-lift: #f6efdb;
-  --parch-deep: #e7d9b0;
-  --parch-card: #fffdf7;
-  --parch-card2:#faf3e2;
-  --parch-line: #e6d9b6;
-  --ink:        #10243f;
-  --ink-soft:   #55617a;
-  --ink-faint:  #93907c;
+  --parch:      #f4f2ec;
+  --parch-lift: #fbfaf6;
+  --parch-deep: #e6e6de;
+  --parch-card: #ffffff;
+  --parch-card2:#f2f4f3;
+  --parch-line: #e3e3db;
+  --ink:        #0f2740;
+  --ink-soft:   #566175;
+  --ink-faint:  #8d949e;
 
   /* held in common */
-  --gold:       #d3a04a;
-  --gold-lift:  #eac274;
-  --red:        #a62b38;
-  --red-wash:   #fbeceb;
-  --green:      #2b6a52;
-  --green-wash: #e8f2ea;
+  --gold:       #eda52c;
+  --gold-lift:  #f7c85a;
+  --red:        #d64550;
+  --red-wash:   #fdecec;
+  --green:      #12a594;
+  --green-wash: #e4f6f3;
 
   --serif: 'Literata', ui-serif, Georgia, 'Times New Roman', serif;
   --sans:  'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -157,30 +159,43 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
 .stack { display: grid; gap: .7rem; margin-top: 1.8rem; }
 
 /* -------------------------------------------------------------- word pile */
-/* The hero says what the tool is, the way Halyard's bunting does. It is built
-   from real words out of the bank, reshuffled every visit: a hoard of words,
-   which is the whole idea of the app in one picture. */
+/* The hero says what the tool is, the way Halyard's bunting does: real words
+   out of the bank, reshuffled every visit.
+
+   It sits BEHIND the wordmark rather than above it, at low enough contrast to
+   read as texture in the ground rather than as a picture placed on top of it.
+   That is the difference between an illustration and a surface. */
+.hero { position: relative; margin: 0 -1.1rem; padding: 0 1.1rem; }
 .hoard {
-  position: relative; height: 150px; margin: 0 -1.1rem .2rem;
+  position: absolute; inset: -2.2rem -1.1rem -1.4rem;
   display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
-  gap: .12rem .7rem; padding: .4rem 1.1rem; overflow: hidden;
-  /* Faded at every edge so the pile has no cut line -- it should look like a
-     drift of words rather than a cropped block of text. */
-  -webkit-mask-image: radial-gradient(112% 104% at 50% 50%, #000 34%, transparent 86%);
-          mask-image: radial-gradient(112% 104% at 50% 50%, #000 34%, transparent 86%);
+  gap: .05rem .6rem; padding: 0 1rem; overflow: hidden;
+  pointer-events: none; user-select: none;
+  /* Half a pixel of blur is the difference between a list of words you start
+     reading and a texture you stop noticing. */
+  filter: blur(.5px);
+  /* Two masks: a soft oval so it has no edges, and a downward fade so the
+     texture thins out behind the wordmark instead of running through it. */
+  -webkit-mask-image: radial-gradient(100% 92% at 50% 34%, #000 5%, transparent 72%),
+                      linear-gradient(to bottom, #000 0%, #000 42%, transparent 88%);
+          mask-image: radial-gradient(100% 92% at 50% 34%, #000 5%, transparent 72%),
+                      linear-gradient(to bottom, #000 0%, #000 42%, transparent 88%);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
 }
 .hoard span {
   font-family: var(--serif); color: var(--pale);
-  line-height: 1.18; white-space: nowrap;
+  line-height: 1.22; white-space: nowrap;
 }
-.hoard .w-xs { font-size: .72rem; opacity: .26; }
-.hoard .w-sm { font-size: .95rem; opacity: .38; }
-.hoard .w-md { font-size: 1.25rem; opacity: .5; }
-.hoard .w-lg { font-size: 1.7rem; opacity: .66; font-weight: 600; }
-.hoard .w-hot { color: var(--gold); opacity: .95; font-weight: 700; }
+/* Low enough that it never competes with the wordmark sitting over it. */
+.hoard .w-xs { font-size: .82rem; opacity: .03; }
+.hoard .w-sm { font-size: 1.1rem; opacity: .04; }
+.hoard .w-md { font-size: 1.5rem; opacity: .05; }
+.hoard .w-lg { font-size: 2.1rem; opacity: .062; font-weight: 600; }
+.hoard .w-hot { color: var(--gold); opacity: .11; font-weight: 700; }
 
 /* --------------------------------------------------------------- masthead */
-.masthead { padding: .2rem 0 0; }
+.masthead { position: relative; padding: 3.2rem 0 2.4rem; }
 .wordmark {
   font-family: var(--serif); font-weight: 700; font-size: 2.85rem;
   letter-spacing: -.038em; margin: 0; line-height: 1; color: var(--text);
@@ -630,3 +645,22 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
 .q-headline-def { align-items: flex-start; text-align: left; gap: .8rem; }
 .q-headline-def .q-def { flex: 1; min-width: 0; }
 .q-headline-def .speak-btn { margin-top: .25rem; }
+
+/* ------------------------------------------------------------------ roots */
+/* The word taken apart. Set quietly: it is the thing you read after you have
+   read the answer, not competing with it. */
+.roots {
+  margin-top: .8rem; padding-top: .75rem; border-top: 1px solid var(--line);
+}
+.roots-parts { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .5rem; }
+.roots-plus { color: var(--text-faint); font-size: .8rem; }
+.roots-part { display: inline-flex; align-items: baseline; gap: .35rem; }
+.roots-piece {
+  font-family: var(--serif); font-weight: 700; font-size: .95rem;
+  color: var(--accent); letter-spacing: -.01em;
+}
+.roots-means { font-size: .78rem; color: var(--text-soft); }
+.roots-origin {
+  font-size: .72rem; color: var(--text-faint); margin-top: .45rem;
+  letter-spacing: .02em;
+}

@@ -5,6 +5,10 @@
  * the number on the front screen means anything: a vocabulary test cannot be
  * validated against a real person, because nobody knows their own true count.
  *
+ * The simulated respondent is deliberately unflattering. He over-claims at a
+ * realistic rate, and when he over-claims he then guesses the definition. If
+ * the estimator can be fooled by that, this is where it shows.
+ *
  * Reports, per ability level:
  *   bias       average error in lemmas (should be near zero)
  *   spread     standard deviation of the estimate across replications
@@ -24,9 +28,8 @@ const est = JSON.parse(readFileSync(join(ROOT, 'app/data/en/estimator.json'), 'u
 const items = est.items.map(([w, prev, pknown, zipf, hasDef]) => ({ w, prev, pknown, hasDef }));
 const hist = est.hist;
 
-const LENGTH = 90;
-const PSEUDO_SHARE = 0.25;
-const PROBE_CHANCE = 0.3;
+const LENGTH = 60;
+const PSEUDO_SHARE = 0.18;
 const REPLICATIONS = 200;
 // A respondent who claims words they do not know. Kept modest but non-zero:
 // the whole point of the pseudowords is that this happens.
@@ -51,7 +54,7 @@ function simulate(trueTheta) {
       continue;
     }
     // same adaptive rule the app uses
-    const target = targetPrevalence(fit.theta, 'yesno') + (Math.random() - 0.5) * 1.6;
+    const target = targetPrevalence(fit.theta, 'verify') + (Math.random() - 0.5) * 1.4;
     let best = null, bestD = Infinity;
     for (let n = 0; n < 400; n++) {
       const c = items[Math.floor(Math.random() * items.length)];
@@ -62,18 +65,16 @@ function simulate(trueTheta) {
     if (!best) break;
     used.add(best.w);
 
+    // Two stages: claim it, then define it. The item passes only if both hold.
     const knows = Math.random() < phi(trueTheta + best.prev);
     const claims = knows || Math.random() < TRUE_FALSE_ALARM;
+    const passed = claims && (knows || Math.random() < 0.25);
+    observations.push({
+      w: best.w, b: best.prev, kind: 'verify', options: 4,
+      ok: passed ? 1 : 0, t: Date.now(),
+    });
 
-    if (claims && best.hasDef && Math.random() < PROBE_CHANCE) {
-      // A spot check replaces the self-report rather than adding to it.
-      const correct = knows || Math.random() < 0.25;
-      observations.push({ w: best.w, b: best.prev, kind: 'mcq', options: 4, ok: correct ? 1 : 0, t: Date.now() });
-    } else {
-      observations.push({ w: best.w, b: best.prev, kind: 'yesno', options: 0, ok: claims ? 1 : 0, t: Date.now() });
-    }
-
-    if (i % 8 === 0) {
+    if (i % 6 === 0) {
       const fa = falseAlarmRate(observations);
       fit = fitAbility(bucket(observations), fa.rate);
     }

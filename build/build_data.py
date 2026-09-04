@@ -253,6 +253,88 @@ NARROW_DOMAIN = {
 }
 
 
+ORIGIN_NAMES = {
+    "L": "Latin", "G": "Greek", "OE": "Old English", "F": "French",
+    "N": "Norse", "AR": "Arabic",
+}
+
+
+def load_morphemes() -> dict:
+    return json.loads((CURATED / "morphemes.json").read_text(encoding="utf-8"))
+
+
+def decompose(w: str, morph: dict):
+    """Break a word into prefix + root + suffix where the parts are recognised.
+
+    This is a morpheme table rather than a scraped etymology on purpose: an
+    etymology tells you about one word, a root tells you about every word that
+    carries it. Knowing 'ob-' is against and 'via' is way unlocks obviate,
+    obstruct, deviate, devious and trivial in one go.
+
+    Deliberately conservative. It returns nothing unless a real root is found
+    and the recognised parts account for most of the word, because a wrong
+    decomposition is worse than none -- it would teach a false pattern.
+    """
+    prefixes, roots, suffixes = morph["prefixes"], morph["roots"], morph["suffixes"]
+    pre_list = sorted(prefixes, key=len, reverse=True) + [""]
+    suf_list = sorted(suffixes, key=len, reverse=True) + [""]
+    root_list = sorted(roots, key=len, reverse=True)
+    best = None
+
+    for pre in pre_list:
+        if pre and not w.startswith(pre):
+            continue
+        rest = w[len(pre):]
+        if len(rest) < 3:
+            continue
+        for suf in suf_list:
+            if suf and not rest.endswith(suf):
+                continue
+            core = rest[: len(rest) - len(suf)] if suf else rest
+            if len(core) < 2:
+                continue
+            for root in root_list:
+                if len(root) < 3:
+                    continue
+                # The root has to sit at the front of what is left, give or take
+                # a linking vowel or a stem change of a letter or two. Matching
+                # a root anywhere inside the word would find 'via' in 'trivial'
+                # by accident as often as by etymology.
+                if not core.startswith(root):
+                    continue
+                slack = len(core) - len(root)
+                # Leftover between root and suffix may only be a linking vowel.
+                # Anything more and the match is spelling coincidence: it is how
+                # 'magic' came out as magn- (great) and 'vitiate' as vit- (life).
+                if slack > 1 or (slack == 1 and core[len(root)] not in "aeiou"):
+                    continue
+                # There must be an affix. A bare root with nothing attached is
+                # the other failure mode -- 'taco' as tac- (silent).
+                if not pre and not suf:
+                    continue
+                covered = (len(pre) + len(root) + len(suf)) / len(w)
+                if covered < 0.7:
+                    continue
+                score = covered - slack * 0.08 + (0.2 if pre else 0) + (0.1 if suf else 0)
+                if best is None or score > best[0]:
+                    best = (score, pre, root, suf)
+                break
+
+    if best is None:
+        return None
+    _, pre, root, suf = best
+    parts = []
+    if pre:
+        parts.append({"p": pre + "-", "m": prefixes[pre]["means"],
+                      "o": ORIGIN_NAMES.get(prefixes[pre]["origin"], "")})
+    parts.append({"p": root, "m": roots[root]["means"],
+                  "o": ORIGIN_NAMES.get(roots[root]["origin"], "")})
+    if suf:
+        parts.append({"p": "-" + suf, "m": suffixes[suf]["means"],
+                      "o": ORIGIN_NAMES.get(suffixes[suf]["origin"], "")})
+    return parts
+
+
 def clean_gloss(d: str) -> str:
     """Strip the usage examples and citations WordNet packs into its glosses.
 
@@ -587,6 +669,72 @@ def main() -> int:
     print("pack sizes                " + "  ".join(f"{k}={v:,}" for k, v in sorted(counts.items())))
 
     # ---- 4. write ----------------------------------------------------------
+    morph = load_morphemes()
+    _syn_cache = {}
+
+    def synset_cache(term):
+        if term not in _syn_cache:
+            _syn_cache[term] = wn.synsets(term)[:3]
+        return _syn_cache[term]
+
+    STOP = {"the", "and", "for", "with", "that", "any", "one", "who", "act",
+            "state", "result", "relating", "characterised", "being", "manner",
+            "quality", "process", "means", "having", "tending", "capable",
+            "full", "make", "not", "out", "into", "from", "away", "down"}
+
+    def echoes(parts, definition):
+        """Does the breakdown actually explain the meaning, or just the spelling?
+
+        Latin gives English several roots that share a spelling and share
+        nothing else: terr- is earth in 'terrain' and frighten in 'deterrence',
+        ver- is true in 'verify' and fear in 'reverent'. No rule about letters
+        can separate those. But a breakdown that is genuinely the right one
+        almost always leaves a trace of itself in the definition, so requiring
+        one word in common throws out the coincidences.
+
+        It costs some correct breakdowns too. That is the right way round: a
+        wrong root does not merely fail to teach, it teaches something false.
+        """
+        dwords = {t[:4] for t in re.findall(r"[a-z]{3,}", definition.lower()) if t not in STOP}
+        for part in parts:
+            # Only the ROOT may vouch for the breakdown. Letting a prefix do it
+            # passes anything: 'recur' matched because its definition says
+            # 'again' and re- means again, while the root it picked -- cur,
+            # care -- had nothing to do with the word, which is from currere,
+            # to run.
+            if part["p"].startswith("-") or part["p"].endswith("-"):
+                continue
+            for t in re.findall(r"[a-z]{3,}", part["m"].lower()):
+                if t not in STOP and t[:4] in dwords:
+                    return True
+        return False
+
+    # Hand-written breakdowns for words worth explaining that the matcher either
+    # cannot reach or would get wrong. These override it outright.
+    def hand(entry):
+        out = []
+        for part in entry:
+            table = ("prefixes" if part["p"].endswith("-")
+                     else "suffixes" if part["p"].startswith("-") else "roots")
+            key = part["p"].strip("-")
+            known = morph[table].get(key)
+            out.append({
+                "p": part["p"],
+                "m": part.get("m") or (known or {}).get("means", ""),
+                "o": ORIGIN_NAMES.get(part.get("o") or (known or {}).get("origin", ""), ""),
+            })
+        return out
+
+    written = {w.lower(): hand(parts) for w, parts in morph.get("words", {}).items()}
+    for rec in words:
+        if rec["w"] in written:
+            rec["roots"] = written[rec["w"]]
+            continue
+        parts = decompose(rec["w"], morph)
+        rec["roots"] = parts if (parts and echoes(parts, rec["def"])) else None
+    n_roots = sum(1 for r in words if r["roots"])
+    print(f"root breakdowns          {n_roots:>7,}  ({n_roots / max(1, len(words)):.0%} of the bank)")
+
     lexnames = sorted({r["lex"] for r in words})
     lex_ix = {n: i for i, n in enumerate(lexnames)}
     packs = ["core", "precision", "rare", "builtform"]
@@ -597,7 +745,7 @@ def main() -> int:
         rows.append([
             r["w"], round(r["pknown"], 3), round(r["prev"], 3), round(r["zipf"], 2),
             r["pos"], lex_ix[r["lex"]], pack_ix[r["pack"]], r["def"],
-            r["ex"], r["syn"] or None, r["note"], r.get("cal", 1),
+            r["ex"], r["syn"] or None, r["note"], r.get("cal", 1), r.get("roots"),
         ])
 
     OUT.mkdir(parents=True, exist_ok=True)
@@ -605,7 +753,7 @@ def main() -> int:
         "lang": "en",
         "built": date.today().isoformat(),
         "cols": ["w", "pknown", "prev", "zipf", "pos", "lex", "pack", "def", "ex", "syn",
-                 "note", "cal"],
+                 "note", "cal", "roots"],
         "pos": POS_NAMES,
         "lex": lexnames,
         "packs": packs,
@@ -616,19 +764,23 @@ def main() -> int:
     # Items are drawn to cover the prevalence range evenly, because that is where
     # the information about theta lives: words everyone knows and words nobody
     # knows tell you almost nothing.
-    have_def = {r["w"] for r in words}
+    # Items are drawn from the BANK rather than the raw prevalence list, so every
+    # one of them has a definition and can therefore be tested rather than
+    # merely claimed. Restricting which items get administered does not bias
+    # theta -- each item's difficulty is known individually, so this is item
+    # response theory, not domain sampling. The vocabulary total is still summed
+    # over the whole 61,853-word inventory, which is what the histogram is for.
     strata = defaultdict(list)
-    for w, rec in prev.items():
-        if is_clean_word(w) and w not in excluded:
-            strata[min(int(rec["pknown"] * 20), 19)].append(w)
+    for rec in words:
+        if rec["cal"] and rec["def"]:
+            strata[min(int(rec["pknown"] * 20), 19)].append(rec)
     items = []
     for band in range(20):
-        pool = sorted(strata[band])
+        pool = sorted(strata[band], key=lambda r: r["w"])
         RNG.shuffle(pool)
-        for w in pool[:180]:
-            rec = prev[w]
-            items.append([w, round(rec["prev"], 3), round(rec["pknown"], 3),
-                          round(rec["zipf"], 2), 1 if w in have_def else 0])
+        for rec in pool[:400]:
+            items.append([rec["w"], round(rec["prev"], 3), round(rec["pknown"], 3),
+                          round(rec["zipf"], 2), 1])
     RNG.shuffle(items)
     everyday = {w for w, rec in prev.items() if rec["pknown"] >= 0.5 and is_clean_word(w)}
     pseudo = build_pseudowords(real_words, everyday, 1200)

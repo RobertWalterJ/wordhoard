@@ -15,13 +15,23 @@
  * The scoring of an *answer* is not the same as knowing the word, so each kind
  * of observation gets its own link:
  *
+ *   verify    P(pass)    = K + (1-K) * f * 0.25            K = Phi(theta + b)
  *   yes/no    P(yes)     = f + (1-f) * Phi(theta + b)      f = false-alarm rate
  *   multiple  P(correct) = g + (1-g) * Phi(theta + b)      g = 1/options
  *   recall    P(correct) = Phi(theta + b - RECALL_COST)
  *
- * The false-alarm rate is what the pseudowords are for: claiming 'traisket' is
- * the only direct evidence of over-claiming, and without it a yes/no test just
- * measures confidence.
+ * 'verify' is the estimator's item and the reason the number can be defended.
+ * A bare yes/no measures what someone will claim; the pseudowords correct the
+ * average level of over-claiming but cannot tell you WHICH claims were hollow.
+ * So an estimator item is two stages: say whether you know the word, and if you
+ * say yes, define it from four options. The item passes only if both happen.
+ * Its likelihood follows from the structure -- you pass by knowing it, or by
+ * over-claiming (f) and then guessing right (1/4) -- which is why the term is
+ * small rather than a fudge factor.
+ *
+ * The yes/no stage is kept because it is an efficient router: it costs one tap
+ * to skip the definition question on a word you have never seen, and 'no' is
+ * evidence in its own right.
  */
 
 // Producing a word from its definition is harder than recognising it. The
@@ -52,6 +62,9 @@ export const phi = (z) => 0.5 * (1 + erf(z / Math.SQRT2));
 /** Probability of answering correctly, given ability and the kind of question. */
 export function pCorrect(theta, b, kind, options = 4, falseAlarm = 0.05) {
   const known = phi(theta + b - (kind === 'recall' ? RECALL_COST : 0));
+  // Claimed it AND defined it: pass by knowing, or by over-claiming and then
+  // guessing one option in four.
+  if (kind === 'verify') return known + (1 - known) * falseAlarm * 0.25;
   if (kind === 'yesno') return falseAlarm + (1 - falseAlarm) * known;
   if (kind === 'recall') return known;
   const g = 1 / Math.max(2, options);

@@ -142,11 +142,11 @@ function surface(size) {
 // ── the mark: a hoard of words, stacked ─────────────────────────────────
 // Four bars tapering downward. It reads as lines of text at a glance and as a
 // pile at a distance, and it still resolves at 48px on a home screen.
-const NAVY_TOP = [19, 44, 78];
-const NAVY_BOT = [10, 27, 51];
-const PALE = [242, 229, 184, 255];
-const PALE_DIM = [188, 176, 138, 255];
-const GOLD = [201, 150, 63, 255];
+const NAVY_TOP = [22, 55, 92];
+const NAVY_BOT = [8, 27, 49];
+const PALE = [244, 241, 230, 255];
+const PALE_DIM = [169, 189, 208, 255];
+const GOLD = [237, 165, 44, 255];
 
 function draw(size, { bleed }) {
   const s = surface(size);

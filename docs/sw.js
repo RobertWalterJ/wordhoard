@@ -6,7 +6,7 @@
    Network-first means the app is current whenever the server is reachable and
    works completely offline when it is not, which is the point of installing it:
    a vocabulary round on the subway should not need a signal. */
-const CACHE = 'wordhoard-v3';
+const CACHE = 'wordhoard-v4';
 const ASSETS = [
   '.',
   'index.html',

@@ -51,10 +51,24 @@ export async function loadPack(lang = LANG) {
   }
   for (const arr of byPos.values()) arr.sort((a, b) => a.prev - b.prev);
 
+  // Same part of speech AND same ending, sorted by difficulty. Without this the
+  // guarantee of a matching decoy fails silently whenever the target's
+  // neighbours happen not to share its ending -- which for a rare -ity noun is
+  // most of the time.
+  const bySuffix = new Map();
+  for (const w of list) {
+    const suf = suffixOf(w.w);
+    if (!suf) continue;
+    const key = `${w.pos}|${suf}`;
+    if (!bySuffix.has(key)) bySuffix.set(key, []);
+    bySuffix.get(key).push(w);
+  }
+  for (const arr of bySuffix.values()) arr.sort((a, b) => a.prev - b.prev);
+
   const playable = list.filter((w) => w.packName !== 'core');
 
   pack = {
-    lang, meta, words: list, byWord, byPack, byPos, playable,
+    lang, meta, words: list, byWord, byPack, byPos, bySuffix, playable,
     packNames: words.packs,
     posNames: words.pos,
     estimator: {
@@ -97,31 +111,94 @@ const shareMeaning = (a, b) => {
   return false;
 };
 
+/* Word shape, so the wrong answers cannot be eliminated on shape alone.
+   If the answer is the only -ly word among four, or the only short one, the
+   question is testing pattern-matching rather than vocabulary. */
+const SUFFIXES = [
+  'ability', 'ibility', 'ization', 'isation', 'ousness', 'iveness',
+  'ation', 'ition', 'ution', 'ement', 'ility', 'ously', 'ingly', 'edly',
+  'ance', 'ence', 'tion', 'sion', 'ness', 'ment', 'ship', 'hood', 'less',
+  'able', 'ible', 'ical', 'ious', 'eous', 'ative', 'itive', 'ary', 'ory',
+  'ant', 'ent', 'ify', 'ise', 'ize', 'ate', 'ism', 'ist', 'ity', 'ive',
+  'ous', 'ful', 'ish', 'age', 'ure', 'ial', 'ual', 'ly', 'al', 'ic', 'y',
+];
+const PREFIXES = [
+  'counter', 'circum', 'contra', 'trans', 'super', 'inter', 'intra', 'under',
+  'over', 'semi', 'anti', 'auto', 'post', 'pre', 'pro', 'sub', 'dis', 'mis',
+  'non', 'out', 'con', 'com', 'ex', 'in', 'im', 'ir', 'il', 'un', 're', 'de',
+  'ab', 'ad', 'be', 'en', 'em', 'ob', 'per', 'a',
+];
+
+export function suffixOf(w) {
+  for (const suf of SUFFIXES) {
+    if (w.length - suf.length >= 3 && w.endsWith(suf)) return suf;
+  }
+  return '';
+}
+
+/** The word with its affixes stripped -- a crude root, good enough to group by. */
+export function rootOf(w) {
+  let core = w;
+  for (const pre of PREFIXES) {
+    if (core.length - pre.length >= 4 && core.startsWith(pre)) { core = core.slice(pre.length); break; }
+  }
+  const suf = suffixOf(core);
+  if (suf && core.length - suf.length >= 3) core = core.slice(0, -suf.length);
+  return core.slice(0, 5);
+}
+
 /**
  * Four options for a word, as similar as the bank allows.
- * Same part of speech, comparable difficulty, and preferring the same WordNet
- * domain, so the wrong answers are wrong on the meaning rather than obviously
- * out of place. Anything sharing a sense with the target is excluded: two
- * defensible answers is a broken question, not a hard one.
+ *
+ * Same part of speech and comparable difficulty are the floor. On top of that
+ * the wrong answers are scored for resemblance to the right one -- same ending,
+ * same root, similar length, same WordNet domain -- because a question whose
+ * answer can be picked out by shape is testing pattern-matching, not
+ * vocabulary. If the answer is an -ly adverb, at least one decoy should be too.
+ *
+ * Anything sharing a sense with the target is excluded outright: two defensible
+ * answers is a broken question, not a hard one.
  */
 export function distractorsFor(word, count = 3, rng = Math.random) {
-  const pool = neighboursByPrevalence(word, count);
-  const sameDomain = pool.filter((c) => c.lex === word.lex && !shareMeaning(word, c));
-  const rest = pool.filter((c) => c.lex !== word.lex && !shareMeaning(word, c));
-  const picked = [];
-  const take = (arr, n) => {
-    const copy = arr.slice();
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    for (const c of copy) {
-      if (picked.length >= n) break;
-      if (!picked.some((p) => p.w === c.w)) picked.push(c);
-    }
+  const pool = neighboursByPrevalence(word, count * 3, { spread: 1.4 })
+    .filter((c) => !shareMeaning(word, c));
+  if (pool.length < count) return pool.slice(0, count);
+
+  const suf = suffixOf(word.w);
+  const root = rootOf(word.w);
+  const len = word.w.length;
+
+  const score = (c) => {
+    let sc = 0;
+    if (suf && suffixOf(c.w) === suf) sc += 5;          // same ending
+    if (root.length >= 4 && rootOf(c.w) === root) sc += 4; // same root
+    if (c.lex === word.lex) sc += 2;                    // same domain of meaning
+    sc -= Math.abs(c.w.length - len) * 0.35;            // similar length
+    sc -= Math.abs(c.prev - word.prev) * 0.8;           // similar difficulty
+    return sc + rng() * 1.2;                            // keep rounds from repeating
   };
-  take(sameDomain, Math.min(count, 2));   // at least one near-miss, never all four
-  take(rest, count);
-  take(pool, count);
+
+  const ranked = pool.map((c) => ({ c, s: score(c) })).sort((a, b) => b.s - a.s);
+  const picked = [];
+  // Guarantee one decoy that ends the same way, so the ending is never the tell.
+  if (suf) {
+    const match = ranked.find((r) => suffixOf(r.c.w) === suf);
+    if (match) picked.push(match.c);
+    else {
+      // None nearby: go and find the closest one in the whole language.
+      const shelf = pack.bySuffix.get(`${word.pos}|${suf}`) || [];
+      let best = null, bestD = Infinity;
+      for (const c of shelf) {
+        if (c.w === word.w || shareMeaning(word, c)) continue;
+        const d = Math.abs(c.prev - word.prev);
+        if (d < bestD) { bestD = d; best = c; }
+      }
+      if (best) picked.push(best);
+    }
+  }
+  for (const r of ranked) {
+    if (picked.length >= count) break;
+    if (!picked.some((p) => p.w === r.c.w)) picked.push(r.c);
+  }
   return picked.slice(0, count);
 }

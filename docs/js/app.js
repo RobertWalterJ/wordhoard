@@ -66,7 +66,7 @@ function ring(fraction, value, caption) {
   grad.setAttribute('id', 'ringGrad');
   grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
   grad.setAttribute('x2', '1'); grad.setAttribute('y2', '1');
-  for (const [offset, color] of [['0%', '#d3a04a'], ['100%', '#eac274']]) {
+  for (const [offset, color] of [['0%', '#eda52c'], ['100%', '#f7c85a']]) {
     const stop = document.createElementNS(NS, 'stop');
     stop.setAttribute('offset', offset);
     stop.setAttribute('stop-color', color);
@@ -154,6 +154,33 @@ function speakButton(word, { small = false, label, rate } = {}) {
     setTimeout(() => b.classList.remove('speaking'), 900);
   });
   return b;
+}
+
+/**
+ * The word taken apart.
+ *
+ * A definition tells you about one word; its roots tell you about every word
+ * that carries them. Knowing ob- is "against" and via is "way" gives you
+ * obviate, deviate, devious and trivial at the same time, which is the point:
+ * it lets you make an educated guess at a word you have never met.
+ */
+function rootsBlock(word) {
+  if (!word || !word.roots || !word.roots.length) return null;
+  const box = el('div', 'roots');
+  const line = el('div', 'roots-parts');
+  word.roots.forEach((part, i) => {
+    if (i) line.append(el('span', 'roots-plus', '+'));
+    const chunk = el('span', 'roots-part');
+    chunk.append(el('span', 'roots-piece', part.p), el('span', 'roots-means', part.m));
+    line.append(chunk);
+  });
+  box.append(line);
+  const origins = [...new Set(word.roots.map((r) => r.o).filter(Boolean))];
+  if (origins.length) {
+    box.append(el('div', 'roots-origin',
+      origins.length === 1 ? `From the ${origins[0]}.` : `From the ${origins.join(' and the ')}.`));
+  }
+  return box;
 }
 
 /* -------------------------------------------------------------------- home */
@@ -556,6 +583,8 @@ function showVerdict(q, choice, outcome) {
     // the one worth being able to pronounce.
     if (speakAnswers() && target && !q.pseudo) spoke = Speech.speak(target);
 
+    const roots = rootsBlock(full);
+    if (roots) fb.append(roots);
     if (q.explain) fb.append(el('div', 'fb-note', q.explain));
     else if (full && full.note) fb.append(el('div', 'fb-note', full.note));
   }
@@ -662,6 +691,8 @@ function wordListSection(title, words, { note } = {}) {
     left.append(head);
     if (full.def) left.append(el('div', 'wl-def', full.def));
     if (full.note) left.append(el('div', 'wl-note', full.note));
+    const wlRoots = rootsBlock(full);
+    if (wlRoots) left.append(wlRoots);
 
     const tools = el('div', 'wl-tools');
     const sb = speakButton(full.w, { small: true });
