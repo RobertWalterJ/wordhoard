@@ -24,7 +24,14 @@ const blank = () => ({
   sessions: 0,
   lastPlayed: null,
   streak: 0,
-  settings: { rapidLength: 20, rapidSeconds: 12, packs: ['precision', 'rare', 'builtform'], theme: 'auto' },
+  settings: {
+    rapidLength: 20,
+    rapidSeconds: 12,
+    packs: ['precision', 'rare', 'builtform'],
+    // Speech defaults on: hearing an unfamiliar word is most of learning to
+    // use it, and it is one tap in Settings to silence.
+    speak: 'both',
+  },
 });
 
 let state = null;

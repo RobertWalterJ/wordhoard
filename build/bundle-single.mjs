@@ -23,7 +23,7 @@ const read = (p) => readFileSync(join(APP, p), 'utf8');
 
 /* --------------------------------------------------------------- modules */
 
-const MODULE_ORDER = ['js/ability.js', 'js/store.js', 'js/data.js', 'js/modes.js', 'js/app.js'];
+const MODULE_ORDER = ['js/ability.js', 'js/store.js', 'js/speech.js', 'js/data.js', 'js/modes.js', 'js/app.js'];
 
 function transform(path) {
   let src = read(path);

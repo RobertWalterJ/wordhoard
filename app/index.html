@@ -27,11 +27,11 @@
   <section class="screen" id="screen-home">
     <header class="masthead">
       <h1 class="wordmark">Wordhoard</h1>
-      <p class="tagline">Your store of words — measured, tested and enlarged.</p>
+      <p class="tagline">Your store of words &#8212; measured, tested and enlarged.</p>
     </header>
 
     <button class="estimate-card" id="estimate-card" type="button">
-      <div class="estimate-card-inner" id="estimate-card-inner"></div>
+      <span class="estimate-card-inner" id="estimate-card-inner"></span>
     </button>
 
     <nav class="modes" id="modes"></nav>
@@ -40,6 +40,7 @@
       <span id="streak-line"></span>
       <span class="foot-links">
         <button class="link" data-go="progress" type="button">Progress</button>
+        <button class="link" data-go="settings" type="button">Settings</button>
         <button class="link" data-go="about" type="button">About</button>
       </span>
     </footer>
@@ -48,22 +49,25 @@
   <!-- ------------------------------------------------------------- play -->
   <section class="screen" id="screen-play" hidden>
     <div class="play-bar">
-      <button class="icon-btn" id="quit" type="button" aria-label="Leave this round">&larr;</button>
-      <div class="progress" role="progressbar" aria-label="Round progress">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
+      <button class="icon-btn" id="quit" type="button" aria-label="Leave this round">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
+      </button>
+      <div class="progress"><div class="progress-fill" id="progress-fill"></div></div>
       <div class="play-count" id="play-count"></div>
     </div>
     <div class="timer" id="timer" hidden><div class="timer-fill" id="timer-fill"></div></div>
 
     <div class="question" id="question"></div>
     <div class="options" id="options"></div>
-    <div class="feedback" id="feedback" hidden></div>
 
-    <div class="play-foot">
-      <div class="score-chip" id="score-chip" hidden></div>
-      <button class="btn primary" id="advance" type="button" hidden>Next</button>
+    <div class="verdict" id="feedback" hidden aria-live="polite"></div>
+
+    <div class="continue" id="continue-row" hidden>
+      <div class="continue-line"><div class="continue-fill" id="continue-fill"></div></div>
+      <button class="continue-btn" id="advance" type="button">Continue</button>
     </div>
+
+    <div class="score-chip" id="score-chip" hidden></div>
   </section>
 
   <!-- ----------------------------------------------------------- result -->
@@ -71,23 +75,38 @@
     <div id="result-body"></div>
     <div class="stack">
       <button class="btn primary" id="again" type="button">Play again</button>
-      <button class="btn" data-go="home" type="button">Back to the shelf</button>
+      <button class="btn quiet" data-go="home" type="button">Back to the shelf</button>
     </div>
   </section>
 
   <!-- --------------------------------------------------------- progress -->
   <section class="screen" id="screen-progress" hidden>
     <header class="screen-head">
-      <button class="icon-btn" data-go="home" type="button" aria-label="Back">&larr;</button>
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
+      </button>
       <h2>Progress</h2>
     </header>
     <div id="progress-body"></div>
   </section>
 
+  <!-- --------------------------------------------------------- settings -->
+  <section class="screen" id="screen-settings" hidden>
+    <header class="screen-head">
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
+      </button>
+      <h2>Settings</h2>
+    </header>
+    <div id="settings-body"></div>
+  </section>
+
   <!-- ------------------------------------------------------------ about -->
   <section class="screen" id="screen-about" hidden>
     <header class="screen-head">
-      <button class="icon-btn" data-go="home" type="button" aria-label="Back">&larr;</button>
+      <button class="icon-btn" data-go="home" type="button" aria-label="Back">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6"/></svg>
+      </button>
       <h2>About the number</h2>
     </header>
     <div id="about-body"></div>

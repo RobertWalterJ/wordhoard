@@ -18,6 +18,11 @@ that is the server. Closing it stops the app.
 | **Sharpen** | The confusables — `disinterested`, `fulsome`, `militate`, `nonplussed`. Words you already think you know, used the way they actually mean. |
 | **Summon** | Meaning first; you write the word. The step from recognising to using. |
 
+**Pronunciation.** Words are read aloud in whichever English voice the device
+provides — on the word as the question appears, on the answer once you have
+chosen, or both. A word you are not sure how to say is a word you will not use.
+Every word list has a speaker button too. Settings turns it off.
+
 Every answer in every mode feeds the same estimate. Progress accumulates across
 sessions rather than resetting.
 
@@ -77,9 +82,20 @@ Colours are the Danish naval ensign's — a blue deeper than the flag's red is
 bright, a parchment yellow, and the ensign's dark crimson held in reserve for one
 job: being wrong. Nothing else is allowed to be red.
 
-Literata sets every word and definition; Archivo does the interface chrome, so
-the word is the only thing on the page asking to be read. Both are self-hosted,
-so they survive offline.
+**Two typefaces, two jobs.** Literata sets the things you *read* — the word under
+test, its definition, the numbers, the screen titles. Archivo sets the things you
+*use* — every option, button, label and stat. The rule is absolute: the moment an
+answer is set in the same face as the word, it stops being obvious which is the
+content and which is the interface. Both self-hosted, so they survive offline.
+
+**Few edges.** Almost nothing is a box. Structure comes from hairlines, space and
+alignment; options are ruled rows with lettered keys rather than four bordered
+cards, and a solid fill is spent only on the one primary action per screen.
+
+**It moves on by itself.** Tapping an answer shows the verdict and a line runs
+down showing how long you have to read it — longer when you were wrong, and
+longer again when there is an explanation. A tap anywhere skips ahead. Making
+someone find a Next button doubles the taps and breaks the rhythm.
 
 This commits to a single art direction rather than following the system theme —
 the inversion *is* the identity, and a dark mode would flatten both halves into

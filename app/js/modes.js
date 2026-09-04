@@ -140,7 +140,10 @@ export function rapidSession({ length = 20, packs = ['precision', 'rare', 'built
         // Harder words are worth more, and speed is worth something but never
         // more than being right.
         const difficulty = 1 - (q.word.pknown ?? 0.5);
-        score += Math.round(60 + 90 * difficulty + 40 * (msLeft / (seconds * 1000)) + 8 * Math.min(streak, 10));
+        // With the clock off there is no speed bonus to award, and dividing
+        // by a zero limit would make the whole score NaN.
+        const speed = seconds > 0 ? msLeft / (seconds * 1000) : 0;
+        score += Math.round(60 + 90 * difficulty + 40 * speed + 8 * Math.min(streak, 10));
       } else {
         streak = 0;
       }
