@@ -1,0 +1,40 @@
+{
+  "note": "Words kept out of the bank regardless of how well they score on every other measure. Two groups, for two different reasons.",
+  "slurs": {
+    "why": "Ethnic, racial, religious, disability and sexual slurs, and dated clinical terms for disabled people. WordNet is a 1990s lexicon and records these without comment; a vocabulary game that serves one has failed, however defensible the data pipeline was. The generic obscenity list in sources/ldnoobw-en.txt does not cover most of them, because slurs are not obscenities.",
+    "words": [
+      "mongoloid", "mongolism", "cretin", "cretinism", "imbecile", "moron", "morons",
+      "idiot", "idiocy", "feebleminded", "half-wit", "halfwit", "spastic", "spaz",
+      "retard", "retarded", "retardate", "lunatic", "madman", "madwoman", "crazyweed",
+      "negro", "negroid", "negress", "coloured", "colored", "darkie", "darky",
+      "pickaninny", "quadroon", "octoroon", "mulatto", "mestizo", "half-breed",
+      "halfbreed", "redskin", "squaw", "papoose", "injun", "eskimo", "hottentot",
+      "bushman", "aborigine", "gypsy", "gyp", "gypped", "jewess", "hebrew",
+      "shylock", "kike", "wop", "dago", "guinea", "spic", "wetback", "greaser",
+      "chink", "chinaman", "jap", "nip", "gook", "slant", "oriental", "coolie",
+      "paki", "raghead", "towelhead", "hun", "kraut", "polack", "russki", "yid",
+      "honkie", "honky", "cracker", "hillbilly", "redneck", "white trash",
+      "fag", "faggot", "fairy", "poof", "poofter", "dyke", "queer", "pansy",
+      "nancy", "invert", "sodomite", "catamite", "hermaphrodite", "tranny",
+      "midget", "dwarf", "pygmy", "cripple", "crippled", "gimp", "lame",
+      "deaf-mute", "deafmute", "dumb", "mute", "insane", "asylum",
+      "harlot", "strumpet", "trollop", "slattern", "hussy", "jezebel", "wench",
+      "sexpot", "nymphomaniac", "nympho", "floozy", "floozie", "tart", "slut",
+      "spinster", "old maid", "shrew", "harridan", "battle-axe", "termagant",
+      "papist", "mohammedan", "mahometan", "musselman", "heathen", "infidel"
+    ]
+  },
+  "keep": {
+    "why": "Words the obscenity list catches that are ordinary English and worth testing. The list is built for content moderation, so it is deliberately broad.",
+    "words": [
+      "bastard", "bloody", "hell", "damn", "prick", "screw", "ball", "balls",
+      "bang", "beaver", "bugger", "butt", "cock", "dick", "ass", "arse",
+      "breast", "breasts", "nipple", "erotic", "erotica", "lust", "lusty",
+      "seduce", "seduction", "carnal", "libido", "phallic", "coitus",
+      "sadism", "masochism", "voyeur", "fetish", "brothel", "bordello",
+      "concubine", "courtesan", "libertine", "lecher", "lecherous", "lascivious",
+      "salacious", "prurient", "licentious", "ribald", "bawdy", "lewd",
+      "obscene", "profane", "vulgar", "crude", "gross"
+    ]
+  }
+}

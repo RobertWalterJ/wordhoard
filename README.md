@@ -70,36 +70,40 @@ worst relative bias under 3%, 95% interval coverage 92–95% across the range.
 
 ## The look
 
-Two worlds from one palette, and which one you are in tells you where you are.
+Built in the same language as Halyard and Reckoner: soft filled cards with a
+generous radius, layered shadow rather than outlines, 56px tap targets, gradient
+icon tiles, chips and rings doing work that text would otherwise do.
 
-- **The shelf** (home) is deep naval blue with pale-yellow ink and a gold rule —
-  the cover of the book rather than a page of it. Modes are set as a ruled
-  contents list, not a stack of cards, so the page has a spine.
-- **Everywhere else** inverts it: parchment ground, that same blue as the ink and
-  the accent. Light, quiet, made for reading one word off a phone.
+**Two worlds, one palette.** The shelf (home) is the deep world — navy ground,
+pale ink, gold. Every other screen inverts into parchment. The same components
+arrive in either, because the tokens are re-pointed rather than the rules
+rewritten. Both grounds are gradients, and each ramp is arranged so a card is
+always clearly lighter than the ground behind it — including at the top, where
+the gradient is lightest.
 
-Colours are the Danish naval ensign's — a blue deeper than the flag's red is
-bright, a parchment yellow, and the ensign's dark crimson held in reserve for one
-job: being wrong. Nothing else is allowed to be red.
+Colours are the Danish naval ensign's: a blue deeper than the flag's red is
+bright, a parchment yellow, gold between them, and the ensign's crimson kept in
+reserve for one job — being wrong. Nothing else in the app is red.
 
-**Two typefaces, two jobs.** Literata sets the things you *read* — the word under
-test, its definition, the numbers, the screen titles. Archivo sets the things you
-*use* — every option, button, label and stat. The rule is absolute: the moment an
-answer is set in the same face as the word, it stops being obvious which is the
-content and which is the interface. Both self-hosted, so they survive offline.
+**Hierarchy.** The word under test is 3rem and bold; everything around it is a
+small-caps label or a quiet surface. Colour is spent only where it means
+something: gold for what to do next, green for right, crimson for wrong. A tick
+and a cross replace the answer letters once you have chosen, because they land
+before a letter does.
 
-**Few edges.** Almost nothing is a box. Structure comes from hairlines, space and
-alignment; options are ruled rows with lettered keys rather than four bordered
-cards, and a solid fill is spent only on the one primary action per screen.
+**The hero says what the tool is** — a drift of real words from your own packs,
+reshuffled every visit, the way Halyard's bunting does.
+
+**Two typefaces, two jobs.** Literata sets what you *read* — the word, its
+definition, the numbers, the titles. Archivo sets what you *use* — every option,
+button, label and stat. Both self-hosted, so they survive offline.
 
 **It moves on by itself.** Tapping an answer shows the verdict and a line runs
-down showing how long you have to read it — longer when you were wrong, and
-longer again when there is an explanation. A tap anywhere skips ahead. Making
-someone find a Next button doubles the taps and breaks the rhythm.
+down showing how long you have to read it — longer when you were wrong, longer
+again when there is an explanation. A tap anywhere skips ahead.
 
-This commits to a single art direction rather than following the system theme —
-the inversion *is* the identity, and a dark mode would flatten both halves into
-the same dark screen.
+This commits to a single art direction rather than following the system theme:
+the inversion between the shelf and the pages *is* the identity.
 
 ## The word bank
 
@@ -114,6 +118,12 @@ the same dark screen.
 - **Everyday** (7,150) — warm-ups and distractor stock, not a study pack.
 
 Plus 62 confusable sets (124 items), hand-written.
+
+**What is kept out.** WordNet is a 1990s lexicon and records slurs and dated
+clinical terms without comment. `build/curated/excluded.json` holds a
+hand-written list of them, combined with the standard obscenity list and then
+trimmed by an allow-list — a moderation list is built to be broad, and would
+otherwise take `prurient`, `courtesan` and `ribald` with it.
 
 The pipeline's real work is exclusion. Frequency turned out to be a bad proxy for
 usefulness — the high-frequency, low-prevalence cells are almost entirely

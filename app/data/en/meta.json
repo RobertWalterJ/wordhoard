@@ -1,11 +1,11 @@
 {
   "built": "2026-09-04",
-  "words": 19066,
+  "words": 18946,
   "packs": {
-    "core": 7148,
+    "core": 7086,
     "builtform": 122,
-    "precision": 8443,
-    "rare": 3353
+    "precision": 8397,
+    "rare": 3341
   },
   "confusables": {
     "sets": 62,

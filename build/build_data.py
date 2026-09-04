@@ -142,6 +142,27 @@ def load_prevalence() -> dict:
     return out
 
 
+def load_excluded() -> set:
+    """Words kept out of the bank however well they score on everything else.
+
+    WordNet is a 1990s lexicon and records slurs and dated clinical terms
+    without comment. A vocabulary game that serves one has failed, whatever the
+    pipeline did correctly to get there. The generic obscenity list covers
+    swearing rather than slurs, so it is combined with a hand-written list and
+    then trimmed by an allow-list, because a moderation list is deliberately
+    broad and would otherwise take 'prurient' and 'lascivious' with it.
+    """
+    ex = json.loads((CURATED / "excluded.json").read_text(encoding="utf-8"))
+    out = {w.lower() for w in ex["slurs"]["words"]}
+    ldnoobw = SRC / "ldnoobw-en.txt"
+    if ldnoobw.exists():
+        for line in ldnoobw.read_text(encoding="utf-8").splitlines():
+            w = line.strip().lower()
+            if w and " " not in w:
+                out.add(w)
+    return out - {w.lower() for w in ex["keep"]["words"]}
+
+
 def is_clean_word(w: str) -> bool:
     return WORD_MIN <= len(w) <= WORD_MAX and re.fullmatch(r"[a-z]+", w) is not None
 
@@ -439,6 +460,9 @@ def main() -> int:
     prev = load_prevalence()
     print(f"prevalence norms          {len(prev):>7,} lemmas")
 
+    excluded = load_excluded()
+    print(f"excluded terms            {len(excluded):>7,} slurs and obscenities")
+
     real_words = set(prev)
     for w in wn.all_lemma_names():
         if "_" not in w and w.isalpha():
@@ -461,6 +485,9 @@ def main() -> int:
     for w, rec in prev.items():
         if not is_clean_word(w):
             skipped["shape"] += 1
+            continue
+        if w in excluded:
+            skipped["slur or obscenity"] += 1
             continue
         if transparent_derivation(w, prev):
             skipped["transparent derivation"] += 1
@@ -592,7 +619,7 @@ def main() -> int:
     have_def = {r["w"] for r in words}
     strata = defaultdict(list)
     for w, rec in prev.items():
-        if is_clean_word(w):
+        if is_clean_word(w) and w not in excluded:
             strata[min(int(rec["pknown"] * 20), 19)].append(w)
     items = []
     for band in range(20):
