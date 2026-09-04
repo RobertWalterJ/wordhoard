@@ -92,7 +92,7 @@ function ring(fraction, value, caption) {
   return wrap;
 }
 
-const SCREENS = ['home', 'play', 'result', 'progress', 'settings', 'about'];
+const SCREENS = ['home', 'play', 'setup', 'result', 'progress', 'settings', 'about'];
 function show(name) {
   for (const s of SCREENS) $(`screen-${s}`).hidden = s !== name;
   // The stylesheet re-points its colour tokens off this: the shelf is the deep
@@ -141,15 +141,15 @@ const speechOn = () => S.load().settings.speak !== 'off';
 const speakPrompts = () => S.load().settings.speak === 'both' || S.load().settings.speak === 'prompt';
 const speakAnswers = () => S.load().settings.speak === 'both' || S.load().settings.speak === 'answer';
 
-function speakButton(word, { small = false } = {}) {
+function speakButton(word, { small = false, label, rate } = {}) {
   if (!Speech.available()) return null;
   const b = el('button', small ? 'wl-speak' : 'speak-btn');
   b.type = 'button';
-  b.setAttribute('aria-label', `Say “${word}” aloud`);
+  b.setAttribute('aria-label', label || `Say “${word}” aloud`);
   b.append(icon(ICON.speak));
   b.addEventListener('click', (e) => {
     e.stopPropagation();
-    Speech.speak(word);
+    Speech.speak(word, rate ? { rate } : undefined);
     b.classList.add('speaking');
     setTimeout(() => b.classList.remove('speaking'), 900);
   });
@@ -190,7 +190,7 @@ function renderHoard() {
   }
 }
 
-function modeRow(m, { lead = false, tag, disabled = false } = {}) {
+function modeRow(m, { lead = false, tag, disabled = false, onPick } = {}) {
   const b = el('button', `mode${lead ? ' lead' : ''}`);
   b.type = 'button';
   b.disabled = disabled;
@@ -202,7 +202,7 @@ function modeRow(m, { lead = false, tag, disabled = false } = {}) {
   const go = el('span', 'mode-go');
   go.append(icon(ICON.chevron));
   b.append(tile, body, go);
-  if (!disabled) b.addEventListener('click', () => startMode(m));
+  if (!disabled) b.addEventListener('click', () => (onPick ? onPick(m) : startMode(m)));
   return b;
 }
 
@@ -260,7 +260,11 @@ function renderHome() {
   const main = $('modes');
   main.replaceChildren();
   main.append(
-    modeRow(byId.rapid, { lead: true, tag: `${st.settings.rapidLength} questions` }),
+    modeRow(byId.rapid, {
+      lead: true,
+      tag: `${st.settings.rapidLength} questions${st.settings.rapidSeconds ? ` · ${st.settings.rapidSeconds}s each` : ''}`,
+      onPick: renderSetup,
+    }),
     modeRow(byId.train, {
       tag: waiting ? `${waiting} due right now` : 'nothing due yet', disabled: !waiting,
     }),
@@ -326,6 +330,7 @@ function nextQuestion() {
     meta.append(el('div', 'streak-pill', `${session.streak} in a row`));
   }
   if (session.seconds) meta.append(el('div', 'clock', `${session.seconds.toFixed(1)}s`));
+  meta.hidden = !meta.children.length;
   if (session.mode === 'rapid') {
     const chip = $('score-chip');
     chip.hidden = false;
@@ -360,7 +365,13 @@ function renderQuestion(q) {
     p.append(document.createTextNode(before), el('span', 'blank'), document.createTextNode(after || ''));
     qBox.append(p);
   } else {
-    qBox.append(el('div', 'q-def', q.prompt.text));
+    // The prompt is a definition, so the long text on this screen is the prompt
+    // rather than any single word. It gets a speaker of its own.
+    const row = el('div', 'q-headline q-headline-def');
+    row.append(el('div', 'q-def', q.prompt.text));
+    const sb = speakButton(q.prompt.text, { label: 'Read the definition aloud', rate: 1 });
+    if (sb) row.append(sb);
+    qBox.append(row);
   }
   if (q.ask) qBox.append(el('div', 'q-ask', q.ask));
 
@@ -403,12 +414,23 @@ function renderQuestion(q) {
     return;
   }
 
+  const withSpeakers = S.load().settings.speakOptions && Speech.available();
   q.options.forEach((opt, i) => {
     const b = el('button', 'opt');
     b.type = 'button';
     b.append(el('span', 'opt-key', KEYS[i]), el('span', 'opt-text', opt.text));
     b.addEventListener('click', () => submit(opt));
-    box.append(b);
+    if (!withSpeakers) { box.append(b); return; }
+    // The speaker is a sibling rather than a child: a button cannot contain
+    // another button, and tapping it must not count as answering.
+    const row = el('div', 'opt-row');
+    const sp = el('button', 'opt-speak');
+    sp.type = 'button';
+    sp.setAttribute('aria-label', 'Read this option aloud');
+    sp.append(icon(ICON.speak));
+    sp.addEventListener('click', (e) => { e.stopPropagation(); Speech.speak(opt.text, { rate: 1 }); });
+    row.append(b, sp);
+    box.append(row);
   });
 }
 
@@ -473,7 +495,7 @@ function submit(choice) {
 function showVerdict(q, choice, outcome) {
   const box = $('options');
   if (q.kind === 'mcq') {
-    [...box.children].forEach((btn, i) => {
+    [...box.querySelectorAll('.opt')].forEach((btn, i) => {
       btn.disabled = true;
       const opt = q.options[i];
       const key = btn.querySelector('.opt-key');
@@ -490,7 +512,7 @@ function showVerdict(q, choice, outcome) {
       }
     });
   } else {
-    [...box.children].forEach((c) => { c.disabled = true; });
+    box.querySelectorAll('button').forEach((c) => { c.disabled = true; });
   }
 
   const fb = $('feedback');
@@ -551,10 +573,16 @@ function showVerdict(q, choice, outcome) {
  * word actually meant, scaled to how much there is to read.
  */
 function scheduleAdvance(chars, wrong, spoke) {
-  const base = wrong ? 2000 : 900;
-  const reading = Math.min(4500, chars * 26);
-  const ms = Math.min(7000, base + (wrong ? reading : Math.min(900, reading))) + (spoke ? 500 : 0);
   const fill = $('continue-fill');
+  if (!S.load().settings.autoAdvance) {
+    fill.style.width = '0%';
+    return;                       // it waits until you say so
+  }
+  // Generous, and scaled to how much there is to read. Reading speed varies for
+  // all sorts of reasons that have nothing to do with knowing the word.
+  const base = wrong ? 2600 : 1000;
+  const reading = Math.min(6000, chars * 34);
+  const ms = Math.min(9000, base + (wrong ? reading : Math.min(1100, reading))) + (spoke ? 600 : 0);
   const started = performance.now();
   const tick = () => {
     const frac = Math.max(0, 1 - (performance.now() - started) / ms);
@@ -750,14 +778,71 @@ function renderEstimateResult(sum, body) {
   body.append(honesty);
 }
 
+/* ------------------------------------------------------------------ setup */
+
+/**
+ * The screen before Rapid Fire starts.
+ *
+ * It exists because the two things most worth changing -- whether there is a
+ * clock, and whether the words are read aloud -- are decisions you want to make
+ * on the way into a round, not by going and finding a settings page first.
+ */
+function renderSetup() {
+  const st = S.load();
+  const body = $('setup-body');
+  body.replaceChildren();
+  const save = (patch) => { Object.assign(st.settings, patch); S.save(); renderSetup(); };
+
+  const round = section('The round');
+  round.append(setting('Questions', null,
+    choiceRow([[10, '10'], [20, '20'], [50, '50']], st.settings.rapidLength,
+      (v) => save({ rapidLength: Number(v) }), { rerender: false })));
+  round.append(setting('Clock',
+    'Off by default. A countdown measures how fast you can read the options, '
+    + 'which is a different thing from how many words you know.',
+    choiceRow([[0, 'No clock'], [12, '12s'], [20, '20s'], [30, '30s']], st.settings.rapidSeconds,
+      (v) => save({ rapidSeconds: Number(v) }), { rerender: false })));
+  body.append(round);
+
+  const sound = section('Read aloud');
+  if (Speech.available()) {
+    sound.append(setting('The word',
+      'Spoken as each question appears, and again with the answer. Tap the '
+      + 'speaker beside any word to hear it at any time.',
+      choiceRow([
+        ['off', 'Off'], ['prompt', 'On the word'], ['answer', 'On the answer'], ['both', 'Both'],
+      ], st.settings.speak, (v) => {
+        Speech.unlock();
+        save({ speak: v });
+        if (v !== 'off') Speech.speak('vocabulary');
+      }, { rerender: false })));
+    sound.append(setting('The answers',
+      'Reads each option out as well, so a long definition does not have to be '
+      + 'read to be understood.',
+      choiceRow([[false, 'Off'], [true, 'Read the options too']], st.settings.speakOptions,
+        (v) => { Speech.unlock(); save({ speakOptions: v === 'true' || v === true }); },
+        { rerender: false })));
+  } else {
+    sound.append(el('p', null, 'This browser has no speech voices available.'));
+  }
+  body.append(sound);
+
+  show('setup');
+}
+
+$('setup-start').addEventListener('click', () => {
+  Speech.unlock();
+  startMode(MODES.find((m) => m.id === 'rapid'));
+});
+
 /* --------------------------------------------------------------- settings */
 
-function choiceRow(options, current, onPick) {
+function choiceRow(options, current, onPick, { rerender = true } = {}) {
   const wrap = el('div', 'choices');
   for (const [value, label] of options) {
     const b = el('button', `choice${String(current) === String(value) ? ' on' : ''}`, label);
     b.type = 'button';
-    b.addEventListener('click', () => { onPick(value); renderSettings(); });
+    b.addEventListener('click', () => { onPick(value); if (rerender) renderSettings(); });
     wrap.append(b);
   }
   return wrap;
@@ -790,6 +875,11 @@ function renderSettings() {
         save({ speak: v });
         if (v !== 'off') Speech.speak('vocabulary');
       })));
+    sound.append(setting('Read the options too',
+      'Each answer is read out as well, so a long definition does not have to be '
+      + 'read to be understood. A speaker appears beside every option.',
+      choiceRow([[false, 'Off'], [true, 'On']], st.settings.speakOptions,
+        (v) => { Speech.unlock(); save({ speakOptions: v === true || v === 'true' }); })));
     const vn = Speech.voiceName();
     if (vn) sound.append(el('p', 'tight', `Using ${vn}.`));
   } else {
@@ -801,9 +891,17 @@ function renderSettings() {
   round.append(setting('Questions per round', null,
     choiceRow([[10, '10'], [20, '20'], [50, '50']], st.settings.rapidLength,
       (v) => save({ rapidLength: Number(v) }))));
-  round.append(setting('Seconds per question', 'The clock pauses if you leave the app mid-question.',
-    choiceRow([[8, '8'], [12, '12'], [20, '20'], [0, 'No clock']], st.settings.rapidSeconds,
+  round.append(setting('Clock',
+    'Off by default. A countdown measures how fast you can read the options, '
+    + 'which is a different thing from how many words you know. If you turn it '
+    + 'on, it pauses when you leave the app mid-question.',
+    choiceRow([[0, 'No clock'], [12, '12s'], [20, '20s'], [30, '30s']], st.settings.rapidSeconds,
       (v) => save({ rapidSeconds: Number(v) }))));
+  round.append(setting('After you answer',
+    'Whether the round moves on by itself once the verdict is up.',
+    choiceRow([[true, 'Move on by itself'], [false, 'Wait for a tap']],
+      st.settings.autoAdvance,
+      (v) => save({ autoAdvance: v === true || v === 'true' }))));
   body.append(round);
 
   const packs = section('Which words');
@@ -1033,6 +1131,12 @@ function renderAbout() {
 }
 
 /* ------------------------------------------------------------------- boot */
+
+// Speech needs to be started once from a real user gesture before a browser
+// will allow it at all; this is the earliest honest opportunity.
+for (const evt of ['pointerdown', 'keydown']) {
+  window.addEventListener(evt, () => Speech.unlock(), { once: true, passive: true });
+}
 
 (async function boot() {
   try {

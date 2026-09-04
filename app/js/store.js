@@ -26,11 +26,19 @@ const blank = () => ({
   streak: 0,
   settings: {
     rapidLength: 20,
-    rapidSeconds: 12,
+    // No clock by default. A countdown measures how fast you can READ the
+    // options, which is a different thing from how many words you know, and it
+    // penalises anyone who reads slowly for reasons that have nothing to do
+    // with vocabulary. It is there for anyone who wants the pressure.
+    rapidSeconds: 0,
     packs: ['precision', 'rare', 'builtform'],
     // Speech defaults on: hearing an unfamiliar word is most of learning to
-    // use it, and it is one tap in Settings to silence.
+    // use it, and it is one tap to silence.
     speak: 'both',
+    // Read the answers out too, not just the word.
+    speakOptions: false,
+    // Move on by itself after the verdict, or wait to be tapped.
+    autoAdvance: true,
   },
 });
 

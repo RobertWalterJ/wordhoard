@@ -611,3 +611,22 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* An option and its speaker sit side by side: a button cannot contain another
+   button, and tapping the speaker must not count as answering. */
+.opt-row { display: flex; align-items: stretch; gap: .45rem; }
+.opt-row .opt { flex: 1; min-width: 0; }
+.opt-speak {
+  width: 3rem; flex: none; border-radius: var(--radius);
+  background: var(--card); box-shadow: var(--sh-sm); color: var(--accent);
+  display: grid; place-content: center;
+  transition: transform .12s var(--ease);
+}
+.opt-speak svg { width: 17px; height: 17px; }
+.opt-speak:active { transform: scale(.94); }
+
+/* When the prompt is a definition, the long text is the prompt -- so it gets
+   the speaker, and the pair stays left-aligned rather than centred. */
+.q-headline-def { align-items: flex-start; text-align: left; gap: .8rem; }
+.q-headline-def .q-def { flex: 1; min-width: 0; }
+.q-headline-def .speak-btn { margin-top: .25rem; }

@@ -18,10 +18,32 @@ that is the server. Closing it stops the app.
 | **Sharpen** | The confusables — `disinterested`, `fulsome`, `militate`, `nonplussed`. Words you already think you know, used the way they actually mean. |
 | **Summon** | Meaning first; you write the word. The step from recognising to using. |
 
-**Pronunciation.** Words are read aloud in whichever English voice the device
-provides — on the word as the question appears, on the answer once you have
-chosen, or both. A word you are not sure how to say is a word you will not use.
-Every word list has a speaker button too. Settings turns it off.
+**Before Rapid Fire starts** there is a setup screen for the two things worth
+deciding on the way in: whether there is a clock, and whether the words are read
+aloud. Everything else lives in Settings.
+
+## Reading aloud, and the clock
+
+**There is no clock by default.** A countdown measures how fast you can read the
+options, which is a different thing from how many words you know, and it
+penalises anyone who reads slowly for reasons that have nothing to do with
+vocabulary. It is available at 12s, 20s or 30s for anyone who wants the
+pressure. The same reasoning applies after you answer: the verdict's
+auto-advance is generous and scaled to how much there is to read, and it can be
+set to wait for a tap instead.
+
+**Everything can be read aloud**, in whichever English voice the device
+provides:
+
+- the word, spoken as each question appears
+- the correct word, spoken once you have answered
+- the definition, when the definition is the prompt
+- every answer option, if you turn that on — so a long definition does not have
+  to be read to be understood
+
+A speaker icon sits beside the prompt, beside every option when option-reading
+is on, and beside every word in every list. Speech is primed on the first touch,
+because mobile browsers refuse to speak until they have seen a real gesture.
 
 Every answer in every mode feeds the same estimate. Progress accumulates across
 sessions rather than resetting.

@@ -69,6 +69,21 @@ export function speak(text, { rate = 0.92 } = {}) {
   }
 }
 
+/* Mobile browsers refuse to speak until speech has been started once from a
+   real user gesture. Without this the first few words of a round are silently
+   swallowed and it looks as though pronunciation simply does not work. */
+let unlocked = false;
+export function unlock() {
+  if (unlocked || !available()) return;
+  unlocked = true;
+  init();
+  try {
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+  } catch { /* nothing to unlock */ }
+}
+
 export function stop() {
   if (available()) {
     try { window.speechSynthesis.cancel(); } catch { /* nothing to stop */ }
