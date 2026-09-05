@@ -2740,6 +2740,453 @@
         "m": "tending to",
         "o": "L"
       }
+    ],
+    "abject": [
+      {
+        "p": "ab-"
+      },
+      {
+        "p": "ject",
+        "m": "throw"
+      }
+    ],
+    "adjunct": [
+      {
+        "p": "ad-"
+      },
+      {
+        "p": "junct",
+        "m": "join"
+      }
+    ],
+    "antipathy": [
+      {
+        "p": "anti-"
+      },
+      {
+        "p": "path",
+        "m": "feeling, suffering"
+      },
+      {
+        "p": "-y"
+      }
+    ],
+    "apposite": [
+      {
+        "p": "ap-",
+        "m": "toward",
+        "o": "L"
+      },
+      {
+        "p": "posit",
+        "m": "put, place"
+      }
+    ],
+    "circumspect": [
+      {
+        "p": "circum-"
+      },
+      {
+        "p": "spect",
+        "m": "look, see"
+      }
+    ],
+    "compendious": [
+      {
+        "p": "com-"
+      },
+      {
+        "p": "pend",
+        "m": "hang, weigh"
+      },
+      {
+        "p": "-ious"
+      }
+    ],
+    "concur": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "curr",
+        "m": "run"
+      }
+    ],
+    "condone": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "don",
+        "m": "give",
+        "o": "L"
+      }
+    ],
+    "conflate": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "flat",
+        "m": "blow",
+        "o": "L"
+      }
+    ],
+    "contiguous": [
+      {
+        "p": "con-"
+      },
+      {
+        "p": "tig",
+        "m": "touch"
+      },
+      {
+        "p": "-uous",
+        "m": "having",
+        "o": "L"
+      }
+    ],
+    "decorous": [
+      {
+        "p": "decor",
+        "m": "seemly, fitting",
+        "o": "L"
+      },
+      {
+        "p": "-ous"
+      }
+    ],
+    "deprecate": [
+      {
+        "p": "de-"
+      },
+      {
+        "p": "prec",
+        "m": "pray, entreat",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "desiccate": [
+      {
+        "p": "de-"
+      },
+      {
+        "p": "sicc",
+        "m": "dry",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "diffident": [
+      {
+        "p": "dif-",
+        "m": "apart",
+        "o": "L"
+      },
+      {
+        "p": "fid",
+        "m": "faith, trust"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "dissonance": [
+      {
+        "p": "dis-"
+      },
+      {
+        "p": "son",
+        "m": "sound",
+        "o": "L"
+      },
+      {
+        "p": "-ance"
+      }
+    ],
+    "elicit": [
+      {
+        "p": "e-"
+      },
+      {
+        "p": "licit",
+        "m": "draw, entice",
+        "o": "L"
+      }
+    ],
+    "emollient": [
+      {
+        "p": "e-"
+      },
+      {
+        "p": "molli",
+        "m": "soften",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "evince": [
+      {
+        "p": "e-"
+      },
+      {
+        "p": "vinc",
+        "m": "conquer, prove"
+      }
+    ],
+    "expatiate": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "spati",
+        "m": "space, roam",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "expunge": [
+      {
+        "p": "ex-"
+      },
+      {
+        "p": "pung",
+        "m": "prick, puncture",
+        "o": "L"
+      }
+    ],
+    "extrapolate": [
+      {
+        "p": "extra-"
+      },
+      {
+        "p": "pol",
+        "m": "polish, smooth out",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "importune": [
+      {
+        "p": "im-",
+        "m": "not"
+      },
+      {
+        "p": "portun",
+        "m": "suitable, timely",
+        "o": "L"
+      }
+    ],
+    "incisive": [
+      {
+        "p": "in-",
+        "m": "into"
+      },
+      {
+        "p": "cis",
+        "m": "cut"
+      },
+      {
+        "p": "-ive"
+      }
+    ],
+    "inculcate": [
+      {
+        "p": "in-",
+        "m": "into"
+      },
+      {
+        "p": "culc",
+        "m": "tread, press with the heel",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "inveterate": [
+      {
+        "p": "in-",
+        "m": "in"
+      },
+      {
+        "p": "veter",
+        "m": "old, of long standing",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "laudable": [
+      {
+        "p": "laud",
+        "m": "praise",
+        "o": "L"
+      },
+      {
+        "p": "-able"
+      }
+    ],
+    "nascent": [
+      {
+        "p": "nasc",
+        "m": "be born"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "obtuse": [
+      {
+        "p": "ob-"
+      },
+      {
+        "p": "tus",
+        "m": "beaten, blunted",
+        "o": "L"
+      }
+    ],
+    "palliate": [
+      {
+        "p": "palli",
+        "m": "cloak",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "paucity": [
+      {
+        "p": "pauc",
+        "m": "few",
+        "o": "L"
+      },
+      {
+        "p": "-ity"
+      }
+    ],
+    "presage": [
+      {
+        "p": "pre-"
+      },
+      {
+        "p": "sag",
+        "m": "perceive keenly",
+        "o": "L"
+      }
+    ],
+    "proscribe": [
+      {
+        "p": "pro-",
+        "m": "before, publicly"
+      },
+      {
+        "p": "scrib",
+        "m": "write"
+      }
+    ],
+    "protract": [
+      {
+        "p": "pro-"
+      },
+      {
+        "p": "tract",
+        "m": "pull, draw"
+      }
+    ],
+    "quiescent": [
+      {
+        "p": "qui",
+        "m": "rest, quiet",
+        "o": "L"
+      },
+      {
+        "p": "-escent"
+      }
+    ],
+    "relegate": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "leg",
+        "m": "send, depute",
+        "o": "L"
+      },
+      {
+        "p": "-ate"
+      }
+    ],
+    "reticent": [
+      {
+        "p": "re-"
+      },
+      {
+        "p": "tic",
+        "m": "be silent",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "subvert": [
+      {
+        "p": "sub-"
+      },
+      {
+        "p": "vert",
+        "m": "turn"
+      }
+    ],
+    "supplant": [
+      {
+        "p": "sup-",
+        "m": "under",
+        "o": "L"
+      },
+      {
+        "p": "plant",
+        "m": "sole of the foot",
+        "o": "L"
+      }
+    ],
+    "transient": [
+      {
+        "p": "trans-"
+      },
+      {
+        "p": "i",
+        "m": "go",
+        "o": "L"
+      },
+      {
+        "p": "-ent"
+      }
+    ],
+    "veracity": [
+      {
+        "p": "ver",
+        "m": "true"
+      },
+      {
+        "p": "-acity",
+        "m": "the quality of",
+        "o": "L"
+      }
     ]
   }
 }

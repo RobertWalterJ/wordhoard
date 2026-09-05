@@ -70,6 +70,9 @@ const data = Object.fromEntries(
 const html = read('index.html');
 const boot = html.match(/<div id="boot"[\s\S]*?<\/div>\s*<\/div>/)[0];
 const main = html.match(/<main id="app"[\s\S]*?<\/main>/)[0];
+// The verdict sheet deliberately lives outside <main>, so it has to be lifted
+// separately or the single-file build ships without it.
+const sheet = html.match(/<div class="sheet" id="sheet"[\s\S]*?\n<\/div>/)[0];
 
 const out = `<title>Wordhoard</title>
 <meta name="description" content="A vocabulary game that tests, expands and calibrates how many English words you know.">
@@ -79,6 +82,7 @@ ${read('styles.css')}
 </style>
 ${boot}
 ${main}
+${sheet}
 <script>
 (function () {
   'use strict';

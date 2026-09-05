@@ -69,14 +69,8 @@
     <div class="question" id="question"></div>
     <div class="options" id="options"></div>
 
-    <div class="verdict" id="feedback" hidden aria-live="polite"></div>
-
-    <div class="continue" id="continue-row" hidden>
-      <div class="continue-line"><div class="continue-fill" id="continue-fill"></div></div>
-      <button class="continue-btn" id="advance" type="button">Continue</button>
-    </div>
-
     <div class="score-chip" id="score-chip" hidden></div>
+
   </section>
 
   <!-- ------------------------------------------------------------ setup -->
@@ -136,6 +130,17 @@
   </section>
 
 </main>
+
+<!-- Outside <main> on purpose. The screen transition animates a transform, and
+     a transformed ancestor becomes the containing block for a fixed child --
+     which had the sheet anchoring to the page instead of to the viewport. -->
+<div class="sheet" id="sheet" hidden>
+  <div class="verdict" id="feedback" aria-live="polite"></div>
+  <div class="continue" id="continue-row">
+    <div class="continue-line"><div class="continue-fill" id="continue-fill"></div></div>
+    <button class="continue-btn" id="advance" type="button">Continue</button>
+  </div>
+</div>
 
 <script type="module" src="js/app.js"></script>
 </body>

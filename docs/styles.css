@@ -455,6 +455,23 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
 .opt.wrong .opt-key { background: var(--red); color: #fff; }
 .opt.dim { opacity: .38; box-shadow: none; }
 
+/* Answered: the options compact to one line each so the marked answer stays on
+   screen above the sheet instead of being pushed behind it. */
+.options.answered { gap: .35rem; }
+.options.answered .opt {
+  min-height: 0; padding: .5rem .8rem; font-size: .84rem;
+  grid-template-columns: 1.5rem 1fr; gap: .65rem; box-shadow: none;
+}
+.options.answered .opt-key { width: 1.5rem; height: 1.5rem; font-size: .62rem; }
+.options.answered .opt-key svg { width: 12px; height: 12px; }
+.options.answered .opt-text {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.options.answered .opt.dim { display: none; }
+.options.yesno.answered .opt { padding: .6rem .8rem; }
+/* Room at the foot of the page so the sheet never sits on top of the last one. */
+#screen-play.answering { padding-bottom: 58dvh; }
+
 .options.yesno { grid-template-columns: 1fr 1fr; gap: .6rem; }
 .options.yesno .opt {
   grid-template-columns: 1fr; text-align: center; justify-items: center;
@@ -476,14 +493,35 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
 }
 
 /* -------------------------------------------------------------- verdict */
-.verdict {
-  margin-top: 1.3rem; padding: 1rem 1.15rem;
-  background: var(--card); border-radius: var(--radius); box-shadow: var(--sh-md);
-  font-size: .88rem; line-height: 1.6;
-  animation: rise .26s var(--ease) both;
+/* A sheet anchored to the bottom of the screen rather than a block below the
+   options. After an answer the verdict is the thing you need, and four long
+   definitions had been pushing it off a phone screen entirely. Anchoring it
+   guarantees it is on screen; capping its height and scrolling its contents
+   guarantees the rest of it is reachable; and pinning Continue outside that
+   scroll means the way forward is never the thing you have to hunt for. */
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  width: 100%; max-width: var(--measure); margin: 0 auto;
+  display: flex; flex-direction: column;
+  max-height: 58dvh;
+  background: var(--card);
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -8px 20px -6px rgba(8,27,49,.13), 0 -30px 60px -30px rgba(8,27,49,.3);
+  padding: 1.05rem 1.25rem calc(.9rem + env(safe-area-inset-bottom));
+  animation: sheet-up .3s var(--ease) both;
 }
-.verdict.is-right { background: var(--green-wash); }
-.verdict.is-wrong { background: var(--red-wash); }
+@keyframes sheet-up { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+.sheet.is-right { background: var(--green-wash); }
+.sheet.is-wrong { background: var(--red-wash); }
+/* A grip, so it reads as a surface that came up rather than a box that appeared. */
+.sheet::before {
+  content: ''; position: absolute; top: .5rem; left: 50%; transform: translateX(-50%);
+  width: 2.2rem; height: 3px; border-radius: 2px; background: var(--text-faint); opacity: .35;
+}
+.verdict {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  font-size: .88rem; line-height: 1.6; padding-top: .35rem;
+}
 .fb-head {
   font-size: .64rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
   margin-bottom: .6rem; color: var(--text-faint);
@@ -498,7 +536,10 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
   font-family: var(--serif); font-style: italic; line-height: 1.55;
 }
 
-.continue { display: flex; align-items: center; gap: 1rem; margin-top: 1.1rem; }
+.continue {
+  flex: none; display: flex; align-items: center; gap: 1rem;
+  margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--line);
+}
 .continue-line { flex: 1; height: 3px; border-radius: 2px; background: var(--line); overflow: hidden; }
 .continue-fill { height: 100%; border-radius: 2px; background: var(--accent); opacity: .6; }
 .continue-btn {

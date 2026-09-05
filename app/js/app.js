@@ -345,8 +345,13 @@ function nextQuestion() {
   question = session.next();
   if (!question) return finishRound();
 
-  $('feedback').hidden = true;
-  $('continue-row').hidden = true;
+  $('sheet').hidden = true;
+  $('sheet').className = 'sheet';
+  // Empty it as well as hide it: leaving the last verdict in the DOM means
+  // anything querying the page sees the previous question's answer.
+  $('feedback').replaceChildren();
+  $('options').classList.remove('answered');
+  $('screen-play').classList.remove('answering');
   $('progress-fill').style.width = `${(session.index / session.total) * 100}%`;
   $('play-count').textContent = `${Math.min(session.index, session.total)} / ${session.total}`;
   // Streak and clock sit above the question as a warm pill and a bare number,
@@ -543,8 +548,14 @@ function showVerdict(q, choice, outcome) {
   }
 
   const fb = $('feedback');
+  const sheet = $('sheet');
   fb.replaceChildren();
   fb.className = 'verdict';
+  sheet.className = 'sheet';
+  // Compact the options and reserve room, so the marked answer stays visible
+  // above the sheet rather than behind it.
+  box.classList.add('answered');
+  $('screen-play').classList.add('answering');
   const pack = getPack();
   const full = q.word && pack.byWord.get(q.word.w);
   const target = q.word && q.word.w;
@@ -553,7 +564,7 @@ function showVerdict(q, choice, outcome) {
   if (outcome.ok === null) {
     // Yes/no has no right answer to report, so it says what the item was for.
     if (q.pseudo) {
-      fb.classList.add(outcome.claimed ? 'is-wrong' : 'is-right');
+      sheet.classList.add(outcome.claimed ? 'is-wrong' : 'is-right');
       fb.append(el('div', `fb-head ${outcome.claimed ? 'wrong' : 'right'}`,
         outcome.claimed ? 'Not a word' : 'Correct — not a word'));
       fb.append(el('div', 'fb-def',
@@ -564,7 +575,7 @@ function showVerdict(q, choice, outcome) {
       if (outcome.claimed && speakAnswers() && target) spoke = Speech.speak(target);
     }
   } else {
-    fb.classList.add(outcome.ok ? 'is-right' : 'is-wrong');
+    sheet.classList.add(outcome.ok ? 'is-right' : 'is-wrong');
     fb.append(el('div', `fb-head ${outcome.ok ? 'right' : 'wrong'}`,
       outcome.ok ? 'Right' : (choice === null ? 'Out of time' : 'Not that one')));
 
@@ -589,10 +600,21 @@ function showVerdict(q, choice, outcome) {
     else if (full && full.note) fb.append(el('div', 'fb-note', full.note));
   }
 
-  fb.hidden = false;
+  sheet.hidden = false;
+  fb.scrollTop = 0;
+  // Lift the page so the marked options clear the sheet. Seeing which one was
+  // right is half the feedback; the explanation is the other half, and both
+  // have to be on screen at once.
+  requestAnimationFrame(() => {
+    const optsBottom = box.getBoundingClientRect().bottom;
+    const sheetTop = sheet.getBoundingClientRect().top;
+    const overlap = optsBottom - (sheetTop - 14);
+    if (overlap > 0) {
+      window.scrollBy({ top: overlap, behavior: 'smooth' });
+    }
+  });
   const last = session.index >= session.total;
   $('advance').textContent = last ? 'See the result' : 'Continue';
-  $('continue-row').hidden = false;
   scheduleAdvance(fb.textContent.length, outcome.ok === false, spoke);
 }
 
@@ -625,8 +647,11 @@ function scheduleAdvance(chars, wrong, spoke) {
 /* A tap anywhere on the question moves on -- the whole screen is the button
    once the verdict is up. Real controls keep their own behaviour. */
 $('screen-play').addEventListener('click', (e) => {
-  if (!locked || $('continue-row').hidden) return;
+  if (!locked || $('sheet').hidden) return;
   if (e.target.closest('button')) return;
+  // Tapping inside the sheet is how you read it -- scrolling an explanation
+  // should not count as "move on".
+  if (e.target.closest('#feedback')) return;
   nextQuestion();
 });
 $('advance').addEventListener('click', nextQuestion);
@@ -664,7 +689,9 @@ function finishRound() {
   Speech.stop();
   const summary = session.summary();
   $('options').replaceChildren();
-  $('continue-row').hidden = true;
+  $('options').classList.remove('answered');
+  $('sheet').hidden = true;
+  $('screen-play').classList.remove('answering');
   renderResult(summary);
   show('result');
 }

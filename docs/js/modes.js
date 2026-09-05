@@ -100,11 +100,16 @@ export function rapidSession({ length = 20, packs = ['precision', 'rare', 'built
     // four-option question lands a little above a coin flip. Drifting the
     // target by a random amount keeps a run from feeling like one long plateau.
     const target = A.targetPrevalence(fit.theta, 'mcq', 4) + (Math.random() - 0.5) * 1.2;
+    // On some questions, break the tie in favour of a word whose parts are
+    // known, so the root breakdowns are actually met rather than theoretically
+    // available. Difficulty still decides; this only settles near-ties, and
+    // only sometimes, so the same few hundred words do not come round forever.
+    const preferRoots = Math.random() < 0.3;
     let bestW = null, bestD = Infinity;
     for (let n = 0; n < 220; n++) {
       const c = sample(pool);
       if (!c || asked.has(c.w)) continue;
-      const d = Math.abs(c.prev - target);
+      const d = Math.abs(c.prev - target) - (preferRoots && c.roots ? 0.5 : 0);
       if (d < bestD) { bestD = d; bestW = c; }
     }
     return bestW;
