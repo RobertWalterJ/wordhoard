@@ -52,10 +52,15 @@
   /* held in common */
   --gold:       #eda52c;
   --gold-lift:  #f7c85a;
-  --red:        #d64550;
-  --red-wash:   #fdecec;
-  --green:      #12a594;
-  --green-wash: #e4f6f3;
+  /* Chosen by build/audit-colour.mjs. The teal was already the right instinct
+     — teal against red survives deuteranopia where green against red does not
+     — but it was too light to carry its own text on its own wash (2.75:1), and
+     the two washes collapsed to a CIEDE2000 of 1.4 under protanopia, which is
+     to say they were the same colour. */
+  --red:        #bd0438;
+  --red-wash:   #efd4d3;
+  --green:      #1f7a6a;
+  --green-wash: #ebf6f3;
 
   --serif: 'Literata', ui-serif, Georgia, 'Times New Roman', serif;
   --sans:  'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -705,3 +710,24 @@ main { max-width: var(--measure); margin: 0 auto; padding: .9rem 1.1rem 3.5rem; 
   font-size: .72rem; color: var(--text-faint); margin-top: .45rem;
   letter-spacing: .02em;
 }
+
+/* A MARK, NOT JUST A COLOUR.
+ *
+ * The verdict colours now survive deuteranopia, but colour was the ONLY thing
+ * separating right from wrong — and a palette can be changed back by anyone who
+ * thinks it looks nicer. A tick and a cross cannot be un-seen by a colour-blind
+ * reader, by anyone outdoors in bright sun, or on a phone in a warm night mode.
+ * build/audit-colour.mjs grades these two as 'shape' on the strength of exactly
+ * this rule; delete the marks and the audit's claim stops being true.
+ *
+ * Absolutely positioned, because these option rows are variously flex and grid
+ * and an extra child lands somewhere different in each. aria-hidden by way of
+ * being a pseudo-element, so nothing is read out twice. */
+.opt { position: relative; }
+.opt.right::after,
+.opt.wrong::after {
+  position: absolute; top: 6px; right: 9px;
+  font-weight: 800; font-size: 1rem; line-height: 1; pointer-events: none;
+}
+.opt.right::after { content: '✓'; color: var(--green); }
+.opt.wrong::after { content: '✗'; color: var(--red); }
