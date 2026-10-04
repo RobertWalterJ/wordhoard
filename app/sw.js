@@ -6,7 +6,7 @@
    Network-first means the app is current whenever the server is reachable and
    works completely offline when it is not, which is the point of installing it:
    a vocabulary round on the subway should not need a signal. */
-const CACHE = 'wordhoard-v4';
+const CACHE = 'wordhoard-v5';
 const ASSETS = [
   '.',
   'index.html',
@@ -46,7 +46,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith('wordhoard-') && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -61,8 +61,8 @@ self.addEventListener('fetch', (e) => {
         caches.open(CACHE).then((c) => c.put(request, copy)).catch(() => {});
         return res;
       })
-      .catch(() => caches.match(request).then((hit) => hit
-        || caches.match('index.html')
+      .catch(() => caches.open(CACHE).then(async (c) => (await c.match(request))
+        || (await c.match('index.html'))
         || new Response('Offline and not cached yet.', { status: 503 })))
   );
 });
